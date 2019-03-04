@@ -1,0 +1,2 @@
+class PlanFavoritesController < ApplicationController
+end
