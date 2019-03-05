@@ -19,6 +19,22 @@ body {
 	background-color: #eee;
 }
 
-footer div {
-	height: 80px;
+.footer-height {
+	height: 100px;
+}
+
+.data-list {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#modal-maxwidth {
+	max-width: 800px;
+}
+
+.ranking {
+	background-color: #FFD700;
+	font-size: 24px;
+}
+.ranking span {
 }
