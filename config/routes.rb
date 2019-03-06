@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/users', to:'users#show'
   get '/users/question_logs', to:'users#question_logs'
   get '/users/answer_logs', to:'users#answer_logs'
+  get '/users/favorite_plans', to:'users#favorite_plans'
+  get '/users/favorite_posts', to:'users#favorite_posts'
   resources :plans, only: [:index, :show]
   resources :favorite_plans, only: [:index, :create, :destroy]
   resources :questions, only: [:new, :index, :show, :create, :destroy]

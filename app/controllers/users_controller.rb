@@ -7,4 +7,10 @@ class UsersController < ApplicationController
 
 	def answer_logs
 	end
+
+	def favorite_plans
+	end
+
+	def favorite_posts
+	end
 end
