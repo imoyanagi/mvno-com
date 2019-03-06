@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :questions, only: [:new, :index, :show, :create, :destroy]
   resources :answers, only: [:create, :destroy]
   resources :favorite_posts, only: [:index, :create, :destroy]
-  resources :user_phones, only: [:new, :create, :update, :destroy]
+  resources :user_phones, only: [:create, :update, :destroy]
   get 'plans/:id/result', to:'user_phones#show'
 end
