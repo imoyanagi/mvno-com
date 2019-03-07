@@ -6,13 +6,6 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Mvno Com"
 
-  config.clear_stylesheets!
-  config.register_stylesheet 'active_admin.css'
-
-  config.clear_javascripts!
-  config.register_javascript 'active_admin.js'
-
-
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
