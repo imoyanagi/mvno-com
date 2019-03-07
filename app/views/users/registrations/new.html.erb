@@ -1,8 +1,13 @@
-<div class="container text-center">
+<div class="container text-center mb-5">
   <h2 class="mt-5">新規会員登録</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field mt-3">
+      ユーザー名<br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
 
     <div class="field mt-3">
       メールアドレス<br />
