@@ -73,3 +73,4 @@ gem "refile-mini_magick"
 gem "ransack"
 gem 'kaminari'
 gem 'activeadmin'
+gem 'seed-fu'

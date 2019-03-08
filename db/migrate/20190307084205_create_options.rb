@@ -4,6 +4,7 @@ class CreateOptions < ActiveRecord::Migration[5.2]
       t.integer :carrier_id
       t.string :name
       t.integer :bill
+      t.text :notes
 
       t.timestamps
     end

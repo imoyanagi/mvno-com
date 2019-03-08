@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_094300) do
+ActiveRecord::Schema.define(version: 2019_03_07_084205) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,36 @@ ActiveRecord::Schema.define(version: 2019_03_04_094300) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "carriers", force: :cascade do |t|
+    t.string "name"
+    t.integer "mnp_bill"
+    t.integer "penalty_bill"
+    t.integer "initial_bill"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.integer "carrier_id"
+    t.string "name"
+    t.integer "bill"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "bill"
+    t.float "data_value"
+    t.integer "carrier_id"
+    t.string "internet_type"
+    t.integer "data_transfer"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
