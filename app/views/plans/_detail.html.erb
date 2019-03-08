@@ -12,27 +12,8 @@
 	        	<tr>
 	        		<th>データ量</th>
 	        		<td>
-	        			<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]] :prompt => "選択してください" %>
-	        			<select class="custom-select">
-						  <option selected>この選択メニューを開く</option>
-						  <option value="1">その1</option>
-						  <option value="2">その2</option>
-						  <option value="3">その3</option>
-						</select>
-
-
-						<!-- <div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-						  <label class="form-check-label">1GB 〜 3GB</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
-						  <label class="form-check-label">3GB 〜 7GB</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
-						  <label class="form-check-label">7GB 〜</label>
-						</div> -->
+	        			<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], prompt: "選択してください" %> 〜
+	        			<%= f.select :data_value_lteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], prompt: "選択してください" %>
 	        		</td>
 	        	</tr>
 	        	<tr>
