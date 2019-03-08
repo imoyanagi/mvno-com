@@ -64,68 +64,24 @@
 		<!-- 検索結果 -->
 		<div class="col-9">
 			<div class="bg-light p-3 mt-5 mb-4 rounded border">
-				<h6>現在の検索条件　　<span class="text-info">〜1GB</span> | <span class="text-info">通話かけ放題</span></h6>
+				<h6>現在の検索条件
+					<% params[:q].each do |key, value| %>
+						<span class="text-info"><%= value %></span> | 
+					<% end %>
+				</h6>
 			</div>
+			<% @plans.each do |plan| %>
 			<div class="row bg-light mb-3 p-3 rounded border">
 				<div class="col-3">
 					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
 				</div>
 				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
+					<h5><a href="#"><%= plan.carrier.name %><br><%= plan.name %></a></h5>
+					<h5>料金　<span class="text-danger price-font-size"><%= plan.bill %>円/月</span></h5>
+					<h6>回線:<span class="text-secondary"><%= plan.internet_type %></span> | データ量:<span class="text-secondary"><%= plan.data_value %>GB</span></h6>
 				</div>
 			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>

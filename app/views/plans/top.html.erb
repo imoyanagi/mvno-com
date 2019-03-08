@@ -5,10 +5,28 @@
 			<h5>毎月のデータ使用量を選んでください</h5>
 			<!-- 特定のviewだけ水平にする方法もある -->
 			<div class="list-group data-list">
-				<a href="#" class="list-group-item list-group-item-action">〜1GB</a>
+				<%= search_form_for(@q) do |f| %>
+					<%= f.hidden_field :data_value_lteq, value:1 %>
+					<%= f.submit "~1GB", class:"btn list-group-item list-group-item-action"%>
+				<% end %>
+				<%= search_form_for(@q) do |f| %>
+					<%= f.hidden_field :data_value_gt, value:1 %>
+					<%= f.hidden_field :data_value_lteq, value:3 %>
+					<%= f.submit "1GB 〜 3GB", class:"btn list-group-item list-group-item-action"%>
+				<% end %>
+				<%= search_form_for(@q) do |f| %>
+					<%= f.hidden_field :data_value_gt, value:3 %>
+					<%= f.hidden_field :data_value_lteq, value:7 %>
+					<%= f.submit "3GB 〜 7GB", class:"btn list-group-item list-group-item-action"%>
+				<% end %>
+				<%= search_form_for(@q) do |f| %>
+					<%= f.hidden_field :data_value_gt, value:7 %>
+					<%= f.submit "7GB 〜", class:"btn list-group-item list-group-item-action"%>
+				<% end %>
+				<!-- <a href="#" class="list-group-item list-group-item-action">〜1GB</a>
   				<a href="#" class="list-group-item list-group-item-action">1GB 〜 3GB</a>
   				<a href="#" class="list-group-item list-group-item-action">3GB 〜 7GB</a>
-  				<a href="#" class="list-group-item list-group-item-action">7GB 〜</a>
+  				<a href="#" class="list-group-item list-group-item-action">7GB 〜</a> -->
   			</div>
 		</div>
 		<%= render 'detail' %>

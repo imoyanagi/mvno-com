@@ -7,75 +7,82 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered">
-        	<tr>
-        		<th>データ量</th>
-        		<td>
-        			<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-					  <label class="form-check-label">〜1GB</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label">1GB 〜 3GB</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label">3GB 〜 7GB</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label">7GB 〜</label>
-					</div>
-        		</td>
-        	</tr>
-        	<tr>
-        		<th>条件</th>
-        		<td>
-        			<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-					  <label class="form-check-label">通話かけ放題</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-					  <label class="form-check-label">データ量繰越</label>
-					</div>
-        		</td>
-        	</tr>
-        	<tr>
-        		<th>回線の種類</th>
-        		<td>
-        			<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-					  <label class="form-check-label">全て</label>
-					</div>
-        			<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-					  <label class="form-check-label">docomo</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label">au</label>
-					</div>
-					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <label class="form-check-label">softbank</label>
-					</div>
-        		</td>
-        	</tr>
-        	<tr>
-        		<th>通信事業者</th>
-        		<td>
-        			<select class="custom-select">
-					  <option selected>選択する</option>
-					  <option value="1">mineo</option>
-					  <option value="2">LINEモバイル</option>
-					  <option value="3">その3</option>
-					</select>
-        		</td>
-        	</tr>
-        </table>
-        <btn class="btn btn-info">検索する</btn>
+      	<%= search_form_for(@q) do |f| %>
+	        <table class="table table-bordered">
+	        	<tr>
+	        		<th>データ量</th>
+	        		<td>
+	        			<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]] :prompt => "選択してください" %>
+	        			<select class="custom-select">
+						  <option selected>この選択メニューを開く</option>
+						  <option value="1">その1</option>
+						  <option value="2">その2</option>
+						  <option value="3">その3</option>
+						</select>
+
+
+						<!-- <div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <label class="form-check-label">1GB 〜 3GB</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+						  <label class="form-check-label">3GB 〜 7GB</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
+						  <label class="form-check-label">7GB 〜</label>
+						</div> -->
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>条件</th>
+	        		<td>
+	        			<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+						  <label class="form-check-label">通話かけ放題</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+						  <label class="form-check-label">データ量繰越</label>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>回線の種類</th>
+	        		<td>
+	        			<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <label class="form-check-label">全て</label>
+						</div>
+	        			<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <label class="form-check-label">docomo</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <label class="form-check-label">au</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <label class="form-check-label">softbank</label>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>通信事業者</th>
+	        		<td>
+	        			<select class="custom-select">
+						  <option selected>選択する</option>
+						  <option value="1">mineo</option>
+						  <option value="2">LINEモバイル</option>
+						  <option value="3">その3</option>
+						</select>
+	        		</td>
+	        	</tr>
+	        </table>
+        	<%= f.submit "検索する", class:"btn btn-info"%>
+        <% end %>
       </div>
     </div>
   </div>
