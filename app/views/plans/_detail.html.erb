@@ -24,7 +24,7 @@
 						  <label class="form-check-label">通話かけ放題</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+						  <%= f.check_box :data_transfer_eq, {class:"form-check-input"}, 1, nil %>
 						  <label class="form-check-label">データ量繰越</label>
 						</div>
 	        		</td>
@@ -33,19 +33,20 @@
 	        		<th>回線の種類</th>
 	        		<td>
 	        			<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+	        			  <%= f.radio_button :internet_type_any, ["docomo", "au", "softbank"], {checked: true, class:"form-check-input"} %>
+						  <!-- <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> -->
 						  <label class="form-check-label">全て</label>
 						</div>
 	        			<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <%= f.radio_button :internet_type_eq, "docomo", {class:"form-check-input"} %>
 						  <label class="form-check-label">docomo</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <%= f.radio_button :internet_type_eq, "au", {class:"form-check-input"} %>
 						  <label class="form-check-label">au</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <%= f.radio_button :internet_type_eq, "softbank", {class:"form-check-input"} %>
 						  <label class="form-check-label">softbank</label>
 						</div>
 	        		</td>
@@ -53,12 +54,7 @@
 	        	<tr>
 	        		<th>通信事業者</th>
 	        		<td>
-	        			<select class="custom-select">
-						  <option selected>選択する</option>
-						  <option value="1">mineo</option>
-						  <option value="2">LINEモバイル</option>
-						  <option value="3">その3</option>
-						</select>
+	        			<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select" %>
 	        		</td>
 	        	</tr>
 	        </table>

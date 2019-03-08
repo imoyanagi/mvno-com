@@ -3,6 +3,7 @@ class PlansController < ApplicationController
 	def top
 		@q = Plan.ransack(params[:q])
     	@plans = @q.result(distinct: true)
+    	@carriers = Carrier.all
 	end
 
 
