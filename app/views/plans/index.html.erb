@@ -7,34 +7,8 @@
 				<%= search_form_for(@q) do |f| %>
 				<div class="mb-4 mt-4">
 					<h6>データ量</h6>
-					<div class="w-75 mx-auto text-left">
-							<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {prompt: "選択"}, {class:"search-context", id:"dataSelectedGt"} %> 〜
-		        			<%= f.select :data_value_lteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {prompt: "選択"},{class:"search-context", id:"dataSelectedLt"} %>
-							<!-- <div class="form-check">
-							  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-							  <label class="form-check-label" for="exampleRadios1">
-							    〜 1GB
-							  </label>
-							</div>
-							<div class="form-check">
-							  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-							  <label class="form-check-label" for="exampleRadios2">
-							    1GB 〜 3GB
-							  </label>
-							</div>
-							<div class="form-check">
-							  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-							  <label class="form-check-label" for="exampleRadios2">
-							    3GB 〜 7GB
-							  </label>
-							</div>
-							<div class="form-check">
-							  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-							  <label class="form-check-label" for="exampleRadios2">
-							    7GB 〜
-							  </label>
-							</div> -->
-					</div>
+					<%= f.select :data_value_gteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {}, {class:"search-context", id:"dataSelectedGt"} %> 〜
+        			<%= f.select :data_value_lteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {},{class:"search-context", id:"dataSelectedLt"} %>
 				</div>
 				<!-- 条件 -->
 				<div class="mb-4">
@@ -87,19 +61,19 @@
 			<div class="bg-light p-3 mt-5 mb-4 rounded border">
 				<h6>検索条件 
 					<% unless params[:q].nil? %>
-						<% unless params[:q][:data_value_gteq].empty? %>
+						<% unless params[:q][:data_value_gteq].blank? %>
 							<span class="text-info"><%= params[:q][:data_value_gteq] %>GB以上</span> |
 						<% end %>
-						<% unless params[:q][:data_value_lteq].empty? %>
+						<% unless params[:q][:data_value_lteq].blank? %>
 							<span class="text-info"><%= params[:q][:data_value_lteq] %>GB以下</span> |
 						<% end %>
-						<% unless params[:q][:data_transfer_eq].empty? %>
+						<% unless params[:q][:data_transfer_eq].blank? %>
 							<span class="text-info">データ繰越可能</span> |
 						<% end %>
-						<% unless params[:q][:internet_type_eq].empty? %>
+						<% unless params[:q][:internet_type_eq].blank? %>
 							<span class="text-info"><%= params[:q][:internet_type_eq] %>回線</span> |
 						<% end %>
-						<% unless params[:q][:carrier_id_eq].empty? %>
+						<% unless params[:q][:carrier_id_eq].blank? %>
 							<span class="text-info"><%= Carrier.find(params[:q][:carrier_id_eq]).name %></span>
 						<% end %>
 					<% end %>

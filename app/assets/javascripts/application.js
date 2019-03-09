@@ -25,6 +25,12 @@ $(function() {
 
 	var gteq = getParam("q%5Bdata_value_gteq%5D")
 	var lteq = getParam("q%5Bdata_value_lteq%5D")
+	if (gteq != null) {
+		$("#dataSelectedGt").val(`${gteq}`)
+	}
+	if (lteq != null) {
+		$("#dataSelectedLt").val(`${lteq}`)
+	}
 
 	function getParam(name, url) {
     if (!url) url = window.location.href;
@@ -36,6 +42,4 @@ $(function() {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 	}
 
-	$("#dataSelectedGt").val(`${gteq}`)
-	$("#dataSelectedLt").val(`${lteq}`)
 });
