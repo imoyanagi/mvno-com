@@ -10,6 +10,7 @@ class PlansController < ApplicationController
 	def index
 		@q = Plan.search(params[:q])
     	@plans = @q.result(distinct: true)
+    	@carriers = Carrier.all
 	end
 
 	def show

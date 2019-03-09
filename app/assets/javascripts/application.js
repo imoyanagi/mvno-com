@@ -16,3 +16,26 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(function() {
+	$(".search-context").change(function(){
+		$("#plan_search").submit();
+	});
+
+	var gteq = getParam("q%5Bdata_value_gteq%5D")
+	var lteq = getParam("q%5Bdata_value_lteq%5D")
+
+	function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+
+	$("#dataSelectedGt").val(`${gteq}`)
+	$("#dataSelectedLt").val(`${lteq}`)
+});
