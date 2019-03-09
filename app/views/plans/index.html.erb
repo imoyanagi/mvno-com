@@ -4,34 +4,11 @@
 			<div class="bg-light p-3 mt-5 mb-5 rounded border sticky">
 				<h4 class="border-bottom border-dark">検索条件</h4>
 				<!-- データ量 -->
+				<%= search_form_for(@q) do |f| %>
 				<div class="mb-4 mt-4">
 					<h6>データ量</h6>
-					<div class="w-50 mx-auto text-left"> <!-- 中央ぞろえ -->
-						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-						  <label class="form-check-label" for="exampleRadios1">
-						    〜 1GB
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-						  <label class="form-check-label" for="exampleRadios2">
-						    1GB 〜 3GB
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-						  <label class="form-check-label" for="exampleRadios2">
-						    3GB 〜 7GB
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-						  <label class="form-check-label" for="exampleRadios2">
-						    7GB 〜
-						  </label>
-						</div>
-					</div>
+					<%= f.select :data_value_gteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {}, {class:"search-context", id:"dataSelectedGt"} %> 〜
+        			<%= f.select :data_value_lteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {},{class:"search-context", id:"dataSelectedLt"} %>
 				</div>
 				<!-- 条件 -->
 				<div class="mb-4">
@@ -43,89 +20,78 @@
 					  </label>
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+					  <%= f.check_box :data_transfer_eq, {class:"form-check-input search-context"}, 1, "" %>
 					  <label class="form-check-label" for="defaultCheck1">
 					    データ量繰越
 					  </label>
 					</div>
 				</div>
+				<!-- 回線の種類 -->
+				<div class="mb-4">
+					<h6>回線の種類</h6>
+					<div class="w-75 mx-auto text-left"> <!-- 中央ぞろえ -->
+						<div class="form-check">
+		    			  <%= f.radio_button :internet_type_eq, "", {checked: true, class:"form-check-input search-context"} %>
+						  <label class="form-check-label">全て</label>
+						</div>
+		    			<div class="form-check">
+						  <%= f.radio_button :internet_type_eq, "docomo", {class:"form-check-input search-context"} %>
+						  <label class="form-check-label">docomo</label>
+						</div>
+						<div class="form-check">
+						  <%= f.radio_button :internet_type_eq, "au", {class:"form-check-input search-context"} %>
+						  <label class="form-check-label">au</label>
+						</div>
+						<div class="form-check">
+						  <%= f.radio_button :internet_type_eq, "softbank", {class:"form-check-input search-context"} %>
+						  <label class="form-check-label">softbank</label>
+						</div>
+					</div>
+				</div>
 				<!-- 通信事業者 -->
 				<div class="mb-4">
 					<h6>通信事業者</h6>
-					<select class="custom-select">
-					  <option selected>選択する</option>
-					  <option value="1">mineo</option>
-					  <option value="2">LINEモバイル</option>
-					  <option value="3">その3</option>
-					</select>
+					<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select search-context" %>
 				</div>
+				<% end %>
 			</div>
 		</div>
 		<!-- 検索結果 -->
 		<div class="col-9">
 			<div class="bg-light p-3 mt-5 mb-4 rounded border">
-				<h6>現在の検索条件　　<span class="text-info">〜1GB</span> | <span class="text-info">通話かけ放題</span></h6>
+				<h6>検索条件 
+					<% unless params[:q].nil? %>
+						<% unless params[:q][:data_value_gteq].blank? %>
+							<span class="text-info"><%= params[:q][:data_value_gteq] %>GB以上</span> |
+						<% end %>
+						<% unless params[:q][:data_value_lteq].blank? %>
+							<span class="text-info"><%= params[:q][:data_value_lteq] %>GB以下</span> |
+						<% end %>
+						<% unless params[:q][:data_transfer_eq].blank? %>
+							<span class="text-info">データ繰越可能</span> |
+						<% end %>
+						<% unless params[:q][:internet_type_eq].blank? %>
+							<span class="text-info"><%= params[:q][:internet_type_eq] %>回線</span> |
+						<% end %>
+						<% unless params[:q][:carrier_id_eq].blank? %>
+							<span class="text-info"><%= Carrier.find(params[:q][:carrier_id_eq]).name %></span>
+						<% end %>
+					<% end %>
+				</h6>
+				<h4><%= @plans.count %>件</h4>
 			</div>
+			<% @plans.each do |plan| %>
 			<div class="row bg-light mb-3 p-3 rounded border">
 				<div class="col-3">
 					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
 				</div>
 				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
+					<h5><a href="#"><%= plan.carrier.name %><br><%= plan.name %></a></h5>
+					<h5>料金　<span class="text-danger price-font-size"><%= plan.bill %>円/月</span></h5>
+					<h6>回線:<span class="text-secondary"><%= plan.internet_type %></span> | データ量:<span class="text-secondary"><%= plan.data_value %>GB</span></h6>
 				</div>
 			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
-				</div>
-				<div class="col-9">
-					<h5><a href="#">LINEモバイル<br>コミュニケーションフリープラン 〜3GB</a></h5>
-					<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-					<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
-				</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
