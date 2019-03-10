@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/users/favorite_plans', to:'users#favorite_plans'
   get '/users/favorite_posts', to:'users#favorite_posts'
   resources :plans, only: [:index, :show]
-  resources :favorite_plans, only: [:index, :create, :destroy]
+  resources :favorite_plans, only: [:create, :destroy]
   resources :questions, only: [:new, :index, :show, :create, :destroy]
   resources :answers, only: [:create, :destroy]
   resources :favorite_posts, only: [:index, :create, :destroy]
