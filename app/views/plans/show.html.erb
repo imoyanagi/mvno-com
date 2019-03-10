@@ -5,6 +5,9 @@
 			<h5>料金　<span class="text-danger price-font-size"><%= @plan.bill %>円/月</span></h5>
 			<h6>回線:<span class="text-secondary"><%= @plan.internet_type %></span> | データ量:<span class="text-secondary"><%= @plan.data_value %>GB</span></h6>
 		</div>
+		<div class="float-left ml-5">
+			<%= link_to "お気に入りに追加", users_path, class:"btn btn-warning mt-5"%>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-8">
