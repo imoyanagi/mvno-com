@@ -12,6 +12,7 @@
 	<div class="row">
 		<div class="col-8">
 			<div class="bg-light p-5 mb-5 rounded border">
+
 				<h4>基本情報</h4>
 				<table class="table table-borderless pl-5 mt-4 plan-table-size">
 					<tr>
@@ -27,6 +28,7 @@
 						<th><%= @plan.data_transfer %></th>
 					</tr>
 				</table>
+
 				<h4>オプション<h6>（選択すると右の料金に反映されます）</h6></h4>
 				<table class="table table-borderless pl-5 mt-4 plan-table-size">
 					<% @plan.carrier.options.each do |option| %>
@@ -43,63 +45,25 @@
 						</tr>
 					<% end %>
 				</table>
+
 				<h4>レビュー</h4>
 				<%= render 'review_form' %>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
+				<% @reviews.each do |review| %>
+					<div id="total_star<%= review.id %>"></div>
+					<div class="border rounded p-3 mb-3">
+						<%= review.title %>
+						<script>
+							$('#total_star<%= review.id%>').raty({
+							  readOnly: true,
+							  score: <%= review.total_eval %>,
+							  size     : 16,
+							  starOff:  '<%= asset_path('star-off.png') %>',
+							  starOn : '<%= asset_path('star-on.png') %>',
+							});
+						</script>
 					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
+				<% end %>
+
 			</div>
 		</div>
 		<div class="col-4">

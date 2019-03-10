@@ -9,40 +9,48 @@
       <div class="modal-body">
       	<%= form_for(@review) do |f| %>
 		 	<%= f.hidden_field :plan_id, value: @plan.id %>
-			<div class="">
-				<div class="field" id="star1">
-		            <%= f.label :internet_eval, "通信品質" %>
-		            <%= f.hidden_field :internet_eval %>
-		        </div>
-		        <div class="field" id="star2">
-		            <%= f.label :support_eval, "サポート" %>
-		            <%= f.hidden_field :support_eval %>
-		        </div>
-		        <div class="field" id="star3">
-		            <%= f.label :cost_eval, "価格　　" %>
-		            <%= f.hidden_field :cost_eval %>
-		        </div>
-		        <%= f.label :title, "タイトル"%>
-		        <%= f.text_field :title, style:"width:400px;" %><br>
-		        <%= f.label :body, "本文"%><br>
-		        <%= f.text_area :body, style:"width:600px; height:400px;" %><br>
-		        <%= f.submit "送信", :class => "btn btn-primary" %>
+		 	<div class="field" id="star1">
+			 	<%= f.label :total_eval, "総合評価" %>
+			 	<%= f.hidden_field :total_eval %>
 		 	</div>
+			<div class="field" id="star2">
+	            <%= f.label :internet_eval, "通信品質" %>
+	            <%= f.hidden_field :internet_eval %>
+	        </div>
+	        <div class="field" id="star3">
+	            <%= f.label :support_eval, "サポート" %>
+	            <%= f.hidden_field :support_eval %>
+	        </div>
+	        <div class="field" id="star4">
+	            <%= f.label :cost_eval, "価格　　" %>
+	            <%= f.hidden_field :cost_eval %>
+	        </div>
+	        <%= f.label :title, "タイトル"%>
+	        <%= f.text_field :title, style:"width:400px;" %><br>
+	        <%= f.label :body, "本文"%><br>
+	        <%= f.text_area :body, style:"width:600px; height:400px;" %><br>
+	        <%= f.submit "送信", :class => "btn btn-primary" %>
 		<% end %>
 		<script>
 			$('#star1').raty({
 			  size     : 36,
 			  starOff:  '<%= asset_path('star-off.png') %>',
 			  starOn : '<%= asset_path('star-on.png') %>',
-			  scoreName: 'review[internet_eval]'
+			  scoreName: 'review[total_eval]'
 			});
 			$('#star2').raty({
 			  size     : 36,
 			  starOff:  '<%= asset_path('star-off.png') %>',
 			  starOn : '<%= asset_path('star-on.png') %>',
-			  scoreName: 'review[support_eval]'
+			  scoreName: 'review[internet_eval]'
 			});
 			$('#star3').raty({
+			  size     : 36,
+			  starOff:  '<%= asset_path('star-off.png') %>',
+			  starOn : '<%= asset_path('star-on.png') %>',
+			  scoreName: 'review[support_eval]'
+			});
+			$('#star4').raty({
 			  size     : 36,
 			  starOff:  '<%= asset_path('star-off.png') %>',
 			  starOn : '<%= asset_path('star-on.png') %>',

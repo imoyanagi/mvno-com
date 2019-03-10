@@ -17,6 +17,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-  	params.require(:review).permit(:plan_id, :internet_eval, :support_eval, :cost_eval, :title, :body)
+  	params.require(:review).permit(:plan_id, :total_eval, :internet_eval, :support_eval, :cost_eval, :title, :body)
   end
 end
