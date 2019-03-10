@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   resources :favorite_posts, only: [:index, :create, :destroy]
   resources :user_phones, only: [:create, :update, :destroy]
   resources :reviews, only: [:new, :create, :update, :destroy]
-  get 'plans/:id/result', to:'user_phones#show'
+  get 'plans/:id/result', to:'user_phones#show', as:'result'
 end
