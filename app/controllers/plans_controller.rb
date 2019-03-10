@@ -14,6 +14,9 @@ class PlansController < ApplicationController
 	end
 
 	def show
+		@plan = Plan.find(params[:id])
+		@review = Review.new
+		@reviews = Review.where(plan_id: @plan.id)
 	end
 
 	private

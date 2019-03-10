@@ -1,140 +1,86 @@
 <div class="container">
 	<div class="bg-light p-3 mt-5 mb-5 rounded border clearfix">
 		<%= image_tag("linemobile.png", size:"150x150", class:"mx-auto float-left") %>
-		<div class="float-left ml-5"><h4>LINEモバイル<br>コミュニケーションフリープラン 〜3GB</h4>
-			<h5>料金　<span class="text-danger price-font-size">1600円/月</span></h5>
-			<h6>回線:<span class="text-secondary">softbank</span> | データ量:<span class="text-secondary">3GB</span></h6>
+		<div class="float-left ml-5"><h4><%= @plan.carrier.name %><br><%= @plan.name %></h4>
+			<h5>料金　<span class="text-danger price-font-size"><%= @plan.bill %>円/月</span></h5>
+			<h6>回線:<span class="text-secondary"><%= @plan.internet_type %></span> | データ量:<span class="text-secondary"><%= @plan.data_value %>GB</span></h6>
+		</div>
+		<div class="float-left ml-5">
+			<%= link_to "お気に入りに追加", favorite_plans_path(plan_id: @plan.id), method: :post, class:"btn btn-warning mt-5"%>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-8">
 			<div class="bg-light p-5 mb-5 rounded border">
+
 				<h4>基本情報</h4>
 				<table class="table table-borderless pl-5 mt-4 plan-table-size">
 					<tr>
 						<td>回線</td>
-						<th>softbank回線</th>
+						<th><%= @plan.internet_type %>回線</th>
 					</tr>
 					<tr>
 						<td>データ量</td>
-						<th>3GB</th>
+						<th><%= @plan.data_value %>GB</th>
 					</tr>
 					<tr>
 						<td>データ繰越</td>
-						<th>可能</th>
+						<th><%= @plan.data_transfer %></th>
 					</tr>
 				</table>
-				<h4>オプション</h4>
+
+				<h4>オプション<h6>（選択すると右の料金に反映されます）</h6></h4>
 				<table class="table table-borderless pl-5 mt-4 plan-table-size">
-					<tr>
-						<td>
-							<div class="form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-							  <label class="form-check-label" for="defaultCheck1">
-							    通話10分かけ放題
-							  </label>
-							</div>
-						</td>
-						<th>800円/月</th>
-					</tr>
-					<tr>
-						<td>
-							<div class="form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-							  <label class="form-check-label" for="defaultCheck2">
-							    wifiオプション
-							  </label>
-							</div>
-						</td>
-						<th>300円/月</th>
-					</tr>
-					<tr>
-						<td>
-							<div class="form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-							  <label class="form-check-label" for="defaultCheck3">
-							    端末保証
-							  </label>
-							</div>
-						</td>
-						<th>500円/月</th>
-					</tr>
+					<% @plan.carrier.options.each do |option| %>
+						<tr>
+							<td>
+								<div class="form-check">
+								  <input class="form-check-input optionCheck" type="checkbox" value="" id="option<%= option.id %>">
+								  <label class="form-check-label" for="option<%= option.id %>">
+								    <%= option.name %>
+								  </label>
+								</div>
+							</td>
+							<th id="optionBill<%= option.id%>" ><%= option.bill %>円/月</th>
+						</tr>
+					<% end %>
 				</table>
-				<h4 class="p-3 mb-4">レビュー</h4>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
+
+				<h4>レビュー</h4>
+				<%= render 'review_form' %>
+				<% @reviews.each do |review| %>
+				<div class="border rounded p-3 mb-3 row">
+					<div class="col-2 d-flex flex-column">
+						<%= image_tag("linemobile.png", size:"60x60") %>
+						<span class="review-user-name">やくみつる</span>
 					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
+					<div class="col-10">
+						<div id="total_star<%= review.id %>"></div>
+						<%= review.title %>
+						<script>
+							$('#total_star<%= review.id%>').raty({
+							  readOnly: true,
+							  size: 36,
+							  score: <%= review.total_eval %>,
+							  starOff:  '<%= asset_path('star-off.png') %>',
+							  starOn : '<%= asset_path('star-on.png') %>',
+							});
+						</script>
 					</div>
 				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
+				<% end %>
+
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="bg-light p-3 rounded border sticky">
 				<h4>料金</h4>
-				<span class="text-danger price-font-size">　　1600円/月</span>
+				<span class="text-danger price-font-size">　　<span class="addOptionBill"><%= @plan.bill %></span>円/月</span>
 				<h4 class="mt-4">内訳</h4>
-				<table class="table table-borderless">
+				<table class="table table-borderless plan-show-table" id="optionTarget">
 					<tr>
 						<th>基本料金</th>
-						<td>1600円/月</td>
-					</tr>
-					<tr>
-						<th>wifiオプション</th>
-						<td>300円/月</td>
-					</tr>
-					<tr>
-						<th>端末保証</th>
-						<td>500円/月</td>
+						<td><%= @plan.bill %>円/月</td>
 					</tr>
 				</table>
 				<div class="w-50 mx-auto mt-5">

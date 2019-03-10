@@ -1,0 +1,63 @@
+<button type="button" data-toggle="modal" data-focus="true" data-target="#modal-option" class="btn btn-primary mt-3 mb-3">レビューする</button><br>
+<div class="modal fade" id="modal-option" tabindex="-1" role="dialog" aria-labelledby="myModalOptionLabel">
+  <div class="modal-dialog" role="document" id="modal-maxwidth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalOptionLabel">レビュー</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+      	<%= form_for(@review) do |f| %>
+		 	<%= f.hidden_field :plan_id, value: @plan.id %>
+		 	<div class="field" id="star1">
+			 	<%= f.label :total_eval, "総合評価" %>
+			 	<%= f.hidden_field :total_eval %>
+		 	</div>
+			<div class="field" id="star2">
+	            <%= f.label :internet_eval, "通信品質" %>
+	            <%= f.hidden_field :internet_eval %>
+	        </div>
+	        <div class="field" id="star3">
+	            <%= f.label :support_eval, "サポート" %>
+	            <%= f.hidden_field :support_eval %>
+	        </div>
+	        <div class="field" id="star4">
+	            <%= f.label :cost_eval, "価格　　" %>
+	            <%= f.hidden_field :cost_eval %>
+	        </div>
+	        <%= f.label :title, "タイトル"%>
+	        <%= f.text_field :title, style:"width:400px;" %><br>
+	        <%= f.label :body, "本文"%><br>
+	        <%= f.text_area :body, style:"width:600px; height:400px;" %><br>
+	        <%= f.submit "送信", :class => "btn btn-primary" %>
+		<% end %>
+		<script>
+			$('#star1').raty({
+			  size     : 36,
+			  starOff:  '<%= asset_path('star-off.png') %>',
+			  starOn : '<%= asset_path('star-on.png') %>',
+			  scoreName: 'review[total_eval]'
+			});
+			$('#star2').raty({
+			  size     : 36,
+			  starOff:  '<%= asset_path('star-off.png') %>',
+			  starOn : '<%= asset_path('star-on.png') %>',
+			  scoreName: 'review[internet_eval]'
+			});
+			$('#star3').raty({
+			  size     : 36,
+			  starOff:  '<%= asset_path('star-off.png') %>',
+			  starOn : '<%= asset_path('star-on.png') %>',
+			  scoreName: 'review[support_eval]'
+			});
+			$('#star4').raty({
+			  size     : 36,
+			  starOff:  '<%= asset_path('star-off.png') %>',
+			  starOn : '<%= asset_path('star-on.png') %>',
+			  scoreName: 'review[cost_eval]'
+			});
+		</script>
+      </div>
+    </div>
+  </div>
+</div>

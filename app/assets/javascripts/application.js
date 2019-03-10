@@ -43,3 +43,64 @@ $(function() {
 	}
 
 });
+
+
+$(function() {
+	var sum = Number($('.addOptionBill').html().match(/\d+/)[0]);
+	$('.optionCheck').on("click",function(){
+		var optionId = $(this).prop("id").slice(6);
+		var optionName = $('label[for=option'+optionId+']').html();
+		var optionBill = Number($('#optionBill'+ optionId).html().match(/\d+/)[0]);
+
+		if ($(this).prop('checked')) {
+			$("#optionTarget").append("<tr id=optionSelected"+optionId+"><th>" + optionName + "</th><td>" + optionBill + "円/月</td></tr>");
+
+			var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
+			sum += optionBill;
+			console.log(sum);
+
+			var timer = setInterval(function(){
+				if (getBill != sum ) {
+					if(getBill < sum){
+						getBill += Math.round((sum - getBill)/2);
+					}else{
+						getBill -= Math.round((getBill - sum)/2);
+					}
+					$('.addOptionBill').html(getBill);
+				}else {
+					clearInterval(timer);
+				}
+			}, 30);
+		}else{
+			$('#optionTarget').find("tr[id=optionSelected" + optionId + "]").remove();
+			var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
+			sum -= optionBill;
+			console.log(sum)
+
+			var timer = setInterval(function(){
+				if (getBill != sum ) {
+					if(getBill < sum){
+						getBill += Math.round((sum - getBill)/2);
+					}else{
+						getBill -= Math.round((getBill - sum)/2);
+					}
+					$('.addOptionBill').html(getBill);
+				}else {
+					clearInterval(timer);
+				}
+			}, 30);
+		}
+	});
+});
+
+// var rFrom = 50, rTo = 90;    //rFrom は開始時の値、rTo は終了時の値。
+
+// $({ratio: 0})
+//     .animate({ratio: 1}, {
+//     duration:1000,
+//     easing:"swing",
+//         progress: function(){
+//             var r = (rTo - rFrom) * this.ratio + rFrom;
+//             console.log('r ' + r );    //イージング変化した値が出力される。
+//         }
+//     });
