@@ -44,18 +44,20 @@ $(function() {
 
 });
 
+
 $(function() {
+	var sum = Number($('.addOptionBill').html().match(/\d+/)[0]);
 	$('.optionCheck').on("click",function(){
 		var optionId = $(this).prop("id").slice(6);
 		var optionName = $('label[for=option'+optionId+']').html();
-		var optionBill = $('#optionBill'+ optionId).html().match(/\d+/)[0];
+		var optionBill = Number($('#optionBill'+ optionId).html().match(/\d+/)[0]);
 
 		if ($(this).prop('checked')) {
 			$("#optionTarget").append("<tr id=optionSelected"+optionId+"><th>" + optionName + "</th><td>" + optionBill + "円/月</td></tr>");
 
 			var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
-			var sum = getBill + Number(optionBill);
-			console.log(sum)
+			sum += optionBill;
+			console.log(sum);
 
 			var timer = setInterval(function(){
 				if (getBill != sum ) {
@@ -72,7 +74,7 @@ $(function() {
 		}else{
 			$('#optionTarget').find("tr[id=optionSelected" + optionId + "]").remove();
 			var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
-			var sum = getBill - Number(optionBill);
+			sum -= optionBill;
 			console.log(sum)
 
 			var timer = setInterval(function(){

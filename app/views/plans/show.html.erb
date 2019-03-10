@@ -24,7 +24,7 @@
 						<th><%= @plan.data_transfer %></th>
 					</tr>
 				</table>
-				<h4>オプション</h4>
+				<h4>オプション<h6>（選択すると右の料金に反映されます）</h6></h4>
 				<table class="table table-borderless pl-5 mt-4 plan-table-size">
 					<% @plan.carrier.options.each do |option| %>
 						<tr>
