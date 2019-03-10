@@ -1,247 +1,105 @@
-<div class="container">
-	<div class="bg-light p-3 mt-5 mb-5 rounded border">
-		<h4>使用者情報</h4>
-		<% @user_phones.each do |user_phone| %>
-		    <div class="row rounded m-3 p-3">
-	    		<table class="table table-bordered">
-	    			<thead class="thead-light">
-	    				<th>名前：<%= user_phone.user_name %></th>
-	    				<th></th>
-	    			</thead>
-	    			<tr>
-	    				<td>キャリア：<%= Carrier.find(user_phone.carrier_id).name %></td>
-	    				<td>契約日：<%= user_phone.contract_date %></td>
-	    			</tr>
-	    			<tr>
-	    				<td>契約プラン：<%= user_phone.plan_name %></td>
-	    				<td>使用端末：<%= user_phone.phone_name %></td>
-	    			</tr>
-	    			<tr>
-	    				<td>料金：<%= user_phone.bill %>円/月</td>
-	    				<td>端末代：<%= user_phone.phone_bill%>円/月 x <%= user_phone.phone_bill_term %>回</td>
-	    			</tr>
-				</table>
-			</div>
-		<% end %>
-	</div>
-	<div class="bg-light p-3 mb-5 rounded border">
-		<h4>計算結果</h4>
-		<% @user_phones.each do |user_phone| %>
-			<div class="row rounded m-3 p-3">
-				<div class="col-9">
-					<table class="table">
-						<thead class="thead-light">
-		    				<th>名前：みつるおじさん</th>
-		    				<th></th>
-					    </thead>
-						<tr>
-							<td>
-								<table class="table">
-									<thead class="thead-light">
-					    				<th colspan="2">初期費用</th>
-					    				<th></th>
-								    </thead>
-					    			<tr>
-					    				<td>解約金</td>
-					    				<td><%= user_phone.carrier.penalty_bill %>円</td>
-					    			</tr>
-					    			<tr>
-					    				<td>番号移行手数料</td>
-					    				<td><%= user_phone.carrier.mnp_bill %>円</td>
-					    			</tr>
-					    			<tr>
-					    				<td>事務手数料</td>
-					    				<td><%= @plan.carrier.initial_bill %>円</td>
-					    			</tr>
-					    			<tr>
-					    				<th>合計</th>
-					    				<th>15660円</th>
-					    			</tr>
-								</table>
-							</td>
-							<td>
-								<table class="table">
-									<thead class="thead-light">
-					    				<th colspan="2">毎月の料金</th>
-					    				<th></th>
-								    </thead>
-					    			<tr>
-					    				<td>基本料金</td>
-					    				<td><%= @plan.bill %>円/月</td>
-					    			</tr>
-					    			<% @options.each do |option| %>
-						    			<tr>
-						    				<td><%= option.name %></td>
-						    				<td><%= option.bill %>円/月</td>
-						    			</tr>
-						    		<% end %>
-					    			<tr>
-					    				<td>端末の残債</td>
-					    				<td>2000円/月 x 12回</td>
-					    			</tr>
-					    			<tr>
-					    				<th>合計</th>
-					    				<th>3900円/月</th>
-					    			</tr>
-								</table>
-							</td>
-						</tr>
+<div class="container-fluid">
+	<% @user_phones.each do |user_phone| %>
+	<div class="row bg-light rounded p-3 m-3">
+			    <div class="col-3 rounded p-3">
+			    	<h5>使用者：<strong><%= user_phone.user_name %></strong></h5>
+		    		<table class="table mt-3">
+		    			<tr>
+		    				<td>キャリア</td>
+		    				<td><%= Carrier.find(user_phone.carrier_id).name %></td>
+		    			</tr>
+		    			<tr>
+		    				<td>契約プラン</td>
+		    				<td><%= user_phone.plan_name %></td>
+		    			</tr>
+		    			<tr>
+		    				<td>料金</td>
+		    				<td><%= user_phone.bill %>円/月</td>
+		    			</tr>
+		    			<tr>
+		    				<td>契約日</td>
+		    				<td><%= user_phone.contract_date %></td>
+		    			</tr>
+		    			<tr>
+		    				<td>使用端末</td>
+		    				<td><%= user_phone.phone_name %></td>
+		    			</tr>
+		    			<tr>
+		    				<td>端末代</td>
+		    				<td><%= user_phone.phone_bill%>円/月 x <%= user_phone.phone_bill_term %>回</td>
+		    			</tr>
 					</table>
 				</div>
-				<div class="col-3 d-flex flex-column justify-content-center">
-					<div>
-						<h5>1年間使うと・・・</h5>
-						<h5 class="text-center">合計<span class="text-danger price-font-size">30000円</span></h5>
-						<h5 class="text-right">節約できます</h5>
+				<div class="col-9 row rounded p-3">
+					<div class="col-9">
+						<h4>計算結果</h4>
+						<table class="table">
+							<tr>
+								<td>
+									<table class="table">
+										<thead class="thead-light">
+						    				<th colspan="2">初期費用</th>
+						    				<th></th>
+									    </thead>
+						    			<tr>
+						    				<td>解約金</td>
+						    				<td><%= user_phone.carrier.penalty_bill %>円</td>
+						    			</tr>
+						    			<tr>
+						    				<td>番号移行手数料</td>
+						    				<td><%= user_phone.carrier.mnp_bill %>円</td>
+						    			</tr>
+						    			<tr>
+						    				<td>事務手数料</td>
+						    				<td><%= @plan.carrier.initial_bill %>円</td>
+						    			</tr>
+						    			<tr>
+						    				<th>合計</th>
+						    				<th>15660円</th>
+						    			</tr>
+									</table>
+								</td>
+								<td>
+									<table class="table result-right-table">
+										<thead class="thead-light">
+						    				<th colspan="2">毎月の料金</th>
+						    				<th></th>
+									    </thead>
+						    			<tr>
+						    				<td>基本料金</td>
+						    				<td><%= @plan.bill %>円/月</td>
+						    			</tr>
+						    			<% @options.each do |option| %>
+							    			<tr>
+							    				<td><%= option.name %></td>
+							    				<td><%= option.bill %>円/月</td>
+							    			</tr>
+							    		<% end %>
+						    			<tr>
+						    				<td>端末の残債</td>
+						    				<td><%= user_phone.phone_bill %>円/月 x <%= user_phone.phone_bill_term %>回</td>
+						    			</tr>
+						    			<tr>
+						    				<th>合計</th>
+						    				<th>3900円/月</th>
+						    			</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
 					</div>
-					<div>
-						<h5 class="mt-5">これは缶ビール</h5>
-						<h5 class="text-center"><span class="text-danger price-font-size">150本</span>分です</h5>
+					<div class="col-3 d-flex flex-column justify-content-center">
+						<div>
+							<h5>1年間使うと・・・</h5>
+							<h5 class="text-center">合計<span class="text-danger price-font-size">30000円</span></h5>
+							<h5 class="text-right">節約できます</h5>
+						</div>
+						<div>
+							<h5 class="mt-5">これは缶ビール</h5>
+							<h5 class="text-center"><span class="text-danger price-font-size">150本</span>分です</h5>
+						</div>
 					</div>
 				</div>
-			</div>
-		<% end %>
-		<div class="row rounded m-3 p-3">
-			<div class="col-9">
-				<table class="table">
-					<thead class="thead-light">
-	    				<th>名前：みつるおじさん</th>
-	    				<th></th>
-				    </thead>
-					<tr>
-						<td>
-							<table class="table">
-								<thead class="thead-light">
-				    				<th colspan="2">初期費用</th>
-				    				<th></th>
-							    </thead>
-				    			<tr>
-				    				<td>解約金</td>
-				    				<td>10260円</td>
-				    			</tr>
-				    			<tr>
-				    				<td>番号移行手数料</td>
-				    				<td>2160円</td>
-				    			</tr>
-				    			<tr>
-				    				<td>事務手数料</td>
-				    				<td>3240円</td>
-				    			</tr>
-				    			<tr>
-				    				<th>合計</th>
-				    				<th>15660円</th>
-				    			</tr>
-							</table>
-						</td>
-						<td>
-							<table class="table">
-								<thead class="thead-light">
-				    				<th colspan="2">毎月の料金</th>
-				    				<th></th>
-							    </thead>
-				    			<tr>
-				    				<td>基本料金</td>
-				    				<td>1600円/月</td>
-				    			</tr>
-				    			<tr>
-				    				<td>wifiオプション</td>
-				    				<td>300円/月</td>
-				    			</tr>
-				    			<tr>
-				    				<td>端末の残債</td>
-				    				<td>2000円/月 x 12回</td>
-				    			</tr>
-				    			<tr>
-				    				<th>合計</th>
-				    				<th>3900円/月</th>
-				    			</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="col-3 d-flex flex-column justify-content-center">
-				<div>
-					<h5>1年間使うと・・・</h5>
-					<h5 class="text-center">合計<span class="text-danger price-font-size">30000円</span></h5>
-					<h5 class="text-right">節約できます</h5>
-				</div>
-				<div>
-					<h5 class="mt-5">これは缶ビール</h5>
-					<h5 class="text-center"><span class="text-danger price-font-size">150本</span>分です</h5>
-				</div>
-			</div>
-		</div>
-		<div class="row rounded m-3 p-3">
-			<div class="col-9">
-				<table class="table">
-					<thead class="thead-light">
-	    				<th>名前：みつるおじさん</th>
-	    				<th></th>
-				    </thead>
-					<tr>
-						<td>
-							<table class="table">
-								<thead class="thead-light">
-				    				<th colspan="2">初期費用</th>
-				    				<th></th>
-							    </thead>
-				    			<tr>
-				    				<td>解約金</td>
-				    				<td>10260円</td>
-				    			</tr>
-				    			<tr>
-				    				<td>番号移行手数料</td>
-				    				<td>2160円</td>
-				    			</tr>
-				    			<tr>
-				    				<td>事務手数料</td>
-				    				<td>3240円</td>
-				    			</tr>
-				    			<tr>
-				    				<th>合計</th>
-				    				<th>15660円</th>
-				    			</tr>
-							</table>
-						</td>
-						<td>
-							<table class="table">
-								<thead class="thead-light">
-				    				<th colspan="2">毎月の料金</th>
-				    				<th></th>
-							    </thead>
-				    			<tr>
-				    				<td>基本料金</td>
-				    				<td>1600円/月</td>
-				    			</tr>
-				    			<tr>
-				    				<td>wifiオプション</td>
-				    				<td>300円/月</td>
-				    			</tr>
-				    			<tr>
-				    				<td>端末の残債</td>
-				    				<td>2000円/月 x 12回</td>
-				    			</tr>
-				    			<tr>
-				    				<th>合計</th>
-				    				<th>3900円/月</th>
-				    			</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="col-3 d-flex flex-column justify-content-center">
-				<div>
-					<h5>1年間使うと・・・</h5>
-					<h5 class="text-center">合計<span class="text-danger price-font-size">30000円</span></h5>
-					<h5 class="text-right">節約できます</h5>
-				</div>
-				<div>
-					<h5 class="mt-5">これは缶ビール</h5>
-					<h5 class="text-center"><span class="text-danger price-font-size">150本</span>分です</h5>
-				</div>
-			</div>
-		</div>
 	</div>
+	<% end %>
 </div>
