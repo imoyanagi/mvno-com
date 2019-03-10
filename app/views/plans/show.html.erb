@@ -85,7 +85,10 @@
 				</table>
 				<div class="w-50 mx-auto mt-5">
 					<h5 class="btn btn-success">この条件で保存</h5>
-					<%= link_to "乗り換えると得？", result_path, class:"btn btn-warning" %>
+					<%= form_tag(result_path, method: :get, id:"submitOptionIds") do %>
+						<%= hidden_field_tag :option_ids,{},id:"setOptionIds" %>
+						<btn class="btn btn-info" id="getOptionIds">乗り換えると得？</btn>
+					<% end %>
 				</div>
 			</div>
 		</div>

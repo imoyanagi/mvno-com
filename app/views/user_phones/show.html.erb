@@ -69,10 +69,12 @@
 					    				<td>基本料金</td>
 					    				<td><%= @plan.bill %>円/月</td>
 					    			</tr>
-					    			<tr>
-					    				<td>wifiオプション</td>
-					    				<td>300円/月</td>
-					    			</tr>
+					    			<% @options.each do |option| %>
+						    			<tr>
+						    				<td><%= option.name %></td>
+						    				<td><%= option.bill %>円/月</td>
+						    			</tr>
+						    		<% end %>
 					    			<tr>
 					    				<td>端末の残債</td>
 					    				<td>2000円/月 x 12回</td>

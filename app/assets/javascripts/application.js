@@ -93,14 +93,14 @@ $(function() {
 	});
 });
 
-// var rFrom = 50, rTo = 90;    //rFrom は開始時の値、rTo は終了時の値。
+$(function() {
+	$('#getOptionIds').on('click', function(){
+		var optionIds = $('.optionCheck:checked').map(function(){
+			return Number($(this).prop('id').slice(6));
+		}).get();
+		console.log(optionIds);
+		$('#setOptionIds').val(optionIds);
+		$('#submitOptionIds').submit();
+	});
+});
 
-// $({ratio: 0})
-//     .animate({ratio: 1}, {
-//     duration:1000,
-//     easing:"swing",
-//         progress: function(){
-//             var r = (rTo - rFrom) * this.ratio + rFrom;
-//             console.log('r ' + r );    //イージング変化した値が出力される。
-//         }
-//     });
