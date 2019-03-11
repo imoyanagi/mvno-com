@@ -55,7 +55,7 @@
 						    			</tr>
 						    			<tr>
 						    				<th>合計</th>
-						    				<th>15660円</th>
+						    				<th><%= total_initial_cost(@plan,user_phone) %>円</th>
 						    			</tr>
 									</table>
 								</td>
@@ -81,7 +81,7 @@
 						    			</tr>
 						    			<tr>
 						    				<th>合計</th>
-						    				<th>3900円/月</th>
+						    				<th><%= total_monthly_bill(@plan, @options, user_phone) %>円/月</th>
 						    			</tr>
 									</table>
 								</td>
@@ -91,7 +91,7 @@
 					<div class="col-3 d-flex flex-column justify-content-center">
 						<div>
 							<h5>1年間使うと・・・</h5>
-							<h5 class="text-center">合計<span class="text-danger price-font-size">30000円</span></h5>
+							<h5 class="text-center">合計<span class="text-danger price-font-size"><%= saved_cost_per_year(@plan, @options, user_phone)%>円</span></h5>
 							<h5 class="text-right">節約できます</h5>
 						</div>
 						<div>
