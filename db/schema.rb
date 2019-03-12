@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_055150) do
+ActiveRecord::Schema.define(version: 2019_03_12_023256) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -86,6 +86,22 @@ ActiveRecord::Schema.define(version: 2019_03_10_055150) do
     t.integer "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_phones", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "user_name"
+    t.string "phone_name"
+    t.string "plan_name"
+    t.integer "carrier_id"
+    t.integer "bill"
+    t.integer "phone_bill"
+    t.integer "phone_bill_term"
+    t.date "contract_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "plan_id"
+    t.string "selected_option_ids"
   end
 
   create_table "users", force: :cascade do |t|

@@ -15,7 +15,7 @@ Plan.seed do |s|
 	s.id = index
 	s.name = "コミュニケーションフリー　3GB ソフトバンク回線"
 	s.bill = 1825
-    s.data_value = 1
+    s.data_value = 3
     s.carrier_id = Carrier.find_by(name: 'LINEモバイル').id
 	s.internet_type = "softbank"
 	s.data_transfer = 1
@@ -27,7 +27,7 @@ Plan.seed do |s|
 	s.id = index
 	s.name = "コミュニケーションフリープラン　5GB ソフトバンク回線"
 	s.bill = 2397
-    s.data_value = 1
+    s.data_value = 5
     s.carrier_id = Carrier.find_by(name: 'LINEモバイル').id
 	s.internet_type = "softbank"
 	s.data_transfer = 1
@@ -51,7 +51,7 @@ Plan.seed do |s|
 	s.id = index
 	s.name = "コミュニケーションフリープラン　10GB ソフトバンク回線"
 	s.bill = 3220
-    s.data_value = 1
+    s.data_value = 10
     s.carrier_id = Carrier.find_by(name: 'LINEモバイル').id
 	s.internet_type = "softbank"
 	s.data_transfer = 1
@@ -123,7 +123,7 @@ Plan.seed do |s|
 	s.id = index
 	s.name = "コミュニケーションフリー　3GB ドコモ回線"
 	s.bill = 1825
-    s.data_value = 1
+    s.data_value = 3
     s.carrier_id = Carrier.find_by(name: 'LINEモバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
@@ -135,7 +135,7 @@ Plan.seed do |s|
 	s.id = index
 	s.name = "コミュニケーションフリープラン　5GB ドコモ回線"
 	s.bill = 2397
-    s.data_value = 1
+    s.data_value = 5
     s.carrier_id = Carrier.find_by(name: 'LINEモバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
@@ -159,7 +159,7 @@ Plan.seed do |s|
 	s.id = index
 	s.name = "コミュニケーションフリープラン　10GB ドコモ回線"
 	s.bill = 3220
-    s.data_value = 1
+    s.data_value = 10
     s.carrier_id = Carrier.find_by(name: 'LINEモバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1

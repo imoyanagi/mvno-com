@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   has_many :favorite_plans
   has_many :plans, through: :favorite_plans
+  has_many :user_phones
 end
