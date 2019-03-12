@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	def show
+		@user_phones = UserPhone.where(user_id: current_user.id)
 	end
 
 	def mnp_plans

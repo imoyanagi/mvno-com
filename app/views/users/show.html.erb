@@ -12,46 +12,28 @@
 		<div class="col-8 mt-4">
 			<h4>使用者情報</h4>
 			<div class="bg-light p-3">
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
-				</div>
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
-				</div>
+				<% @user_phones.each do |user_phone| %>
+					<div class="bg-light rounded m-3">
+			    		<table class="table">
+			    			<thead class="thead-light">
+			    				<th class="align-middle">名前：<%= user_phone.user_name %></th>
+			    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
+			    			</thead>
+			    			<tr>
+			    				<td>キャリア：<%= Carrier.find(user_phone.carrier_id).name %></td>
+			    				<td>契約日：<%= user_phone.contract_date %></td>
+			    			</tr>
+			    			<tr>
+			    				<td>契約プラン：<%= user_phone.plan_name %></td>
+			    				<td>使用端末：<%= user_phone.phone_name %></td>
+			    			</tr>
+			    			<tr>
+			    				<td>料金：<%= user_phone.bill %>円/月</td>
+			    				<td>端末代：<%= user_phone.phone_bill %>円 x <%= user_phone.phone_bill_term %>回</td>
+			    			</tr>
+						</table>
+					</div>
+				<% end %>
 			</div>
 		</div>
 		<%= render 'profile' %>
