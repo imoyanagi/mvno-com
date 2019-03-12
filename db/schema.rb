@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_023256) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "plan_id"
-    t.integer "selected_option_ids"
+    t.string "selected_option_ids"
   end
 
   create_table "users", force: :cascade do |t|
