@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'plans#top'
   get '/users', to:'users#show'
+  get '/users/mnp_plans', to:'users#mnp_plans'
   get '/users/question_logs', to:'users#question_logs'
   get '/users/answer_logs', to:'users#answer_logs'
   get '/users/favorite_plans', to:'users#favorite_plans'

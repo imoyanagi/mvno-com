@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 	def show
 	end
 
+	def mnp_plans
+	end
+
 	def question_logs
 	end
 
