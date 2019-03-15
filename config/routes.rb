@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, :controllers => {
+  :registrations => "users/registrations"
+}
   root 'plans#top'
   get '/users', to:'users#show'
   get '/users/mnp_plans', to:'users#mnp_plans'
