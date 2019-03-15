@@ -1,12 +1,28 @@
 <div class="container">
-	<div class="bg-light p-3 mt-5 mb-5 rounded border clearfix">
-		<%= image_tag("linemobile.png", size:"150x150", class:"mx-auto float-left") %>
-		<div class="float-left ml-5"><h4><%= @plan.carrier.name %><br><%= @plan.name %></h4>
-			<h5>料金　<span class="text-danger price-font-size"><%= @plan.bill %>円/月</span></h5>
-			<h6>回線:<span class="text-secondary"><%= @plan.internet_type %></span> | データ量:<span class="text-secondary"><%= @plan.data_value %>GB</span></h6>
-		</div>
-		<div class="float-left ml-5">
-			<%= link_to "お気に入りに追加", favorite_plans_path(plan_id: @plan.id), method: :post, class:"btn btn-warning mt-5"%>
+	<div class="bg-light p-3 mt-5 mb-5 rounded border">
+		<div class="row">
+			<div class="col-2">
+				<%= image_tag("linemobile.png", size:"150x150", class:"mx-auto float-left") %>
+			</div>
+			<div class="col-7">
+				<h4><%= @plan.carrier.name %><br><%= @plan.name %></h4>
+				<h5>料金　<span class="text-danger price-font-size"><%= @plan.bill %>円/月</span></h5>
+				<h6>回線:<span class="text-secondary"><%= @plan.internet_type %></span> | データ量:<span class="text-secondary"><%= @plan.data_value %>GB</span></h6>
+			</div>
+			<div class="col-3">
+				<% unless @favorite_plan.blank? %>
+					<% puts @favorite_plan.id %>
+					<%= link_to "お気に入りから削除", favorite_plan_path(@favorite_plan.id), method: :delete, class:"btn btn-secondary mt-5"%>
+					<% unless flash[:success].blank? %>
+						<div class="alert alert-success mt-3"><%= flash[:success] %></div>
+					<% end %>
+				<% else %>
+					<%= link_to "お気に入りに追加", favorite_plans_path(id: @plan.id), method: :post, class:"btn btn-warning mt-5"%>
+					<% unless flash[:success].blank? %>
+						<div class="alert alert-success mt-3"><%= flash[:success] %></div>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 	<div class="row">

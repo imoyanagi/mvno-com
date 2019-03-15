@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
 	def show
+		@user_phones = UserPhone.where(user_id: current_user.id)
+	end
+
+	def edit
+	end
+
+	def update
+	end
+
+	def mnp_plans
 	end
 
 	def question_logs
@@ -9,6 +19,7 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_plans
+		@favorite_plans = FavoritePlan.where(user_id: current_user.id)
 	end
 
 	def favorite_posts

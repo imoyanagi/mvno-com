@@ -17,6 +17,7 @@ class PlansController < ApplicationController
 		@plan = Plan.find(params[:id])
 		@review = Review.new
 		@reviews = Review.where(plan_id: @plan.id)
+		@favorite_plan = FavoritePlan.find_by(user_id: current_user.id, plan_id: @plan.id)
 	end
 
 	private

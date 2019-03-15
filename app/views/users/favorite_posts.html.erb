@@ -1,9 +1,59 @@
-<div class="container">
-	<ul class="nav nav-tabs">
-	  <li class="nav-item"><a href="#" class="nav-link">使用者情報</a></li>
-	  <li class="nav-item"><a href="#" class="nav-link">お気に入りしたプラン</a></li>
-	  <li class="nav-item"><a href="#" class="nav-link">質問履歴</a></li>
-	  <li class="nav-item"><a href="#" class="nav-link">回答履歴</a></li>
-	  <li class="nav-item"><a href="#" class="nav-link active">いいねした投稿</a></li>
-	</ul>
+<div class="container text-center">
+	<div class="row mb-5">
+		<div class="w-100"><h1 class="mt-4">マイページ</h1></div>
+		<ul class="nav nav-tabs mt-4">
+		  <li class="nav-item"><%= link_to "ユーザー・使用者情報", users_path, class:"nav-link" %></li>
+		  <li class="nav-item"><%= link_to "お気に入りしたプラン", users_favorite_plans_path, class:"nav-link" %></li>
+		  <li class="nav-item"><%= link_to "乗り換え先情報", users_mnp_plans_path, class:"nav-link" %></li>
+		  <li class="nav-item"><%= link_to "質問履歴", users_question_logs_path, class:"nav-link" %></li>
+		  <li class="nav-item"><%= link_to "回答履歴", users_answer_logs_path, class:"nav-link" %></li>
+		  <li class="nav-item"><%= link_to "いいねした投稿", users_favorite_posts_path, class:"nav-link active" %></li>
+		</ul>
+		<div class="col-8 mt-4">
+			<h4>使用者情報</h4>
+			<div class="bg-light p-3">
+				<div class="bg-light rounded m-3">
+		    		<table class="table">
+		    			<thead class="thead-light">
+		    				<th class="align-middle">名前：みつるおじさん</th>
+		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
+		    			</thead>
+		    			<tr>
+		    				<td>キャリア：docomo</td>
+		    				<td>契約日：2018年4月1日</td>
+		    			</tr>
+		    			<tr>
+		    				<td>契約プラン：データ定額M</td>
+		    				<td>使用端末：iPhone6S</td>
+		    			</tr>
+		    			<tr>
+		    				<td>料金：7000円/月</td>
+		    				<td>端末代：2000円 x 12回</td>
+		    			</tr>
+					</table>
+				</div>
+				<div class="bg-light rounded m-3">
+		    		<table class="table">
+		    			<thead class="thead-light">
+		    				<th class="align-middle">名前：みつるおじさん</th>
+		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
+		    			</thead>
+		    			<tr>
+		    				<td>キャリア：docomo</td>
+		    				<td>契約日：2018年4月1日</td>
+		    			</tr>
+		    			<tr>
+		    				<td>契約プラン：データ定額M</td>
+		    				<td>使用端末：iPhone6S</td>
+		    			</tr>
+		    			<tr>
+		    				<td>料金：7000円/月</td>
+		    				<td>端末代：2000円 x 12回</td>
+		    			</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<%= render 'profile' %>
+	</div>
 </div>

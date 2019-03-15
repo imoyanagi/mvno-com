@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-    #strong parametersを設定し、usernameを許可
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile_image])
   	end
 end

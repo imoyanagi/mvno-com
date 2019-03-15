@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :favorite_plans
   has_many :plans, through: :favorite_plans
   has_many :user_phones
+  attachment :profile_image
 end
