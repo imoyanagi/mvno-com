@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_plans
+		@favorite_plans = FavoritePlan.where(user_id: current_user.id)
 	end
 
 	def favorite_posts

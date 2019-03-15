@@ -104,3 +104,7 @@ $(function() {
 	});
 });
 
+$(function(){
+  setTimeout("$('.alert').animate({opacity: '0'}, 500)", 1500)
+})
+

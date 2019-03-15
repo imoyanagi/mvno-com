@@ -10,49 +10,19 @@
 		  <li class="nav-item"><%= link_to "いいねした投稿", users_favorite_posts_path, class:"nav-link" %></li>
 		</ul>
 		<div class="col-8 mt-4">
-			<h4>使用者情報</h4>
-			<div class="bg-light p-3">
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
+			<h4>お気に入りプラン一覧</h4>
+			<% @favorite_plans.each do |favorite_plan| %>
+			<div class="row bg-light mb-3 p-3 rounded border">
+				<div class="col-3">
+					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
 				</div>
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
+				<div class="col-9">
+					<h5><%= link_to plan_path(favorite_plan.plan_id) do %><%= favorite_plan.plan.carrier.name %><br><%= favorite_plan.plan.name %></a></h5><% end %>
+					<h5>料金　<span class="text-danger price-font-size"><%= favorite_plan.plan.bill %>円/月</span></h5>
+					<h6>回線:<span class="text-secondary"><%= favorite_plan.plan.internet_type %></span> | データ量:<span class="text-secondary"><%= favorite_plan.plan.data_value %>GB</span></h6>
 				</div>
 			</div>
+			<% end %>
 		</div>
 		<%= render 'profile' %>
 	</div>
