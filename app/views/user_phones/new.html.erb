@@ -1,0 +1,39 @@
+<div class="container text-center mt-5 mb-5">
+	<h1>新規使用者情報登録</h1>
+	<%= form_for(@user_phone) do |f| %>
+		<div class="form-group">
+			<%= f.label :user_name, "使用者名(必須)" %><br>
+			<%= f.text_field :user_name %>
+		</div>
+		<div class="form-group">
+			<%= f.label :carrier_id, "携帯会社名" %><br>
+			<%= f.collection_select :carrier_id, Carrier.all, :id, :name, prompt: "選択してください" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :plan_name, "プラン名" %><br>
+			<%= f.text_field :plan_name %>
+		</div>
+		<div class="form-group">
+			<%= f.label :bill, "毎月の利用料金(必須)" %><br>
+			<%= f.number_field :bill %> 円
+		</div>
+		<div class="form-group">
+			<%= f.label :contract_date, "契約日" %><br>
+			<%= f.date_select :contract_date, use_month_numbers: true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :phone_name, "端末名" %><br>
+			<%= f.text_field :phone_name %>
+		</div>
+		<div class="form-group">
+			<%= f.label :phone_bill, "端末代（円/月）" %><br>
+			<%= f.number_field :phone_bill %> 円/月
+		</div>
+		<div class="form-group">
+			<%= f.label :phone_bill_term, "端末代残り支払い期間（回）" %><br>
+			<%= f.number_field :phone_bill_term %> 回
+		</div>
+		<%= f.submit "登録", class:"btn btn-secondary" %>
+	<% end %>
+	</div>
+</div>
