@@ -122,3 +122,23 @@ $(function(){
 		}
 	);
 });
+
+$(function(){
+	$('.subCategorySelected').hover(
+		function(){
+			$(this).css('background-color', '#C0C0C0');
+		},
+		function(){
+			$(this).css('background-color', '#fff');
+		}
+	);
+	$('.subCategorySelected').on('click', function(){
+		$(this).off('mouseenter mouseleave');
+		$(this).css('background-color', '#808080');
+		var self = $(this);
+   		$('.subCategorySelected').not(self).css('background-color', '#fff');
+   		var subCategoryId = $(this).attr('id');
+		$('#setSubCategoryId').val(subCategoryId);
+		$('#selectedSubCategory').html($(this).html());
+	});
+});

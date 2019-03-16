@@ -15,8 +15,17 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
+		question = Question.new(question_params)
+		question.user_id = current_user.id
+		question.save!
+		redirect_to questions_path
 	end
 
 	def destroy
+	end
+
+	private
+	def question_params
+		params.require(:question).permit(:title, :body, :sub_category_id)
 	end
 end

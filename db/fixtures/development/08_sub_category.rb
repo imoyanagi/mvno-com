@@ -120,34 +120,6 @@ index += 1
 
 SubCategory.seed do |s|
 	s.id = index
-	s.name = "メッセージアプリ"
-	s.category_id = 4
-end
-index += 1
-
-SubCategory.seed do |s|
-	s.id = index
-	s.name = "メッセージアプリ"
-	s.category_id = 4
-end
-index += 1
-
-SubCategory.seed do |s|
-	s.id = index
-	s.name = "メッセージアプリ"
-	s.category_id = 4
-end
-index += 1
-
-SubCategory.seed do |s|
-	s.id = index
-	s.name = "メッセージアプリ"
-	s.category_id = 4
-end
-index += 1
-
-SubCategory.seed do |s|
-	s.id = index
 	s.name = "ゲームアプリ"
 	s.category_id = 4
 end
