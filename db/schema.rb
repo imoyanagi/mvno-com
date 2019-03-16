@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_03_15_144742) do
     t.text "body"
     t.integer "question_id"
     t.integer "user_id"
+    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
