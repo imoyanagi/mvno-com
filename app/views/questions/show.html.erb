@@ -17,26 +17,29 @@
 				</div>
 				<div class="d-flex justify-content-between">
 					<div class="mt-3 float-left"><h5>good! 10件　|　回答　<%= @question.answers.count %>件</h5></div>
-					<button type="button" class="mt-4 btn btn-success float-right" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+					<button type="button" class="mt-4 btn btn-success float-right" data-toggle="collapse" data-target="#question" aria-expanded="false" aria-controls="question">
 					    この質問に回答する
 					</button>
 				</div>
 				<!-- 隠し投稿 -->
-					<div class="collapse float-center" id="collapseExample">
+					<div class="collapse float-center" id="question">
 					    <div class="mt-3 border p-3 clearfix">
-					        <div class="form-group">
-							    <label for="exampleFormControlTextarea1">回答</label>
-							    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-							</div>
-							<btn class="btn btn-success float-right">回答する</btn>
+					        <%= form_for(@answer) do |f| %>
+						        <div class="form-group">
+								    <label>回答</label>
+								    <%= f.text_area :body, class:"form-control", rows:"3" %>
+								    <%= f.hidden_field :question_id, value: @question.id %>
+								</div>
+								<%= f.submit '回答する', class:"btn btn-success float-right" %>
+							<% end %>
 					    </div>
 					</div>
 				<!-- 隠し投稿 -->
 			</div>
 
 			<h3 class="mt-4">回答　<%= @question.answers.count %>件</h3>
+			<% @question.answers.where(answer_id: nil).each do |answer| %>
 			<div class="mt-3 border p-4 bg-light rounded">
-				<% @question.answers.where(answer_id: nil).each do |answer| %>
 				<div class="mb-3 d-flex justify-content-start">
 					<%= image_tag("linemobile.png", size:"100x100") %>
 					<div class="ml-4 d-flex flex-column justify-content-end">
@@ -50,20 +53,24 @@
 				</div>
 				<div class="d-flex justify-content-between">
 					<div class="mt-3 float-left"><h5>good! 10件　|　返信 1件</h5></div>
-					<button type="button" class="mt-4 btn btn-primary float-right" data-toggle="collapse" data-target="#answer1" aria-expanded="false" aria-controls="answer1">
+					<button type="button" class="mt-4 btn btn-primary float-right" data-toggle="collapse" data-target="#answer<%= answer.id %>" aria-expanded="false" aria-controls="answer<%= answer.id %>">
 					    この回答に返信する
 					</button>
 				</div>
 				<!-- 隠し投稿 -->
-					<div class="collapse float-center" id="answer1">
-					    <div class="mt-3 border p-3 clearfix">
+				<div class="collapse float-center" id="answer<%= answer.id %>">
+				    <div class="mt-3 border p-3 clearfix">
+				    	<%= form_for(@answer) do |f| %>
 					        <div class="form-group">
 							    <label for="reply1">返信</label>
-							    <textarea class="form-control" id="reply1" rows="3"></textarea>
+							    <%= f.text_area :body, class:"form-control", rows:"3" %>
+							    <%= f.hidden_field :question_id, value: @question.id %>
+							    <%= f.hidden_field :answer_id, value: answer.id %>
 							</div>
-							<btn class="btn btn-primary float-right">返信する</btn>
-					    </div>
-					</div>
+							<%= f.submit '返信する', class:"btn btn-primary float-right" %>
+						<% end %>
+				    </div>
+				</div>
 				<!-- 隠し投稿 -->
 			</div>
 			<div class="ml-4 border-left border-secondary">
