@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :plans, through: :favorite_plans
   has_many :user_phones
   attachment :profile_image
+  has_many :questions
+  has_many :answers
 end

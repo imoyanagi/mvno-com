@@ -46,51 +46,53 @@ $(function() {
 
 
 $(function() {
-	var sum = Number($('.addOptionBill').html().match(/\d+/)[0]);
-	$('.optionCheck').on("click",function(){
-		var optionId = $(this).prop("id").slice(6);
-		var optionName = $('label[for=option'+optionId+']').html();
-		var optionBill = Number($('#optionBill'+ optionId).html().match(/\d+/)[0]);
+	if ($('.addOptionBill').length) {
+		var sum = Number($('.addOptionBill').html().match(/\d+/)[0]);
+		$('.optionCheck').on("click",function(){
+			var optionId = $(this).prop("id").slice(6);
+			var optionName = $('label[for=option'+optionId+']').html();
+			var optionBill = Number($('#optionBill'+ optionId).html().match(/\d+/)[0]);
 
-		if ($(this).prop('checked')) {
-			$("#optionTarget").append("<tr id=optionSelected"+optionId+"><th>" + optionName + "</th><td>" + optionBill + "円/月</td></tr>");
+			if ($(this).prop('checked')) {
+				$("#optionTarget").append("<tr id=optionSelected"+optionId+"><th>" + optionName + "</th><td>" + optionBill + "円/月</td></tr>");
 
-			var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
-			sum += optionBill;
-			console.log(sum);
+				var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
+				sum += optionBill;
+				console.log(sum);
 
-			var timer = setInterval(function(){
-				if (getBill != sum ) {
-					if(getBill < sum){
-						getBill += Math.round((sum - getBill)/2);
-					}else{
-						getBill -= Math.round((getBill - sum)/2);
+				var timer = setInterval(function(){
+					if (getBill != sum ) {
+						if(getBill < sum){
+							getBill += Math.round((sum - getBill)/2);
+						}else{
+							getBill -= Math.round((getBill - sum)/2);
+						}
+						$('.addOptionBill').html(getBill);
+					}else {
+						clearInterval(timer);
 					}
-					$('.addOptionBill').html(getBill);
-				}else {
-					clearInterval(timer);
-				}
-			}, 30);
-		}else{
-			$('#optionTarget').find("tr[id=optionSelected" + optionId + "]").remove();
-			var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
-			sum -= optionBill;
-			console.log(sum)
+				}, 30);
+			}else{
+				$('#optionTarget').find("tr[id=optionSelected" + optionId + "]").remove();
+				var getBill = Number($('.addOptionBill').html().match(/\d+/)[0]);
+				sum -= optionBill;
+				console.log(sum)
 
-			var timer = setInterval(function(){
-				if (getBill != sum ) {
-					if(getBill < sum){
-						getBill += Math.round((sum - getBill)/2);
-					}else{
-						getBill -= Math.round((getBill - sum)/2);
+				var timer = setInterval(function(){
+					if (getBill != sum ) {
+						if(getBill < sum){
+							getBill += Math.round((sum - getBill)/2);
+						}else{
+							getBill -= Math.round((getBill - sum)/2);
+						}
+						$('.addOptionBill').html(getBill);
+					}else {
+						clearInterval(timer);
 					}
-					$('.addOptionBill').html(getBill);
-				}else {
-					clearInterval(timer);
-				}
-			}, 30);
-		}
-	});
+				}, 30);
+			}
+		});
+	}
 });
 
 $(function() {
@@ -105,6 +107,38 @@ $(function() {
 });
 
 $(function(){
-  setTimeout("$('.alert').animate({opacity: '0'}, 500)", 1500)
-})
+  setTimeout("$('.alert').animate({opacity: '0'}, 500)", 1500);
+});
 
+
+
+$(function(){
+	$('.questionSelected').hover(
+		function(){
+			$(this).css('background-color', '#C0C0C0');
+		},
+		function(){
+			$(this).css('background-color', '#fff');
+		}
+	);
+});
+
+$(function(){
+	$('.subCategorySelected').hover(
+		function(){
+			$(this).css('background-color', '#C0C0C0');
+		},
+		function(){
+			$(this).css('background-color', '#fff');
+		}
+	);
+	$('.subCategorySelected').on('click', function(){
+		$(this).off('mouseenter mouseleave');
+		$(this).css('background-color', '#808080');
+		var self = $(this);
+   		$('.subCategorySelected').not(self).css('background-color', '#fff');
+   		var subCategoryId = $(this).attr('id');
+		$('#setSubCategoryId').val(subCategoryId);
+		$('#selectedSubCategory').html($(this).html());
+	});
+});

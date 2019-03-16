@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_023256) do
+ActiveRecord::Schema.define(version: 2019_03_15_144742) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,11 +38,27 @@ ActiveRecord::Schema.define(version: 2019_03_12_023256) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.integer "answer_id"
+    t.text "body"
+    t.integer "question_id"
+    t.integer "user_id"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "carriers", force: :cascade do |t|
     t.string "name"
     t.integer "mnp_bill"
     t.integer "penalty_bill"
     t.integer "initial_bill"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,6 +91,15 @@ ActiveRecord::Schema.define(version: 2019_03_12_023256) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.integer "sub_category_id"
+    t.text "body"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "internet_eval"
     t.integer "support_eval"
@@ -84,6 +109,13 @@ ActiveRecord::Schema.define(version: 2019_03_12_023256) do
     t.text "body"
     t.integer "user_id"
     t.integer "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

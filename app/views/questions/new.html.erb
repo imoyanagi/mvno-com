@@ -1,17 +1,35 @@
 <div class="container text-center">
 	<h1 class="mt-5">Q&A投稿</h1>
 	<div class="bg-light mb-5 p-5 w-75 mx-auto rounded">
-		<h4>カテゴリーを選ぶ</h4>
-		<select class="custom-select w-50">
-		  <option selected>選択する</option>
-		  <option value="1">mineo</option>
-		  <option value="2">LINEモバイル</option>
-		  <option value="3">その3</option>
-		</select>
-		<h4 class="mt-4">タイトル</h4>
-		<input type="text" class="form-control w-75 mx-auto" placeholder="タイトルを入力してください">
-		<h4 class="mt-4">質問内容</h4>
-		<textarea class="form-control" id="question1" rows="10"></textarea>
-		<button class="mt-5 btn btn-lg btn-success">投稿する</button>
+		<%= form_for(@question) do |f| %>
+			<h4>カテゴリーを選ぶ</h4>
+			<h6 class="mt-4">選択中のカテゴリ：<strong><span id="selectedSubCategory"></span></strong></h6>
+			<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+				<% @categories.each do |category| %>
+				  <div class="card">
+				    <div class="card-header" role="tab" id="heading<%= category.id%>">
+				      <h5 class="mb-0">
+				        <a class="collapsed text-body" data-toggle="collapse" href="#collapse<%= category.id%>" role="button" aria-expanded="false" aria-controls="collapse<%= category.id%>">
+				          <%= category.name %>
+				        </a>
+				      </h5>
+				    </div><!-- /.card-header -->
+				    <div id="collapse<%= category.id%>" class="collapse" role="tabpanel" aria-labelledby="heading<%= category.id%>" data-parent="#accordion">
+				    	<ul class="list-group list-group-flush">
+				    	<% category.sub_categories.each do |sub_category| %>
+					      <li class="btn list-group-item subCategorySelected" id="<%= sub_category.id %>"><%= sub_category.name %></li>
+					      <% end %>
+					    </ul>
+				    </div><!-- /.collapse -->
+				  </div><!-- /.card -->
+				<% end %>
+			</div><!-- /#accordion -->
+			<%= f.hidden_field :sub_category_id, value: "", id:"setSubCategoryId" %>
+			<h4 class="mt-4">タイトル</h4>
+			<%= f.text_field :title, class:"form-control w-75 mx-auto", placeholder:"タイトルを入力してください" %>
+			<h4 class="mt-4">質問内容</h4>
+			<%= f.text_area :body, class:"form-control", rows:"10", placeholder:"本文を入力してください" %>
+			<%= f.submit "投稿する", class:"mt-5 btn btn-lg btn-success" %>
+		<% end %>
 	</div>
 </div>
