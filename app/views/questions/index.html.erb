@@ -31,7 +31,7 @@
 								<div class="col-8 text-left">
 									<h5 class="text-info"><%= question.title %></h5>
 									<h6>カテゴリ: <%= question.sub_category.name %></h6>
-									good! 10件 | 回答 3件
+									good! 10件 | 回答 <%= question.answers.count %>件
 								</div>
 							</div>
 						<% end %>
@@ -39,46 +39,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-4">
-			<h3>自分の質問</h3>
-			<div class="mt-3 border p-5 bg-light rounded">
-				<% @questions.where(user_id: current_user.id).order("id desc").each do |question| %>
-					<%= link_to question_path(question) do %>
-						<div class="mb-4 border rounded p-3 questionSelected">
-							<h6 class="text-info text-left text-truncate"><%= question.title %></h6>
-							<div class="row">
-								<div class="col-4 d-flex flex-column justify-content-center">
-									<%= image_tag("linemobile.png", size:"50x50", class:"mx-auto") %>
-								</div>
-								<div class="col-8 text-left">
-									<h6>カテゴリ: <%= question.sub_category.name %></h6>
-									<h6>good! 10件</h6>
-									<h6>回答 3件</h6>
-								</div>
-							</div>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-
-			<h3 class="mt-4">自分の回答した質問</h3>
-			<div class="mt-3 border p-5 bg-light rounded">
-				<% @my_questions.each do |my_question| %>
-					<%= link_to question_path(my_question) do %>
-						<div class="row mb-4 border rounded p-3 questionSelected">
-							<h6 class="text-info text-truncate"><%= my_question.title %></h6>
-							<div class="col-4 d-flex flex-column justify-content-center">
-								<%= image_tag("linemobile.png", size:"50x50", class:"mx-auto") %>
-							</div>
-							<div class="col-8 text-left">
-								<h6>カテゴリ: <%= my_question.sub_category.name %></h6>
-								<h6>good! 10件</h6>
-								<h6>回答 3件</h6>
-							</div>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
+		<%= render 'side' %>
 	</div>
 </div>
