@@ -9,6 +9,10 @@ class AnswersController < ApplicationController
 	end
 
 	def destroy
+		answer = Answer.find(params[:id])
+		question_id = answer.question_id
+		answer.destroy
+		redirect_to question_path(question_id)
 	end
 
 	private
