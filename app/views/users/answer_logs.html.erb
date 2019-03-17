@@ -10,48 +10,23 @@
 		  <li class="nav-item"><%= link_to "いいねした投稿", users_favorite_posts_path, class:"nav-link" %></li>
 		</ul>
 		<div class="col-8 mt-4">
-			<h4>使用者情報</h4>
-			<div class="bg-light p-3">
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
-				</div>
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
-				</div>
+			<h4>回答した質問</h4>
+			<div class="p-5 bg-light">
+				<% @my_questions.each do |question| %>
+					<%= link_to question_path(question) do %>
+						<div class="row mb-4 border rounded p-3 questionSelected">
+							<div class="col-4 d-flex flex-column">
+								<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
+								<h6><%= question.user.name %></h6>
+							</div>
+							<div class="col-8 text-left">
+								<h5 class="text-info"><%= question.title %></h5>
+								<h6>カテゴリ: <%= question.sub_category.name %></h6>
+								good! 10件 | 回答 <%= question.answers.count %>件
+							</div>
+						</div>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 		<%= render 'profile' %>
