@@ -1,59 +1,123 @@
-<div class="container text-center">
-	<div class="row mb-5">
-		<div class="w-100"><h1 class="mt-4">マイページ</h1></div>
-		<ul class="nav nav-tabs mt-4">
-		  <li class="nav-item"><%= link_to "ユーザー・使用者情報", users_path, class:"nav-link" %></li>
-		  <li class="nav-item"><%= link_to "お気に入りしたプラン", users_favorite_plans_path, class:"nav-link" %></li>
-		  <li class="nav-item"><%= link_to "乗り換え先情報", users_mnp_plans_path, class:"nav-link active" %></li>
-		  <li class="nav-item"><%= link_to "質問履歴", users_question_logs_path, class:"nav-link" %></li>
-		  <li class="nav-item"><%= link_to "回答履歴", users_answer_logs_path, class:"nav-link" %></li>
-		  <li class="nav-item"><%= link_to "いいねした投稿", users_favorite_posts_path, class:"nav-link" %></li>
-		</ul>
-		<div class="col-8 mt-4">
-			<h4>使用者情報</h4>
-			<div class="bg-light p-3">
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
+<div class="container-fluid text-center">
+		<div class="container">
+			<div class="w-100"><h1 class="mt-4">マイページ</h1></div>
+			<ul class="nav nav-tabs mt-4">
+			  <li class="nav-item"><%= link_to "ユーザー・使用者情報", users_path, class:"nav-link" %></li>
+			  <li class="nav-item"><%= link_to "お気に入りしたプラン", users_favorite_plans_path, class:"nav-link" %></li>
+			  <li class="nav-item"><%= link_to "乗り換え先情報", users_mnp_plans_path, class:"nav-link active" %></li>
+			  <li class="nav-item"><%= link_to "質問履歴", users_question_logs_path, class:"nav-link" %></li>
+			  <li class="nav-item"><%= link_to "回答履歴", users_answer_logs_path, class:"nav-link" %></li>
+			  <li class="nav-item"><%= link_to "いいねした投稿", users_favorite_posts_path, class:"nav-link" %></li>
+			</ul>
+		</div>
+		<% @user_phones.each do |user_phone| %>
+		<% calc_mnp_costs(user_phone.plan, user_phone.option_ids, user_phone) %>
+		<div class="row bg-light rounded p-3 m-3">
+		    <div class="col-3 rounded p-3">
+		    	<h5>使用者：<strong><%= user_phone.user_name %></strong></h5>
+	    		<table class="table mt-3">
+	    			<tr>
+	    				<td>キャリア</td>
+	    				<td><%= Carrier.find(user_phone.carrier_id).name %></td>
+	    			</tr>
+	    			<tr>
+	    				<td>契約プラン</td>
+	    				<td><%= user_phone.plan_name %></td>
+	    			</tr>
+	    			<tr>
+	    				<td>料金</td>
+	    				<td><%= user_phone.bill %>円/月</td>
+	    			</tr>
+	    			<tr>
+	    				<td>契約日</td>
+	    				<td><%= user_phone.contract_date %></td>
+	    			</tr>
+	    			<tr>
+	    				<td>使用端末</td>
+	    				<td><%= user_phone.phone_name %></td>
+	    			</tr>
+	    			<tr>
+	    				<td>端末代</td>
+	    				<td><%= user_phone.phone_bill%>円/月 x <%= user_phone.phone_bill_term %>回</td>
+	    			</tr>
+				</table>
+			</div>
+			<div class="col-9 row rounded p-3">
+				<div class="col-9">
+					<h4>計算結果</h4>
+					<table class="table">
+						<tr>
+							<td>
+								<table class="table">
+									<thead class="thead-light">
+					    				<th colspan="2">初期費用</th>
+					    				<th></th>
+								    </thead>
+					    			<tr>
+					    				<td>解約金</td>
+					    				<td><%= user_phone.carrier.penalty_bill %>円</td>
+					    			</tr>
+					    			<tr>
+					    				<td>番号移行手数料</td>
+					    				<td><%= user_phone.carrier.mnp_bill %>円</td>
+					    			</tr>
+					    			<tr>
+					    				<td>事務手数料</td>
+					    				<td><%= @plan.carrier.initial_bill %>円</td>
+					    			</tr>
+					    			<tr>
+					    				<th>合計</th>
+					    				<th><%= @total_initial_cost %>円</th>
+					    			</tr>
+								</table>
+							</td>
+							<td>
+								<table class="table result-right-table">
+									<thead class="thead-light">
+					    				<th colspan="2">毎月の料金</th>
+					    				<th></th>
+								    </thead>
+					    			<tr>
+					    				<td>基本料金</td>
+					    				<td><%= @plan.bill %>円/月</td>
+					    			</tr>
+					    			<% @options.each do |option| %>
+						    			<tr>
+						    				<td><%= option.name %></td>
+						    				<td><%= option.bill %>円/月</td>
+						    			</tr>
+						    		<% end %>
+					    			<tr>
+					    				<td>端末の残債</td>
+					    				<td><%= user_phone.phone_bill %>円/月 x <%= user_phone.phone_bill_term %>回</td>
+					    			</tr>
+					    			<tr>
+					    				<th>合計</th>
+					    				<th><%= @total_monthly_bill %>円/月</th>
+					    			</tr>
+								</table>
+							</td>
+						</tr>
 					</table>
 				</div>
-				<div class="bg-light rounded m-3">
-		    		<table class="table">
-		    			<thead class="thead-light">
-		    				<th class="align-middle">名前：みつるおじさん</th>
-		    				<th><a class="btn btn-success ml-5" href="#">編集</a><a class="btn btn-danger ml-3" href="#">削除</a></th>
-		    			</thead>
-		    			<tr>
-		    				<td>キャリア：docomo</td>
-		    				<td>契約日：2018年4月1日</td>
-		    			</tr>
-		    			<tr>
-		    				<td>契約プラン：データ定額M</td>
-		    				<td>使用端末：iPhone6S</td>
-		    			</tr>
-		    			<tr>
-		    				<td>料金：7000円/月</td>
-		    				<td>端末代：2000円 x 12回</td>
-		    			</tr>
-					</table>
+				<div class="col-3 d-flex flex-column justify-content-center">
+					<div>
+						<h5>1年間使うと・・・</h5>
+						<h5 class="text-center">合計<span class="text-danger price-font-size"><%= @saved_cost_per_year %>円</span></h5>
+						<h5 class="text-right">節約できます</h5>
+					</div>
+					<div>
+						<% convert_to(@saved_cost_per_year) %>
+						<h5 class="mt-4">これは<strong><%= @name %></strong></h5>
+						<h5 class="text-center"><span class="text-danger price-font-size"><%= @number %></span>分です</h5>
+					</div>
+					<%= form_for(user_phone) do |f| %>
+						<%= f.hidden_field :option_ids, value: @option_ids %>
+						<%= f.hidden_field :plan_id, value: @plan.id %>
+						<%= f.submit "乗り換え先に設定する", class:"btn btn-secondary" %>
+					<% end %>
 				</div>
 			</div>
 		</div>
-		<%= render 'profile' %>
-	</div>
+		<% end %>
 </div>

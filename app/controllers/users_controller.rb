@@ -3,19 +3,16 @@ class UsersController < ApplicationController
 		@user_phones = UserPhone.where(user_id: current_user.id)
 	end
 
-	def edit
-	end
-
-	def update
-	end
-
 	def mnp_plans
+		@user_phones = UserPhone.where(user_id: current_user.id)
 	end
 
 	def question_logs
+		@questions = Question.where(user_id: current_user.id)
 	end
 
 	def answer_logs
+		@my_questions = Question.includes(:answers).where(answers: {user_id: current_user.id})
 	end
 
 	def favorite_plans
