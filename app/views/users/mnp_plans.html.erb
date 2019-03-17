@@ -54,7 +54,8 @@
 			<div class="col-9 row rounded p-3">
 				<% if user_phone.plan.present? %>
 					<div class="col-9">
-						<h4>計算結果</h4>
+						<h6 class="text-left">乗り換え先キャリア：<strong><%= user_phone.plan.carrier.name %></strong></h6>
+						<h6 class="text-left">プラン名：<%= link_to plan_path(user_phone.plan.id) do %><%= user_phone.plan.name %><% end %></h6>
 						<table class="table">
 							<tr>
 								<td>
