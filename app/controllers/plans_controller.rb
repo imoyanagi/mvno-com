@@ -4,6 +4,7 @@ class PlansController < ApplicationController
 		@q = Plan.ransack(params[:q])
     	@plans = @q.result(distinct: true)
     	@carriers = Carrier.all
+    	@questions = Question.all
 	end
 
 

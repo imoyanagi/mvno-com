@@ -68,63 +68,23 @@
 		</div>
 		<div class="col-1"></div>
 		<div class="col-6 mb-5">
-			<div class="bg-light">
-				<h4 class="p-3 mb-4">最近のQ&A</h4>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
-				<div class="row mb-4">
-					<div class="col-4 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
-						<h6>やくみつる</h6>
-					</div>
-					<div class="col-8 text-left">
-						<h5 class="text-info">スイカは野菜ですか？果物ですか？</h5>
-						<h6>カテゴリ: その他</h6>
-						good! 10件 | 回答 3件
-					</div>
-				</div>
+			<h4>最近のQ&A</h4>
+			<div class="mt-3 border p-5 bg-light rounded">
+				<% @questions.order("id desc").each do |question| %>
+					<%= link_to question_path(question), class:"text-dark" do %>
+						<div class="row mb-4 border rounded p-3 questionSelected">
+							<div class="col-4 d-flex flex-column">
+								<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
+								<h6><%= question.user.name %></h6>
+							</div>
+							<div class="col-8 text-left">
+								<h5 class="text-info"><%= question.title %></h5>
+								<h6>カテゴリ: <%= question.sub_category.name %></h6>
+								good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
+							</div>
+						</div>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 	</div>
