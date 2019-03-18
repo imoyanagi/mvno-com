@@ -11,8 +11,9 @@ class FavoritePlansController < ApplicationController
 
 	def destroy
 		favorite_plan = FavoritePlan.find(params[:id])
+		plan_id = favorite_plan.plan.id
 		favorite_plan.delete
-		redirect_to plan_path(params[:id]), flash: { success:"削除しました" }
+		redirect_to plan_path(plan_id), flash: { success:"削除しました" }
 	end
 
 	# private
