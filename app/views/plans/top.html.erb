@@ -31,36 +31,18 @@
 		<div class="col-5 mb-5 rounded">
 			<div class="rounded bg-light">
 				<div class="p-3 ranking"><span>人気ランキング</span></div>
-				<div class="row p-2">
-					<div class="col-2">
-						１位
+				<% @plans.ranking.each_with_index do |plan, index| %>
+					<div class="row p-2">
+						<div class="col-2">
+							<%= index + 1 %>位
+						</div>
+						<div class="col-9">
+							<%= image_tag("linemobile.png", size:"100x100") %><br>
+								<%= plan.carrier.name %><br>
+								<%= plan.name %>
+						</div>
 					</div>
-					<div class="col-9">
-						<%= image_tag("linemobile.png", size:"100x100") %><br>
-							LINEモバイル<br>
-							コミュニケーションフリープラン 〜3GB
-					</div>
-				</div>
-				<div class="row p-2">
-					<div class="col-2">
-						１位
-					</div>
-					<div class="col-9">
-						<%= image_tag("linemobile.png", size:"100x100") %><br>
-							LINEモバイル<br>
-							コミュニケーションフリープラン 〜3GB
-					</div>
-				</div>
-				<div class="row p-2">
-					<div class="col-2">
-						１位
-					</div>
-					<div class="col-9">
-						<%= image_tag("linemobile.png", size:"100x100") %><br>
-							LINEモバイル<br>
-							コミュニケーションフリープラン 〜3GB
-					</div>
-				</div>
+				<% end %>
 			</div>
 			<div class="bg-light mt-4 rounded">
 				<h4 class="p-3 mb-4 mt-3">最新記事</h4>
