@@ -22,7 +22,7 @@
 				</div>
 				<div class="mt-4">
 					<% @questions.order("id desc").each do |question| %>
-						<%= link_to question_path(question) do %>
+						<%= link_to question_path(question), class:"text-dark" do %>
 							<div class="row mb-4 border rounded p-3 questionSelected">
 								<div class="col-4 d-flex flex-column">
 									<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
@@ -31,7 +31,7 @@
 								<div class="col-8 text-left">
 									<h5 class="text-info"><%= question.title %></h5>
 									<h6>カテゴリ: <%= question.sub_category.name %></h6>
-									good! 10件 | 回答 <%= question.answers.count %>件
+									good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
 								</div>
 							</div>
 						<% end %>

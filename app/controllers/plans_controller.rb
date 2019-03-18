@@ -1,9 +1,12 @@
 class PlansController < ApplicationController
+	require 'rss'
 
 	def top
 		@q = Plan.ransack(params[:q])
     	@plans = @q.result(distinct: true)
     	@carriers = Carrier.all
+    	@questions = Question.all
+    	@rss = RSS::Parser.parse("https://gori.me/feed")
 	end
 
 
