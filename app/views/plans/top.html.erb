@@ -43,27 +43,19 @@
 			</div>
 			<div class="bg-light mt-4 rounded">
 				<h4 class="p-3 mb-4 mt-3">最新記事</h4>
-				<div class="p-3 clearfix">
-					<%= image_tag("linemobile.png", size:"70x70", class:"float-left") %>
-					<div class="float-left text-left ml-2">
-						<h6 class="text-info">記事のタイトルが入ります</h6>
-						<p>記事の本文が入ります。記事の本文が入り<br>記事の本文が入ります。記事の本文が入り</p>
+				<% @rss.items.each do |item| %>
+					<div class="p-3 clearfix">
+						<a href="<%= item.link %>">
+							<div class="d-flex flex-row">
+								<%= image_tag("#{item.description.match(%r{https?://[\w_.!*\/')(-]+})}", size:"90x90", class:"p-2") %>
+								<div class="text-left p-2">
+									<h6 class="text-info"><%= item.title %></h6>
+									<p class="text-dark"><%= item.pubDate.in_time_zone("Tokyo").strftime('%Y年%m月%d日 %H時%M分') %></p>
+								</div>
+							</div>
+						</a>
 					</div>
-				</div>
-				<div class="p-3 clearfix">
-					<%= image_tag("linemobile.png", size:"70x70", class:"float-left") %>
-					<div class="float-left text-left ml-2">
-						<h6 class="text-info">記事のタイトルが入ります</h6>
-						<p>記事の本文が入ります。記事の本文が入り<br>記事の本文が入ります。記事の本文が入り</p>
-					</div>
-				</div>
-				<div class="p-3 clearfix">
-					<%= image_tag("linemobile.png", size:"70x70", class:"float-left") %>
-					<div class="float-left text-left ml-2">
-						<h6 class="text-info">記事のタイトルが入ります</h6>
-						<p>記事の本文が入ります。記事の本文が入り<br>記事の本文が入ります。記事の本文が入り</p>
-					</div>
-				</div>
+				<% end %>
 			</div>
 		</div>
 		<div class="col-1"></div>
