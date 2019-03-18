@@ -10,4 +10,5 @@ class User < ApplicationRecord
   attachment :profile_image
   has_many :questions
   has_many :answers
+  has_many :favorite_posts
 end
