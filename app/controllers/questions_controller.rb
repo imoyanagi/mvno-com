@@ -6,7 +6,9 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all
+		@q = Question.search(params[:q])
+		@questions = @q.result(distinct: true)
+		@categories = Category.all
 		@my_questions = Question.includes(:answers).where(answers: {user_id: current_user.id})
 	end
 
