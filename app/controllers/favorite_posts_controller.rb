@@ -10,6 +10,9 @@ class FavoritePostsController < ApplicationController
 			end
 			redirect_back(fallback_location:questions_path)
 		else
+			if question_id.nil?
+				question_id = Answer.find_by(id:params[:favorite_post][:answer_id]).question.id
+			end
 			store_location_for(:user, question_path(question_id))
 			redirect_to new_user_session_path
 		end
