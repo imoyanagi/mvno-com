@@ -20,5 +20,6 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_posts
+		@favorite_posts = FavoritePost.where(user_id: current_user.id)
 	end
 end
