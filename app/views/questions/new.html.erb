@@ -8,17 +8,17 @@
 				<% @categories.each do |category| %>
 				  <div class="card">
 				    <div class="card-header" role="tab" id="heading<%= category.id%>">
-				      <h5 class="mb-0">
+				      <h6 class="mb-0">
 				        <a class="collapsed text-body" data-toggle="collapse" href="#collapse<%= category.id%>" role="button" aria-expanded="false" aria-controls="collapse<%= category.id%>">
 				          <%= category.name %>
 				        </a>
-				      </h5>
+				      </h6>
 				    </div><!-- /.card-header -->
 				    <div id="collapse<%= category.id%>" class="collapse" role="tabpanel" aria-labelledby="heading<%= category.id%>" data-parent="#accordion">
 				    	<ul class="list-group list-group-flush">
-				    	<% category.sub_categories.each do |sub_category| %>
-					      <li class="btn list-group-item subCategorySelected" id="<%= sub_category.id %>"><%= sub_category.name %></li>
-					      <% end %>
+					    	<% category.sub_categories.each do |sub_category| %>
+						      <li class="btn list-group-item subCategorySelected" id="<%= sub_category.id %>"><%= sub_category.name %></li>
+						    <% end %>
 					    </ul>
 				    </div><!-- /.collapse -->
 				  </div><!-- /.card -->
