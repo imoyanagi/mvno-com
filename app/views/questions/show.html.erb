@@ -18,14 +18,19 @@
 				<div class="d-flex justify-content-between">
 					<div class="mt-3 float-left">
 						<h5>
-							<% if @question.favorited_by?(current_user) %>
-								<%= link_to "good!解除", favorite_post_path(favorite_post:{question_id: @question.id}), method: :delete, class:"btn btn-secondary" %>
+							<% if user_signed_in? %>
+								<% if @question.favorited_by?(current_user) %>
+									<%= link_to "good!解除", favorite_post_path(favorite_post:{question_id: @question.id}), method: :delete, class:"btn btn-secondary" %>
+								<% else %>
+									<%= link_to "good!", favorite_posts_path(favorite_post:{question_id: @question.id}), method: :post, class:"btn btn-warning" %>
+								<% end %>
+								<%= @question.favorite_posts.count %>件　|　回答　<%= @question.answers.count %>件 |
+								<% if @question.user_id == current_user.id %>
+									<%= link_to "削除", question_path(@question), method: :delete, "data-confirm" => "削除しますか？", class:"btn btn-danger" %>
+								<% end %>
 							<% else %>
 								<%= link_to "good!", favorite_posts_path(favorite_post:{question_id: @question.id}), method: :post, class:"btn btn-warning" %>
-							<% end %>
-							<%= @question.favorite_posts.count %>件　|　回答　<%= @question.answers.count %>件 |
-							<% if @question.user_id == current_user.id %>
-								<%= link_to "削除", question_path(@question), method: :delete, "data-confirm" => "削除しますか？", class:"btn btn-danger" %>
+								<%= @question.favorite_posts.count %>件　|　回答　<%= @question.answers.count %>件 |
 							<% end %>
 						</h5>
 					</div>
