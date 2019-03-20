@@ -63,29 +63,33 @@
 				</table>
 
 				<h4>レビュー</h4>
-				<%= render 'review_form' %>
-				<% @reviews.each do |review| %>
-				<div class="border rounded p-3 mb-3 row">
-					<div class="col-2 d-flex flex-column">
-						<%= image_tag("linemobile.png", size:"60x60") %>
-						<span class="review-user-name">やくみつる</span>
-					</div>
-					<div class="col-10">
-						<div id="total_star<%= review.id %>"></div>
-						<%= review.title %>
-						<script>
-							$('#total_star<%= review.id%>').raty({
-							  readOnly: true,
-							  size: 36,
-							  score: <%= review.total_eval %>,
-							  starOff:  '<%= asset_path('star-off.png') %>',
-							  starOn : '<%= asset_path('star-on.png') %>',
-							});
-						</script>
-					</div>
-				</div>
+				<% if user_signed_in? %>
+					<%= render 'review_form', review: @review %>
 				<% end %>
-
+				<% @reviews.each do |review| %>
+					<div class="border rounded p-3 mb-3 row">
+						<div class="col-2 d-flex flex-column">
+							<%= image_tag("linemobile.png", size:"60x60") %>
+							<span class="review-user-name">やくみつる</span>
+						</div>
+						<div class="col-10">
+							<div id="total_star<%= review.id %>"></div>
+							<%= review.title %>
+							<script>
+								$(document).on('turbolinks:load', function() {
+									$('#total_star<%= review.id%>').raty({
+									  readOnly: true,
+									  size: 36,
+									  score: <%= review.total_eval %>,
+									  starOff:  '<%= asset_path('star-off.png') %>',
+									  starOn : '<%= asset_path('star-on.png') %>',
+									});
+								});
+							</script>
+						</div>
+					</div>
+				<% end %>
+				<%= link_to "レビュー一覧", plan_reviews_path(@plan), class:"float-right" %>
 			</div>
 		</div>
 		<div class="col-4">
