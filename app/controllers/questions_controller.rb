@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+	before_action :authenticate_user!, only:[:new, :create, :destroy]
 	def new
 		@question = Question.new
 		@categories = Category.all
@@ -9,12 +10,17 @@ class QuestionsController < ApplicationController
 		@q = Question.search(params[:q])
 		@questions = @q.result(distinct: true)
 		@categories = Category.all
-		@my_questions = Question.includes(:answers).where(answers: {user_id: current_user.id})
+		if user_signed_in?
+			@my_questions = Question.where(user_id: current_user.id)
+			@answered_questions = Question.includes(:answers).where(answers: {user_id: current_user.id})
+		end
 	end
 
 	def show
 		@questions = Question.all
-		@my_questions = Question.includes(:answers).where(answers: {user_id: current_user.id})
+		if user_signed_in?
+			@my_questions = Question.includes(:answers).where(answers: {user_id: current_user.id})
+		end
 		@question = Question.find(params[:id])
 		@answer = Answer.new
 		@answers = Answer.where(question_id: @question.id)
