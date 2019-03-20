@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only:[:crate, :update, :destroy]
 
   def index
     @reviews = Review.where(plan_id: params[:plan_id])
