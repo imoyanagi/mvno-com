@@ -32,7 +32,8 @@
 				</div>
 				<% if review.user == current_user %>
 					<div class="p-2">
-						<%= render 'review_form', review: review %><%= link_to "削除", plan_review_path(@plan,review), method: :delete, class:"btn btn-danger ml-4" %>
+						<%= render 'review_form', review: review %>
+						<%= link_to "削除", plan_review_path(@plan,review), method: :delete, "data-confirm" => "削除しますか？",class:"btn btn-danger" %>
 					</div>
 				<% end %>
 			<script>

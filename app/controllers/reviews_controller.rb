@@ -19,6 +19,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    review = Review.find(params[:id])
+    plan_id = review.plan_id
+    review.destroy
+    redirect_to plan_reviews_path(plan_id)
   end
 
   private
