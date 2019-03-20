@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
   	review = Review.new(review_params)
-  	review.save!
+  	review.save
   	redirect_to users_path
   end
 
