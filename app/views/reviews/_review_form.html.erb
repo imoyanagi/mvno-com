@@ -1,5 +1,5 @@
-<button type="button" data-toggle="modal" data-focus="true" data-target="#modal-option" class="btn btn-primary mt-3 mb-3">レビューする</button><br>
-<div class="modal fade" id="modal-option" tabindex="-1" role="dialog" aria-labelledby="myModalOptionLabel">
+<button type="button" data-toggle="modal" data-focus="true" data-target="#modal-option<%= review.id %>" class="btn btn-success mt-3 mb-3">編集</button><br>
+<div class="modal fade" id="modal-option<%= review.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalOptionLabel">
   <div class="modal-dialog" role="document" id="modal-maxwidth">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,19 +9,19 @@
       <div class="modal-body">
       	<%= form_for [@plan, review] do |f| %>
 		 	<%= f.hidden_field :plan_id, value: @plan.id %>
-		 	<div class="field" id="star1">
+		 	<div class="field" id="star1_<%= review.id %>">
 			 	<%= f.label :total_eval, "総合評価" %>
 			 	<%= f.hidden_field :total_eval %>
 		 	</div>
-			<div class="field" id="star2">
+			<div class="field" id="star2_<%= review.id %>">
 	            <%= f.label :internet_eval, "通信品質" %>
 	            <%= f.hidden_field :internet_eval %>
 	        </div>
-	        <div class="field" id="star3">
+	        <div class="field" id="star3_<%= review.id %>">
 	            <%= f.label :support_eval, "サポート" %>
 	            <%= f.hidden_field :support_eval %>
 	        </div>
-	        <div class="field" id="star4">
+	        <div class="field" id="star4_<%= review.id %>">
 	            <%= f.label :cost_eval, "価格　　" %>
 	            <%= f.hidden_field :cost_eval %>
 	        </div>
@@ -29,33 +29,37 @@
 	        <%= f.text_field :title, style:"width:400px;" %><br>
 	        <%= f.label :body, "本文"%><br>
 	        <%= f.text_area :body, style:"width:600px; height:400px;" %><br>
-	        <%= f.submit "送信", :class => "btn btn-primary" %>
+	        <%= f.submit "保存", :class => "btn btn-primary" %>
 		<% end %>
 		<script>
 			$(document).on('turbolinks:load', function() {
-				$('#star1').raty({
+				$('#star1_<%= review.id %>').raty({
 				  size     : 36,
 				  starOff:  '<%= asset_path('star-off.png') %>',
 				  starOn : '<%= asset_path('star-on.png') %>',
-				  scoreName: 'review[total_eval]'
+				  scoreName: 'review[total_eval]',
+				  score: '<%= review.total_eval %>'
 				});
-				$('#star2').raty({
+				$('#star2_<%= review.id %>').raty({
 				  size     : 36,
 				  starOff:  '<%= asset_path('star-off.png') %>',
 				  starOn : '<%= asset_path('star-on.png') %>',
-				  scoreName: 'review[internet_eval]'
+				  scoreName: 'review[internet_eval]',
+				  score: '<%= review.internet_eval %>'
 				});
-				$('#star3').raty({
+				$('#star3_<%= review.id %>').raty({
 				  size     : 36,
 				  starOff:  '<%= asset_path('star-off.png') %>',
 				  starOn : '<%= asset_path('star-on.png') %>',
-				  scoreName: 'review[support_eval]'
+				  scoreName: 'review[support_eval]',
+				  score: '<%= review.support_eval %>'
 				});
-				$('#star4').raty({
+				$('#star4_<%= review.id %>').raty({
 				  size     : 36,
 				  starOff:  '<%= asset_path('star-off.png') %>',
 				  starOn : '<%= asset_path('star-on.png') %>',
-				  scoreName: 'review[cost_eval]'
+				  scoreName: 'review[cost_eval]',
+				  score: '<%= review.cost_eval %>'
 				});
 			});
 		</script>

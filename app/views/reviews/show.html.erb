@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="mt-5 mb-5 p-3 bg-light">
+		<h4 class="text-info"><%= @review.title %></h4>
+		<table class="table-borderless">
+			<tr>
+				<td>総合評価</td>
+				<td id="total_star"></td>
+			</tr>
+			<tr>
+				<td>通信品質</td>
+				<td id="internet_star"></td>
+			</tr>
+			<tr>
+				<td>サポート品質　</td>
+				<td id="support_star"></td>
+			</tr>
+			<tr>
+				<td>価格</td>
+				<td id="cost_star"></td>
+			</tr>
+		</table>
+		<div class="mt-4">
+			<%= @review.body %>
+		</div>
+	</div>
+	<script>
+		$('#total_star').raty({
+		  readOnly: true,
+		  size: 36,
+		  score: <%= @review.total_eval %>,
+		  starOff:  '<%= asset_path('star-off.png') %>',
+		  starOn : '<%= asset_path('star-on.png') %>',
+		});
+		$('#internet_star').raty({
+		  readOnly: true,
+		  size: 36,
+		  score: <%= @review.internet_eval %>,
+		  starOff:  '<%= asset_path('star-off.png') %>',
+		  starOn : '<%= asset_path('star-on.png') %>',
+		});
+		$('#support_star').raty({
+		  readOnly: true,
+		  size: 36,
+		  score: <%= @review.support_eval %>,
+		  starOff:  '<%= asset_path('star-off.png') %>',
+		  starOn : '<%= asset_path('star-on.png') %>',
+		});
+		$('#cost_star').raty({
+		  readOnly: true,
+		  size: 36,
+		  score: <%= @review.cost_eval %>,
+		  starOff:  '<%= asset_path('star-off.png') %>',
+		  starOn : '<%= asset_path('star-on.png') %>',
+		});
+	</script>
+</div>
