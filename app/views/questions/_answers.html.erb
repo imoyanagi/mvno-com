@@ -1,7 +1,7 @@
 <% answer.answers.each do |answer| %>
 	<div class="ml-3 mb-3 border p-4 bg-light rounded clearfix">
 		<div class="mb-3 d-flex justify-content-start">
-			<%= image_tag("linemobile.png", size:"100x100") %>
+			<%= attachment_image_tag answer.user,:profile_image, fallback: "no_image.jpg", size: '100x100' %>
 			<div class="ml-4 d-flex flex-column justify-content-end">
 				<h5>回答No.<%= answer.number %></h5>
 				<h5>返答者：<%= answer.user.name %></h5>

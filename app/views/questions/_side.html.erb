@@ -8,7 +8,7 @@
 						<h6 class="text-info text-left text-truncate"><%= my_question.title %></h6>
 						<div class="row">
 							<div class="col-4 d-flex flex-column justify-content-center">
-								<%= image_tag("linemobile.png", size:"50x50", class:"mx-auto") %>
+								<%= attachment_image_tag my_question.user,:profile_image, fallback: "no_image.jpg", size: '50x50', class:"mx-auto" %>
 							</div>
 							<div class="col-8 text-left">
 								<h6>カテゴリ: <%= my_question.sub_category.name %></h6>
@@ -30,7 +30,7 @@
 					<div class="row mb-4 border rounded p-3 questionSelected">
 						<h6 class="text-info text-truncate"><%= answered_question.title %></h6>
 						<div class="col-4 d-flex flex-column justify-content-center">
-							<%= image_tag("linemobile.png", size:"50x50", class:"mx-auto") %>
+							<%= attachment_image_tag answered_question.user,:profile_image, fallback: "no_image.jpg", size: '50x50', class:"mx-auto" %>
 						</div>
 						<div class="col-8 text-left">
 							<h6>カテゴリ: <%= answered_question.sub_category.name %></h6>
