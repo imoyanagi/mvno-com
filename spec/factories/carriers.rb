@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :carrier do
-    name "MyString"
-    mnp_bill 1
-    penalty_bill 1
-    initial_bill 1
+    name {"docomo"}
+    mnp_bill {3240}
+    penalty_bill {10260}
+    initial_bill {3240}
   end
 end
