@@ -16,7 +16,7 @@
 					<%= link_to question_path(question) do %>
 						<div class="row mb-4 border rounded p-3 questionSelected">
 							<div class="col-4 d-flex flex-column">
-								<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
+								<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %>
 								<h6><%= question.user.name %></h6>
 							</div>
 							<div class="col-8 text-left">

@@ -35,7 +35,7 @@
 					<table class="table">
 						<tr>
 							<td class="ranking-num align-middle"><%= index + 1 %>位</td>
-							<td><%= image_tag("linemobile.png", size:"70x70") %></td>
+							<td><%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %></td>
 							<td class="text-left"><%= link_to plan_path(plan) do %><%= plan.carrier.name %><br><%= plan.name %><% end %></td>
 						</tr>
 					</table>
@@ -66,7 +66,7 @@
 					<%= link_to question_path(question), class:"text-dark" do %>
 						<div class="row mb-4 border rounded p-3 questionSelected">
 							<div class="col-4 d-flex flex-column">
-								<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
+								<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", size: '100x100' %>
 								<h6><%= question.user.name %></h6>
 							</div>
 							<div class="col-8 text-left">

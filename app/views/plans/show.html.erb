@@ -2,7 +2,7 @@
 	<div class="bg-light p-3 mt-5 mb-5 rounded border">
 		<div class="row">
 			<div class="col-2">
-				<%= image_tag("linemobile.png", size:"150x150", class:"mx-auto float-left") %>
+				<%= attachment_image_tag @plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '150x150', class:"mx-auto float-left" %>
 			</div>
 			<div class="col-7">
 				<h4><%= @plan.carrier.name %><br><%= @plan.name %></h4>

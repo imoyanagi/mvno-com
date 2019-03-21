@@ -16,7 +16,7 @@
 					<%= link_to question_path(favorite_post.question) do %>
 						<div class="row mb-4 border rounded p-3 questionSelected">
 							<div class="col-4 d-flex flex-column">
-								<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
+								<%= attachment_image_tag favorite_post.question.user,:profile_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %>
 								<h6><%= favorite_post.question.user.name %></h6>
 							</div>
 							<div class="col-8 text-left">
@@ -34,7 +34,7 @@
 					<%= link_to question_path(favorite_post.answer.question) do %>
 						<div class="row mb-4 border rounded p-3 questionSelected">
 							<div class="col-4 d-flex flex-column">
-								<%= image_tag("linemobile.png", size:"80x80", class:"mx-auto") %>
+								<%= attachment_image_tag favorite_post.answer.user,:profile_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %>
 								<h6><%= favorite_post.answer.user.name %></h6>
 							</div>
 							<div class="col-8 text-left">
