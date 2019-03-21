@@ -14,7 +14,7 @@
 			<% @favorite_plans.each do |favorite_plan| %>
 			<div class="row bg-light mb-3 p-3 rounded border">
 				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
+					<%= attachment_image_tag favorite_plan.plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto" %>
 				</div>
 				<div class="col-9 text-left">
 					<h5><%= link_to plan_path(favorite_plan.plan_id) do %><%= favorite_plan.plan.carrier.name %><br><%= favorite_plan.plan.name %></a></h5><% end %>

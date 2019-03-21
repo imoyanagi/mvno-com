@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_041610) do
     t.integer "mnp_bill"
     t.integer "penalty_bill"
     t.integer "initial_bill"
+    t.string "carrier_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

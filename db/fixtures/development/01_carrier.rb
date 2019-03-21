@@ -32,6 +32,7 @@ Carrier.seed do |s|
 	s.mnp_bill = 3240
 	s.penalty_bill = 10584
 	s.initial_bill = 3672
+	s.carrier_image = File.open(Rails.root.join("app/assets/images/linemobile.png"))
 end
 index += 1
 

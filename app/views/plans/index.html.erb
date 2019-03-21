@@ -59,7 +59,7 @@
 		<!-- 検索結果 -->
 		<div class="col-9">
 			<div class="bg-light p-3 mt-5 mb-4 rounded border">
-				<h6>検索条件 
+				<h6>検索条件
 					<% unless params[:q].nil? %>
 						<% unless params[:q][:data_value_gteq].blank? %>
 							<span class="text-info"><%= params[:q][:data_value_gteq] %>GB以上</span> |
@@ -83,7 +83,7 @@
 			<% @plans.each do |plan| %>
 			<div class="row bg-light mb-3 p-3 rounded border">
 				<div class="col-3">
-					<%= image_tag("linemobile.png", size:"100x100", class:"mx-auto") %>
+					<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto" %>
 				</div>
 				<div class="col-9">
 					<h5><%= link_to plan_path(plan.id) do %><%= plan.carrier.name %><br><%= plan.name %></a></h5><% end %>
