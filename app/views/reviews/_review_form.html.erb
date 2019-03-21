@@ -35,29 +35,29 @@
 			$(document).on('turbolinks:load', function() {
 				$('#star1_<%= review.id %>').raty({
 				  size     : 36,
-				  starOff:  '<%= asset_path('star-off.png') %>',
-				  starOn : '<%= asset_path('star-on.png') %>',
+				  starOff:  '<%= asset_path('/images/star-off.png') %>',
+				  starOn : '<%= asset_path('/images/star-on.png') %>',
 				  scoreName: 'review[total_eval]',
 				  score: '<%= review.total_eval %>'
 				});
 				$('#star2_<%= review.id %>').raty({
 				  size     : 36,
-				  starOff:  '<%= asset_path('star-off.png') %>',
-				  starOn : '<%= asset_path('star-on.png') %>',
+				  starOff:  '<%= asset_path('/images/star-off.png') %>',
+				  starOn : '<%= asset_path('/images/star-on.png') %>',
 				  scoreName: 'review[internet_eval]',
 				  score: '<%= review.internet_eval %>'
 				});
 				$('#star3_<%= review.id %>').raty({
 				  size     : 36,
-				  starOff:  '<%= asset_path('star-off.png') %>',
-				  starOn : '<%= asset_path('star-on.png') %>',
+				  starOff:  '<%= asset_path('/images/star-off.png') %>',
+				  starOn : '<%= asset_path('/images/star-on.png') %>',
 				  scoreName: 'review[support_eval]',
 				  score: '<%= review.support_eval %>'
 				});
 				$('#star4_<%= review.id %>').raty({
 				  size     : 36,
-				  starOff:  '<%= asset_path('star-off.png') %>',
-				  starOn : '<%= asset_path('star-on.png') %>',
+				  starOff:  '<%= asset_path('/images/star-off.png') %>',
+				  starOn : '<%= asset_path('/images/star-on.png') %>',
 				  scoreName: 'review[cost_eval]',
 				  score: '<%= review.cost_eval %>'
 				});
