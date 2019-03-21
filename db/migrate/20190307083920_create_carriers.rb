@@ -1,6 +1,6 @@
 class CreateCarriers < ActiveRecord::Migration[5.2]
   def change
-    create_table :carriers do |t|
+    create_table :carriers, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string :name
       t.integer :mnp_bill
       t.integer :penalty_bill

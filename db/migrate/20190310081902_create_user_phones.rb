@@ -1,6 +1,6 @@
 class CreateUserPhones < ActiveRecord::Migration[5.2]
   def change
-    create_table :user_phones do |t|
+    create_table :user_phones, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer :user_id
       t.string :user_name
       t.string :phone_name
