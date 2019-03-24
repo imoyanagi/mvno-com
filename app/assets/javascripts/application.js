@@ -143,18 +143,17 @@ $(document).on('turbolinks:load', function() {
 			$('#selectedSubCategory').html($(this).html());
 		});
 	});
-});
-
-$(function() {
-	$("#step2").css({
-		"left": "0px",
-		"display": "none"
+	$(function() {
+		$("#step2").css({
+			"left": "0px",
+			"display": "none"
+		});
 	});
-});
 
-$(function() {
-	$("#step3").css({
-		"left": "0px",
-		"display": "none"
+	$(function() {
+		$("#step3").css({
+			"left": "0px",
+			"display": "none"
+		});
 	});
 });

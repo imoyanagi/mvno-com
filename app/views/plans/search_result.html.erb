@@ -1,0 +1,15 @@
+<div class="container mt-5 mb-5">
+	<h4>あなたにおすすめのプランはこちら</h4>
+	<% @plans.each do |plan| %>
+		<div class="row bg-light mb-3 p-3 rounded border">
+			<div class="col-3">
+				<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto" %>
+			</div>
+			<div class="col-9">
+				<h5><%= link_to plan_path(plan.id) do %><%= plan.carrier.name %><br><%= plan.name %></a></h5><% end %>
+				<h5>料金　<span class="text-danger price-font-size"><%= plan.bill %>円/月</span></h5>
+				<h6>回線:<span class="text-secondary"><%= plan.internet_type %></span> | データ量:<span class="text-secondary"><%= plan.data_value %>GB</span></h6>
+			</div>
+		</div>
+	<% end %>
+</div>

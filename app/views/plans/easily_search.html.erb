@@ -12,11 +12,11 @@
 				<%= submit_tag "よく使う", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 			<%= form_tag(step2_path, method: :get, remote: true) do %>
-				<%= hidden_field_tag :value1, 2 %>
+				<%= hidden_field_tag :value1, 1 %>
 				<%= submit_tag "たまに使う", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 			<%= form_tag(step2_path, method: :get, remote: true) do %>
-				<%= hidden_field_tag :value1, 1 %>
+				<%= hidden_field_tag :value1, 0 %>
 				<%= submit_tag "ほとんど使わない", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 		</div>
@@ -30,7 +30,7 @@
 		<h4 class="mt-5">動画を</h4>
 		<div class="list-group data-list mt-4 mb-5">
 			<%= form_tag(step3_path, method: :get, remote: true) do %>
-				<%= hidden_field_tag :value2, 3 %>
+				<%= hidden_field_tag :value2, 7 %>
 				<%= submit_tag "よく見る", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 			<%= form_tag(step3_path, method: :get, remote: true) do %>
@@ -38,7 +38,7 @@
 				<%= submit_tag "たまに見る", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 			<%= form_tag(step3_path, method: :get, remote: true) do %>
-				<%= hidden_field_tag :value2, 1 %>
+				<%= hidden_field_tag :value2, 0 %>
 				<%= submit_tag "ほとんど見ない", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 		</div>
@@ -52,15 +52,15 @@
 		<h4 class="mt-5">通信速度を</h4>
 		<div class="list-group data-list mt-4 mb-5">
 			<%= form_tag(search_result_path, method: :get) do %>
-				<%= hidden_field_tag :value3, value:3 %>
+				<%= hidden_field_tag :value3, 0 %>
 				<%= submit_tag "気にする", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 			<%= form_tag(search_result_path, method: :get) do %>
-				<%= hidden_field_tag :value3, value:2 %>
+				<%= hidden_field_tag :value3, 1 %>
 				<%= submit_tag "あまり気にしない", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 			<%= form_tag(search_result_path, method: :get) do %>
-				<%= hidden_field_tag :value3, value:1 %>
+				<%= hidden_field_tag :value3, 2 %>
 				<%= submit_tag "意味がわからない", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 		</div>
