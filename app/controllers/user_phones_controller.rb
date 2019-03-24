@@ -1,17 +1,24 @@
 class UserPhonesController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
 	def new
 		@user_phone = UserPhone.new
 	end
 
 	def show
-		@user_phones = UserPhone.where(user_id:current_user.id)
-		@plan = Plan.find(params[:id])
-		@option_ids = params[:option_ids].split(',')
-		@options = []
-		@option_ids.each do |option_id|
-			@options.push(Option.where(carrier_id: @plan.carrier_id).find(option_id))
+		if user_signed_in?
+			@user_phones = UserPhone.where(user_id:current_user.id)
+			@plan = Plan.find(params[:id])
+			@option_ids = params[:option_ids].split(',')
+			@options = []
+			@option_ids.each do |option_id|
+				@options.push(Option.where(carrier_id: @plan.carrier_id).find(option_id))
+			end
+		else
+			redirect_to plan_input_path(option_ids: params[:option_ids])
 		end
+	end
+
+	def input
 	end
 
 	def create

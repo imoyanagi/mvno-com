@@ -156,4 +156,15 @@ $(document).on('turbolinks:load', function() {
 			"display": "none"
 		});
 	});
+
+	$(function() {
+		$('#hiddenBox').css({"display": "none"});
+		$(".selectedRadio").on('click', function(){
+			if ($('#penalty_true').prop('checked')) {
+				$('#hiddenBox').css({"display": "block"});
+			}else {
+				$('#hiddenBox').css({"display": "none"});
+			}
+		});
+	});
 });
