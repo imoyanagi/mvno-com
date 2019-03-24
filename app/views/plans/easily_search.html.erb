@@ -42,6 +42,7 @@
 				<%= submit_tag "ほとんど見ない", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 		</div>
+		<%= link_to "戻る", easily_search_path, class:"btn btn-secondary mt-4 mb-5", remote: true %>
 	</div>
 	<div id="step3">
 		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
@@ -50,7 +51,7 @@
 		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ３</span>
 		</nav>
 		<h4 class="mt-5">通信速度を</h4>
-		<div class="list-group data-list mt-4 mb-5">
+		<div class="list-group data-list mt-4">
 			<%= form_tag(search_result_path, method: :get) do %>
 				<%= hidden_field_tag :value3, 0 %>
 				<%= submit_tag "気にする", class:"btn list-group-item list-group-item-action"%>
@@ -64,5 +65,6 @@
 				<%= submit_tag "意味がわからない", class:"btn list-group-item list-group-item-action"%>
 			<% end %>
 		</div>
+		<%= link_to "戻る", step2_path, class:"btn btn-secondary mt-4 mb-5", remote: true %>
 	</div>
 </div>

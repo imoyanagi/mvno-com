@@ -1,1 +1,5 @@
+if ($("#step1").css("display") == "none") {
+	$("#step3").fadeOut(400, function(){$("#step2").fadeIn(400)});
+}else {
 $("#step1").fadeOut(400, function(){$("#step2").fadeIn(400)});
+}
