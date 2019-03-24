@@ -334,3 +334,75 @@ Plan.seed do |s|
 	s.notes = "特になし"
 end
 index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "Sプラン"
+	s.bill = 2980
+    s.data_value = 3
+    s.carrier_id = Carrier.find_by(name: 'Ymobile').id
+	s.internet_type = "softbank"
+	s.data_transfer = 2
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "Mプラン"
+	s.bill = 3980
+    s.data_value = 9
+    s.carrier_id = Carrier.find_by(name: 'Ymobile').id
+	s.internet_type = "softbank"
+	s.data_transfer = 2
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "Lプラン"
+	s.bill = 5980
+    s.data_value = 21
+    s.carrier_id = Carrier.find_by(name: 'Ymobile').id
+	s.internet_type = "softbank"
+	s.data_transfer = 2
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "Sプラン"
+	s.bill = 2980
+    s.data_value = 3
+    s.carrier_id = Carrier.find_by(name: 'UQmobile').id
+	s.internet_type = "au"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "Mプラン"
+	s.bill = 3980
+    s.data_value = 9
+    s.carrier_id = Carrier.find_by(name: 'UQmobile').id
+	s.internet_type = "au"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "Lプラン"
+	s.bill = 5980
+    s.data_value = 21
+    s.carrier_id = Carrier.find_by(name: 'UQmobile').id
+	s.internet_type = "au"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1

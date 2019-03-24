@@ -42,9 +42,9 @@ class PlansController < ApplicationController
 	def search_result
 		@plans = Plan.where("data_value >= ?", session[:value])
 		if params[:value3] == "0" #通信速度 => 気にする を選んだ場合
-			@plans.joins(:carrier).where("(carrier.id >= ?) AND (carrier.id <= ?)", 4,5)
+			@plans = @plans.where("(carrier_id >= ?) AND (carrier_id <= ?)", 4,5)
 		end
-		@plans = @plans.order("data_value asc").limit(3)
+		@plans = @plans.order("bill asc").limit(3)
 	end
 
 	private
