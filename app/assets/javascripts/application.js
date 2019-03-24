@@ -144,3 +144,17 @@ $(document).on('turbolinks:load', function() {
 		});
 	});
 });
+
+$(function() {
+	$("#step2").css({
+		"left": "0px",
+		"display": "none"
+	});
+});
+
+$(function() {
+	$("#step3").css({
+		"left": "0px",
+		"display": "none"
+	});
+});

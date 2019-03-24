@@ -25,6 +25,15 @@ class PlansController < ApplicationController
 		end
 	end
 
+	def easily_search
+	end
+
+	def step2
+	end
+
+	def step3
+	end
+
 	private
 	  def search_params
 	    params.require(:q).permit!
