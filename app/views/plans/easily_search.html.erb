@@ -1,26 +1,68 @@
 <div class="container text-center">
 	<div id="step1">
+		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
+		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ１</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ２</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ３</span>
+		</nav>
 		<h4 class="mt-5">SNSやLINEを</h4>
-		<div class="list-group mx-auto mt-5 mb-5" style="max-width: 400px;">
-		  <button type="button" class="list-group-item list-group-item-action mb-3">よく使う</button>
-		  <button type="button" class="list-group-item list-group-item-action mb-3">まあまあ使う</button>
-		  <button type="button" class="list-group-item list-group-item-action">ほとんど使わない</button>
+		<div class="list-group data-list mt-4 mb-5">
+			<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value1, 3 %>
+				<%= submit_tag "よく使う", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value1, 2 %>
+				<%= submit_tag "たまに使う", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value1, 1 %>
+				<%= submit_tag "ほとんど使わない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
 		</div>
 	</div>
 	<div id="step2">
+		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ１</span>
+		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ２</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ３</span>
+		</nav>
 		<h4 class="mt-5">動画を</h4>
-		<div class="list-group mx-auto mt-5 mb-5" style="max-width: 400px;">
-		  <button type="button" class="list-group-item list-group-item-action mb-3">よく見る</button>
-		  <button type="button" class="list-group-item list-group-item-action mb-3">たまに見る</button>
-		  <button type="button" class="list-group-item list-group-item-action">ほとんど見ない</button>
+		<div class="list-group data-list mt-4 mb-5">
+			<%= form_tag(step3_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value2, 3 %>
+				<%= submit_tag "よく見る", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step3_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value2, 2 %>
+				<%= submit_tag "たまに見る", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step3_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value2, 1 %>
+				<%= submit_tag "ほとんど見ない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
 		</div>
 	</div>
 	<div id="step3">
-		<h4 class="mt-5">通信速度が</h4>
-		<div class="list-group mx-auto mt-5 mb-5" style="max-width: 400px;">
-		  <button type="button" class="list-group-item list-group-item-action mb-3">気になる</button>
-		  <button type="button" class="list-group-item list-group-item-action mb-3">気にならない</button>
-		  <button type="button" class="list-group-item list-group-item-action">意味がよくわからない</button>
+		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ１</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ２</span>
+		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ３</span>
+		</nav>
+		<h4 class="mt-5">通信速度を</h4>
+		<div class="list-group data-list mt-4 mb-5">
+			<%= form_tag(search_result_path, method: :get) do %>
+				<%= hidden_field_tag :value3, value:3 %>
+				<%= submit_tag "気にする", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(search_result_path, method: :get) do %>
+				<%= hidden_field_tag :value3, value:2 %>
+				<%= submit_tag "あまり気にしない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(search_result_path, method: :get) do %>
+				<%= hidden_field_tag :value3, value:1 %>
+				<%= submit_tag "意味がわからない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
 		</div>
 	</div>
 </div>

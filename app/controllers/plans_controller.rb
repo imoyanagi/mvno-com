@@ -29,9 +29,17 @@ class PlansController < ApplicationController
 	end
 
 	def step2
+		session[:value] = params[:value1].to_i
+		puts params[:value1]
 	end
 
 	def step3
+		session[:value] += params[:value2].to_i
+		puts params[:value2]
+		puts session[:value]
+	end
+
+	def search_result
 	end
 
 	private

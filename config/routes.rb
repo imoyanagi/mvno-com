@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'easily_search', to: 'plans#easily_search', as:'easily_search'
   get 'step2', to: 'plans#step2', as:'step2'
   get 'step3', to: 'plans#step3', as:'step3'
+  get 'result', to: 'plans#search_result', as:'search_result'
   resources :favorite_plans, only: [:create, :destroy]
   resources :questions, only: [:new, :index, :show, :create, :destroy]
   resources :answers, only: [:create, :destroy]
