@@ -25,6 +25,28 @@ class PlansController < ApplicationController
 		end
 	end
 
+	def easily_search
+	end
+
+	def step2
+		session[:value] = params[:value1].to_i
+		puts params[:value1]
+	end
+
+	def step3
+		session[:value] += params[:value2].to_i
+		puts params[:value2]
+		puts session[:value]
+	end
+
+	def search_result
+		@plans = Plan.where("data_value >= ?", session[:value])
+		if params[:value3] == "0" #通信速度 => 気にする を選んだ場合
+			@plans = @plans.where("(carrier_id >= ?) AND (carrier_id <= ?)", 4,5) #id=4はYmobile, id=5はUQmobile
+		end
+		@plans = @plans.order("bill asc").limit(3)
+	end
+
 	private
 	  def search_params
 	    params.require(:q).permit!

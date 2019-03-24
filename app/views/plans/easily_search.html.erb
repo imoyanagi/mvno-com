@@ -1,0 +1,70 @@
+<div class="container text-center">
+	<div id="step1">
+		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
+		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ１</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ２</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ３</span>
+		</nav>
+		<h4 class="mt-5">SNSやLINEを</h4>
+		<div class="list-group data-list mt-4 mb-5">
+			<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value1, 3 %>
+				<%= submit_tag "よく使う", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value1, 1 %>
+				<%= submit_tag "たまに使う", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value1, 0 %>
+				<%= submit_tag "ほとんど使わない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+		</div>
+	</div>
+	<div id="step2">
+		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ１</span>
+		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ２</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ３</span>
+		</nav>
+		<h4 class="mt-5">動画を</h4>
+		<div class="list-group data-list mt-4 mb-5">
+			<%= form_tag(step3_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value2, 7 %>
+				<%= submit_tag "よく見る", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step3_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value2, 2 %>
+				<%= submit_tag "たまに見る", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(step3_path, method: :get, remote: true) do %>
+				<%= hidden_field_tag :value2, 0 %>
+				<%= submit_tag "ほとんど見ない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+		</div>
+		<%= link_to "戻る", easily_search_path, class:"btn btn-secondary mt-4 mb-5", remote: true %>
+	</div>
+	<div id="step3">
+		<nav class="nav nav-pills flex-column flex-sm-row mt-5 bg-light w-75 mx-auto">
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ１</span>
+		  <span class="flex-sm-fill text-sm-center nav-link">ステップ２</span>
+		  <span class="flex-sm-fill text-sm-center nav-link active">ステップ３</span>
+		</nav>
+		<h4 class="mt-5">通信速度を</h4>
+		<div class="list-group data-list mt-4">
+			<%= form_tag(search_result_path, method: :get) do %>
+				<%= hidden_field_tag :value3, 0 %>
+				<%= submit_tag "気にする", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(search_result_path, method: :get) do %>
+				<%= hidden_field_tag :value3, 1 %>
+				<%= submit_tag "あまり気にしない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+			<%= form_tag(search_result_path, method: :get) do %>
+				<%= hidden_field_tag :value3, 2 %>
+				<%= submit_tag "意味がわからない", class:"btn list-group-item list-group-item-action"%>
+			<% end %>
+		</div>
+		<%= link_to "戻る", step2_path, class:"btn btn-secondary mt-4 mb-5", remote: true %>
+	</div>
+</div>

@@ -1,31 +1,62 @@
 <div class="container text-center">
 	<h4 class="p-3 mt-4 rounded">格安スマホのプランを検索する</h4>
 	<div class="bg-light rounded p-4">
-		<div>
-			<h5>毎月のデータ使用量を選んでください</h5>
-			<!-- 特定のviewだけ水平にする方法もある -->
-			<div class="list-group data-list">
-				<%= search_form_for(@q) do |f| %>
-					<%= f.hidden_field :data_value_lteq, value:1 %>
-					<%= f.submit "~1GB", class:"btn list-group-item list-group-item-action"%>
-				<% end %>
-				<%= search_form_for(@q) do |f| %>
-					<%= f.hidden_field :data_value_gteq, value:1 %>
-					<%= f.hidden_field :data_value_lteq, value:3 %>
-					<%= f.submit "1GB 〜 3GB", class:"btn list-group-item list-group-item-action"%>
-				<% end %>
-				<%= search_form_for(@q) do |f| %>
-					<%= f.hidden_field :data_value_gteq, value:3 %>
-					<%= f.hidden_field :data_value_lteq, value:7 %>
-					<%= f.submit "3GB 〜 7GB", class:"btn list-group-item list-group-item-action"%>
-				<% end %>
-				<%= search_form_for(@q) do |f| %>
-					<%= f.hidden_field :data_value_gteq, value:7 %>
-					<%= f.submit "7GB 〜", class:"btn list-group-item list-group-item-action"%>
-				<% end %>
-  			</div>
-		</div>
-		<%= render 'detail' %>
+      <div class="w-75 mx-auto">
+      	<%= search_form_for(@q) do |f| %>
+	        <table class="table table-bordered">
+	        	<tr>
+	        		<th>データ量</th>
+	        		<td>
+	        			<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], prompt: "選択してください" %> 〜
+	        			<%= f.select :data_value_lteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], prompt: "選択してください" %>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>条件</th>
+	        		<td>
+	        			<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+						  <label class="form-check-label">通話かけ放題</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <%= f.check_box :data_transfer_eq, {class:"form-check-input"}, 1, "" %>
+						  <label class="form-check-label">データ量繰越</label>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>回線の種類</th>
+	        		<td>
+	        			<div class="form-check form-check-inline">
+	        			  <%= f.radio_button :internet_type_eq, "", {checked: true, class:"form-check-input"} %>
+						  <!-- <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> -->
+						  <label class="form-check-label">全て</label>
+						</div>
+	        			<div class="form-check form-check-inline">
+						  <%= f.radio_button :internet_type_eq, "docomo", {class:"form-check-input"} %>
+						  <label class="form-check-label">docomo</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <%= f.radio_button :internet_type_eq, "au", {class:"form-check-input"} %>
+						  <label class="form-check-label">au</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <%= f.radio_button :internet_type_eq, "softbank", {class:"form-check-input"} %>
+						  <label class="form-check-label">softbank</label>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>通信事業者</th>
+	        		<td>
+	        			<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select" %>
+	        		</td>
+	        	</tr>
+	        </table>
+        	<%= f.submit "検索する", class:"btn btn-info"%>
+        <% end %>
+      </div>
+	  <%= link_to "とにかくおすすめのプランが知りたい方はこちら", easily_search_path, class:"btn btn-success mt-4" %>
 	</div>
 	<div class="row mt-5">
 		<div class="col-5 mb-5 rounded">
