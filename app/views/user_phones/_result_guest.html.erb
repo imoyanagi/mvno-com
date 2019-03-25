@@ -102,11 +102,7 @@
 					<h5 class="mt-4">これは<strong><%= @name %></strong></h5>
 					<h5 class="text-center"><span class="text-danger price-font-size"><%= @number %></span>分です</h5>
 				</div>
-				<%= form_for(@user_phone) do |f| %>
-					<%= f.hidden_field :option_ids, value: @option_ids %>
-					<%= f.hidden_field :plan_id, value: @plan.id %>
-					<%= f.submit "乗り換え先に設定する", class:"btn btn-secondary" %>
-				<% end %>
+
 			</div>
 		</div>
 	</div>
