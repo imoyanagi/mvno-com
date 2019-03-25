@@ -42,7 +42,7 @@ class UserPhonesController < ApplicationController
 	def create
 		@user_phone = UserPhone.new(user_phone_params)
 		@user_phone.user_id = current_user.id
-		@user_phone.save
+		@user_phone.save!
 		redirect_to users_path
 	end
 
