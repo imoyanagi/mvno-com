@@ -6,10 +6,16 @@
 			<h6>回線:<span class="text-secondary"><%= @plan.internet_type %></span> | データ量:<span class="text-secondary"><%= @plan.data_value %>GB</span></h6>
 		</div>
 	</div>
-	<% if @user_phones.present? %>
-		<%= render 'result_user' %>
-	<% end %>
-	<% if @user_phone.present? %>
+	<% if user_signed_in? %>
+		<% if @user_phones.present? %>
+			<%= render 'result_user' %>
+		<% else %>
+			<div class="text-center mb-5">
+				<h4>使用者情報を登録してください</h4>
+				<%= link_to "マイページに行く", users_path, class:"btn btn-secondary" %>
+			</div>
+		<% end %>
+	<% else %>
 		<%= render 'result_guest' %>
 	<% end %>
 </div>
