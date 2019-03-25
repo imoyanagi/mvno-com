@@ -7,18 +7,36 @@ class UserPhonesController < ApplicationController
 	def show
 		if user_signed_in?
 			@user_phones = UserPhone.where(user_id:current_user.id)
-			@plan = Plan.find(params[:id])
+			@plan = Plan.find(params[:plan_id])
 			@option_ids = params[:option_ids].split(',')
 			@options = []
 			@option_ids.each do |option_id|
 				@options.push(Option.where(carrier_id: @plan.carrier_id).find(option_id))
 			end
 		else
-			redirect_to plan_input_path(option_ids: params[:option_ids])
+			if params[:bill].blank?
+				redirect_to plan_input_path(option_ids: params[:option_ids])
+			else
+				@user_phone = UserPhone.new(bill: params[:bill], user_name:"ゲスト", carrier_id: params[:carrier][:id], phone_bill: params[:phone_bill], phone_bill_term: params[:phone_bill_term])
+				@plan = Plan.find(params[:plan_id])
+				@option_ids = params[:option_ids].split(',')
+				@options = []
+				@option_ids.each do |option_id|
+					@options.push(Option.where(carrier_id: @plan.carrier_id).find(option_id))
+				end
+				if params[:penalty]
+					@penalty_bill = params[:penalty_bill].to_i
+				else
+					@penalty_bill = 0
+				end
+			end
 		end
 	end
 
 	def input
+		@plan = Plan.find(params[:plan_id])
+		@option_ids = params[:option_ids]
+		@carriers = Carrier.all
 	end
 
 	def create

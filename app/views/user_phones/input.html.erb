@@ -1,24 +1,27 @@
 <div class="container">
 	<div class="input-group bg-light mt-5 mb-5 p-5 w-75 mx-auto">
-		<%= form_tag(plan_result_path, method: :get, class:"mx-auto") do %>
-			<h5>1. 毎月の利用料金を入力してください<span class="text-danger">(必須)</span></h5>
+		<%= form_tag(plan_result_path(@plan), method: :get, class:"mx-auto") do %>
+			<h5>1. 今お使いのキャリアを選択してください<span class="text-danger">(必須)</span></h5>
+			<%= collection_select(:carrier, :id, @carriers, :id, :name) %>
+			<h5 class="mt-4">1. 毎月の利用料金を入力してください<span class="text-danger">(必須)</span></h5>
 			<%= number_field_tag :bill, nil %>
 			<h5 class="mt-4">2. 解約金はかかりますか？<span class="text-danger">(必須)</span></h5>
 			<div class="form-check">
 			　<%= radio_button_tag "penalty", true, checked = false, class:"selectedRadio" %>
-			  <label class="form-check-label" for="mnp_cost_true">はい</label>
+			  <label class="form-check-label" for="penalty_true">はい</label>
 			</div>
 			<div class="form-check ml-4 mt-4" id="hiddenBox">
 			  <h6>金額を入力してください<span class="text-danger">(必須)</span></h6>
-			　<%= number_field_tag "penalty[bill]", 10260, class:"mb-3" %>
+			　<%= number_field_tag "penalty_bill", 10260, class:"mb-3" %>
 			</div>
 			<div class="form-check">
 			　<%= radio_button_tag "penalty", false, checked = false , class:"selectedRadio" %>
-			  <label class="form-check-label" for="mnp_cost_false">いいえ、もしくはわからない</label>
+			  <label class="form-check-label" for="penalty_false">いいえ、もしくはわからない</label>
 			</div>
 			 <h6 class="mt-4 ml-5">※参考<br>docomo・au・softbank・ymobile・uqmobileで2年契約の場合<br>更新月（契約した月から2年1ヶ月目~2年2ヶ月目）以外だと10260円(税込)の解約金がかかります。</h6>
 			<h5 class="mt-4">3. 端末の残債がある場合は入力してください</h5>
-			<%= number_field_tag :phone_bill, nil %>円/月 x <%= number_field_tag :phone_bill_term, nil %>回<br>
+			<%= number_field_tag :phone_bill, 0 %>円/月 x <%= number_field_tag :phone_bill_term, 0 %>回<br>
+			<%= hidden_field_tag :option_ids, @option_ids %>
 			<%= submit_tag "計算する", class:"btn btn-secondary mt-5" %>
 		<% end %>
 	</div>

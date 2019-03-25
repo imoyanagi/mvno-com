@@ -104,7 +104,7 @@
 					</tr>
 				</table>
 				<div class="mt-5">
-					<%= form_tag(result_path, method: :get, id:"submitOptionIds") do %>
+					<%= form_tag(plan_result_path(@plan), method: :get, id:"submitOptionIds") do %>
 						<%= hidden_field_tag :option_ids,{},id:"setOptionIds" %>
 						<btn class="btn btn-info" id="getOptionIds">乗り換えると得かどうか計算する！</btn>
 					<% end %>

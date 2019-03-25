@@ -158,6 +158,9 @@ $(document).on('turbolinks:load', function() {
 	});
 
 	$(function() {
+		if ($('#penalty_true').prop('checked')) {
+				$('#hiddenBox').css({"display": "block"});
+			}
 		$('#hiddenBox').css({"display": "none"});
 		$(".selectedRadio").on('click', function(){
 			if ($('#penalty_true').prop('checked')) {
