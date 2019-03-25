@@ -108,7 +108,7 @@ $(document).on('turbolinks:load', function() {
 	});
 
 	$(function(){
-	  setTimeout("$('.alert').animate({opacity: '0'}, 500)", 1500);
+	  setTimeout("$('.favoriteAlert').animate({opacity: '0'}, 500)", 1500);
 	});
 
 

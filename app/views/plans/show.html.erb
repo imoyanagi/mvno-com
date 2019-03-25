@@ -14,12 +14,12 @@
 					<% puts @favorite_plan.id %>
 					<%= link_to "お気に入りから削除", favorite_plan_path(@favorite_plan.id), method: :delete, class:"btn btn-secondary mt-5"%>
 					<% unless flash[:success].blank? %>
-						<div class="alert alert-success mt-3"><%= flash[:success] %></div>
+						<div class="alert alert-success mt-3 favoriteAlert"><%= flash[:success] %></div>
 					<% end %>
 				<% else %>
 					<%= link_to "お気に入りに追加", favorite_plans_path(id: @plan.id), method: :post, class:"btn btn-warning mt-5"%>
 					<% unless flash[:success].blank? %>
-						<div class="alert alert-success mt-3"><%= flash[:success] %></div>
+						<div class="alert alert-success mt-3 favoriteAlert"><%= flash[:success] %></div>
 					<% end %>
 				<% end %>
 			</div>

@@ -1,3 +1,6 @@
+<% if alert %>
+  <div class="error_field alert alert-danger text-center" role="alert"><%= alert %></div>
+<% end %>
 <div class="container text-center">
   <h2 class="mt-5">ログイン</h2>
 
@@ -20,7 +23,7 @@
     <% end %>
 
     <div class="actions mt-5">
-      <%= f.submit "ログイン", class:"btn btn-light"%>
+      <%= f.submit "ログイン", class:"btn btn-light mb-5"%>
     </div>
   <% end %>
 </div>
