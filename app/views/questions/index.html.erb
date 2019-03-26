@@ -47,6 +47,7 @@
 								</div>
 								<div class="col-8 text-left">
 									<h5 class="text-info"><%= question.title %></h5>
+									<h6><%= date_format(question.created_at) %></h6>
 									<h6>カテゴリ: <%= question.sub_category.name %></h6>
 									good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
 								</div>

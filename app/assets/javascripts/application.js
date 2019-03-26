@@ -108,12 +108,13 @@ $(document).on('turbolinks:load', function() {
 	});
 
 	$(function(){
-	  setTimeout("$('.alert').animate({opacity: '0'}, 500)", 1500);
+	  setTimeout("$('.favoriteAlert').animate({opacity: '0'}, 500)", 1500);
 	});
 
 
 
 	$(function(){
+		$('.questionSelected').css('background-color', '#fff');
 		$('.questionSelected').hover(
 			function(){
 				$(this).css('background-color', '#C0C0C0');
@@ -141,6 +142,33 @@ $(document).on('turbolinks:load', function() {
 	   		var subCategoryId = $(this).attr('id');
 			$('#setSubCategoryId').val(subCategoryId);
 			$('#selectedSubCategory').html($(this).html());
+		});
+	});
+	$(function() {
+		$("#step2").css({
+			"left": "0px",
+			"display": "none"
+		});
+	});
+
+	$(function() {
+		$("#step3").css({
+			"left": "0px",
+			"display": "none"
+		});
+	});
+
+	$(function() {
+		if ($('#penalty_true').prop('checked')) {
+				$('#hiddenBox').css({"display": "block"});
+			}
+		$('#hiddenBox').css({"display": "none"});
+		$(".selectedRadio").on('click', function(){
+			if ($('#penalty_true').prop('checked')) {
+				$('#hiddenBox').css({"display": "block"});
+			}else {
+				$('#hiddenBox').css({"display": "none"});
+			}
 		});
 	});
 });

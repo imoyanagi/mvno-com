@@ -31,3 +31,136 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        answer:
+          attributes:
+            body:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+        question:
+          attributes:
+            sub_category:
+              required: "が選択されていません"
+            title:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            body:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+
+        user_phone:
+          attributes:
+            user_name:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            carrier:
+              required: "が選択されていません"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            plan_name:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            bill:
+              not_a_number: "に数字を入力してください"
+              greater_than: "は0より大きい値を入力してください"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            contract_date:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            phone_name:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            phone_bill:
+              not_a_number: "に数字を入力してください(ない場合は0を入力)"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            phone_bill_term:
+              not_a_number: "に数字を入力してください(ない場合は0を入力)"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+    attributes:
+      answer:
+        body: "本文"
+      question:
+        sub_category: "カテゴリー"
+        title: "タイトル"
+        body: "本文"
+      user_phone:
+        user_name: "使用者名"
+        carrier: "携帯会社名"
+        plan_name: "プラン名"
+        bill: "利用料金"
+        contract_date: "契約日"
+        phone_name: "端末名"
+        phone_bill: "端末代"
+        phone_bill_term: "端末残り支払い期間"
+
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 約 1 時間
+        other: 約 %{count} 時間
+      about_x_months:
+        one: 約 1 ヶ月
+        other: 約 %{count} ヶ月
+      about_x_years:
+        one: 約 1 年
+        other: 約 %{count} 年
+      almost_x_years:
+        one: 1 年
+        other: "%{count} 年"
+      half_a_minute: 30秒前
+      less_than_x_seconds:
+        one: 1秒
+        other: "%{count} 秒前"
+      less_than_x_minutes:
+        one: 1分
+        other: "%{count} 分前"
+      over_x_years:
+        one: 1 年以上
+        other: "%{count} 年以上"
+      x_seconds:
+        one: 1 秒
+        other: "%{count} 秒"
+      x_minutes:
+        one: 1 分
+        other: "%{count} 分"
+      x_days:
+        one: 1 日
+        other: "%{count} 日"
+      x_months:
+        one: 1 ヶ月
+        other: "%{count} ヶ月"
+      x_years:
+        one: 1 年
+        other: "%{count} 年"
+

@@ -13,11 +13,16 @@ Rails.application.routes.draw do
   get '/users/favorite_posts', to:'users#favorite_posts'
   resources :plans, only: [:index, :show] do
     resources :reviews, only: [:index, :create, :edit, :update, :destroy]
+    get '/input', to:'user_phones#input'
+    get '/result', to:'user_phones#show', as:'result'
   end
+  get 'easily_search', to: 'plans#easily_search', as:'easily_search'
+  get 'step2', to: 'plans#step2', as:'step2'
+  get 'step3', to: 'plans#step3', as:'step3'
+  get 'result', to: 'plans#search_result', as:'search_result'
   resources :favorite_plans, only: [:create, :destroy]
   resources :questions, only: [:new, :index, :show, :create, :destroy]
   resources :answers, only: [:create, :destroy]
   resources :favorite_posts, only: [:create, :destroy]
   resources :user_phones, only: [:new, :edit, :create, :update, :destroy]
-  get 'plans/:id/result', to:'user_phones#show', as:'result'
 end

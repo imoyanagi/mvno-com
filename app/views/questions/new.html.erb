@@ -2,6 +2,7 @@
 	<h1 class="mt-5">Q&A投稿</h1>
 	<div class="bg-light mb-5 p-5 w-75 mx-auto rounded">
 		<%= form_for(@question) do |f| %>
+		<%= render 'layouts/error_messages', model: f.object %>
 			<h4>カテゴリーを選ぶ</h4>
 			<h6 class="mt-4">選択中のカテゴリ：<strong><span id="selectedSubCategory"></span></strong></h6>
 			<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
