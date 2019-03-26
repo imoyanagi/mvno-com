@@ -34,6 +34,11 @@ en:
   activerecord:
     errors:
       models:
+        answer:
+          attributes:
+            body:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
         question:
           attributes:
             sub_category:
@@ -103,6 +108,8 @@ en:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
     attributes:
+      answer:
+        body: "本文"
       question:
         sub_category: "カテゴリー"
         title: "タイトル"
