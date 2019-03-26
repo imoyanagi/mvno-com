@@ -15,7 +15,7 @@
 					<div class="ml-4">
 						<h5>カテゴリー：<%= @question.sub_category.name %></h5>
 						<h5>質問者：<%= @question.user.name %></h5>
-						<h6>3時間前</h6>
+						<h6><%= date_format(@question.created_at) %></h6>
 					</div>
 				</div>
 				<div class="border p-3">
@@ -68,7 +68,7 @@
 					<div class="ml-4 d-flex flex-column justify-content-end">
 						<h5>回答No.<%= answer.number %></h5>
 						<h5>回答者：<%= answer.user.name %></h5>
-						<h6>3時間前</h6>
+						<h6><%= date_format(answer.created_at) %></h6>
 					</div>
 				</div>
 				<div class="border p-3">

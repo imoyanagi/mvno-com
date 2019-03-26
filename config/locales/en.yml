@@ -124,3 +124,43 @@ en:
         phone_bill: "端末代"
         phone_bill_term: "端末残り支払い期間"
 
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 約 1 時間
+        other: 約 %{count} hours
+      about_x_months:
+        one: 約 1 ヶ月
+        other: 約 %{count} months
+      about_x_years:
+        one: 約 1 年
+        other: 約 %{count} 年
+      almost_x_years:
+        one: 1 年
+        other: "%{count} 年"
+      half_a_minute: 30秒前
+      less_than_x_seconds:
+        one: 1秒
+        other: "%{count} 秒前"
+      less_than_x_minutes:
+        one: 1分
+        other: "%{count} 分前"
+      over_x_years:
+        one: 1 年以上
+        other: "%{count} 年以上"
+      x_seconds:
+        one: 1 秒
+        other: "%{count} 秒"
+      x_minutes:
+        one: 1 分
+        other: "%{count} 分"
+      x_days:
+        one: 1 日
+        other: "%{count} 日"
+      x_months:
+        one: 1 ヶ月
+        other: "%{count} ヶ月"
+      x_years:
+        one: 1 年
+        other: "%{count} 年"
+
