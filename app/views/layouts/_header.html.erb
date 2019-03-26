@@ -1,6 +1,6 @@
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<%= link_to "格安スマホ乗り換え案内", root_path, class:"navbar-brand" %>
+		<%= link_to "格安スマホ乗換案内", root_path, class:"navbar-brand" %>
   		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="ナビゲーションの切替">
     		<span class="navbar-toggler-icon"></span>
   		</button>
@@ -11,14 +11,14 @@
 			      <li class="nav-item active">
 			        <%= link_to "マイページ", users_path, class:"nav-link ml-5" %>
 			      </li>
-			      <li class="nav-item">
+			      <li class="nav-item active">
 			        <%= link_to "プラン一覧", plans_path, class:"nav-link ml-5" %>
 			      </li>
-			      <li class="nav-item">
+			      <li class="nav-item active">
 			        <%= link_to "Q&A掲示板", questions_path, class:"nav-link ml-5" %>
 			      </li>
 			    </ul>
-			    <span class="navbar-text">
+			    <span class="navbar-text active">
 			      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 			    </span>
 	  		</div>
@@ -29,11 +29,11 @@
 			      <li class="nav-item active">
 			        <%= link_to "プラン一覧", plans_path, class:"nav-link ml-5" %>
 			      </li>
-			      <li class="nav-item">
+			      <li class="nav-item active">
 			        <%= link_to "Q&A掲示板", questions_path, class:"nav-link ml-5" %>
 			      </li>
 			    </ul>
-			    <span class="navbar-text">
+			    <span class="navbar-text active">
 			      <%= link_to "ログイン", new_user_session_path %><br>
 			      <%= link_to "新規会員登録はこちら", new_user_registration_path %>
 			    </span>
