@@ -114,6 +114,7 @@ $(document).on('turbolinks:load', function() {
 
 
 	$(function(){
+		$('.questionSelected').css('background-color', '#fff');
 		$('.questionSelected').hover(
 			function(){
 				$(this).css('background-color', '#C0C0C0');
