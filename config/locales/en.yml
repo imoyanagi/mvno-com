@@ -34,6 +34,19 @@ en:
   activerecord:
     errors:
       models:
+        question:
+          attributes:
+            sub_category:
+              required: "が選択されていません"
+            title:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            body:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+
         user_phone:
           attributes:
             user_name:
@@ -90,6 +103,10 @@ en:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
     attributes:
+      question:
+        sub_category: "カテゴリー"
+        title: "タイトル"
+        body: "本文"
       user_phone:
         user_name: "使用者名"
         carrier: "携帯会社名"
