@@ -128,10 +128,10 @@ en:
     distance_in_words:
       about_x_hours:
         one: 約 1 時間
-        other: 約 %{count} hours
+        other: 約 %{count} 時間
       about_x_months:
         one: 約 1 ヶ月
-        other: 約 %{count} months
+        other: 約 %{count} ヶ月
       about_x_years:
         one: 約 1 年
         other: 約 %{count} 年
