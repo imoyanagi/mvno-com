@@ -78,8 +78,9 @@
 						<% end %>
 					<% end %>
 				</h6>
-				<h4><%= @plans.count %>件</h4>
+				<h5><%= @plans.total_count %>件中　<%= @plans.offset_value + 1 %>〜<%= @plans.offset_value + @plans.length %>件表示</h5>
 			</div>
+			<%= paginate @plans %>
 			<% @plans.each do |plan| %>
 			<div class="row bg-light mb-3 p-3 rounded border">
 				<div class="col-3">
@@ -92,6 +93,7 @@
 				</div>
 			</div>
 			<% end %>
+			<%= paginate @plans %>
 		</div>
 	</div>
 </div>

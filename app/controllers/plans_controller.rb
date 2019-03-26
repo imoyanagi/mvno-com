@@ -12,7 +12,7 @@ class PlansController < ApplicationController
 
 	def index
 		@q = Plan.search(params[:q])
-    	@plans = @q.result(distinct: true)
+    	@plans = @q.result(distinct: true).page(params[:page]).per(20)
     	@carriers = Carrier.all
 	end
 
