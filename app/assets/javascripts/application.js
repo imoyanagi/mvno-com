@@ -108,12 +108,13 @@ $(document).on('turbolinks:load', function() {
 	});
 
 	$(function(){
-	  setTimeout("$('.alert').animate({opacity: '0'}, 500)", 1500);
+	  setTimeout("$('.favoriteAlert').animate({opacity: '0'}, 500)", 1500);
 	});
 
 
 
 	$(function(){
+		$('.questionSelected').css('background-color', '#fff');
 		$('.questionSelected').hover(
 			function(){
 				$(this).css('background-color', '#C0C0C0');

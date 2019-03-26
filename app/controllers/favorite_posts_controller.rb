@@ -3,7 +3,7 @@ class FavoritePostsController < ApplicationController
 	def create
 		question_id = params[:favorite_post][:question_id]
 		if user_signed_in?
-			if FavoritePost.find_by(favorite_post_params,user_id:current_user.id).blank?
+			if FavoritePost.find_by(question_id: params[:favorite_post][:question_id], answer_id: params[:favorite_post][:answer_id],user_id:current_user.id).blank?
 				favorite_post = FavoritePost.new(favorite_post_params)
 				favorite_post.user_id = current_user.id
 				favorite_post.save!
