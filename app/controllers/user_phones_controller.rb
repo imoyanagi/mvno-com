@@ -1,7 +1,7 @@
 class UserPhonesController < ApplicationController
 	before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
 	def new
-		@user_phone = UserPhone.new
+		@user_phone = UserPhone.new(phone_bill: 0, phone_bill_term: 0)
 	end
 
 	def show
@@ -41,9 +41,19 @@ class UserPhonesController < ApplicationController
 
 	def create
 		@user_phone = UserPhone.new(user_phone_params)
+		if @user_phone.phone_bill_term.nil?
+			@user_phone.phone_bill_term = 0
+		end
+		if @user_phone.phone_bill.nil?
+			@user_phone.phone_bill = 0
+		end
 		@user_phone.user_id = current_user.id
-		@user_phone.save!
-		redirect_to users_path
+		if @user_phone.save
+			redirect_to users_path
+		else
+			render 'new'
+		end
+
 	end
 
 	def edit
@@ -51,11 +61,12 @@ class UserPhonesController < ApplicationController
 	end
 
 	def update
-		user_phone = UserPhone.find(params[:id])
-		# user_phone.plan_id = params[:user_phone][:plan_id]
-		# user_phone.selected_option_ids = params[:user_phone][:option_ids]
-		user_phone.update(user_phone_params)
-		redirect_to users_path
+		@user_phone = UserPhone.find(params[:id])
+		if @user_phone.update(user_phone_params)
+			redirect_to users_path
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
