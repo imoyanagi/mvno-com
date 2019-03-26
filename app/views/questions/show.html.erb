@@ -6,6 +6,8 @@
       <% end %>
 <% end %>
 <div class="container">
+	<a href="#link_answer1">回答１へのリンク</a>
+	<a href="#link_answer2">回答２へのリンク</a>
 	<div class="row mt-5 mb-5">
 		<div class="col-8">
 			<h3 class="text-info"><%= @question.title %></h3>
@@ -62,7 +64,7 @@
 
 			<h3 class="mt-4">回答　<%= @answers.count %>件</h3>
 			<% @answers.where(answer_id: nil).each do |answer| %>
-			<div class="mt-3 border p-4 bg-light rounded">
+			<div class="mt-3 border p-4 bg-light rounded" id="link_answer<%= answer.number %>">
 				<div class="mb-3 d-flex justify-content-start">
 					<%= attachment_image_tag answer.user,:profile_image, fallback: "no_image.jpg", size: '100x100' %>
 					<div class="ml-4 d-flex flex-column justify-content-end">
@@ -72,7 +74,7 @@
 					</div>
 				</div>
 				<div class="border p-3">
-					<p class=""><%= answer.body %></p>
+					<p class=""><%= answer.body.html_safe %></p>
 				</div>
 				<div class="d-flex justify-content-between">
 					<div class="mt-3 float-left">
