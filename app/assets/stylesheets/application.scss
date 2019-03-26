@@ -82,3 +82,15 @@ body {
 .select-category {
 	font-size: 16px;
 }
+
+@media screen and (max-width: 540px) {
+	.search-table {
+		th{
+			display: block;
+    		width: 100%;
+		}
+	}
+}
+
+
+
