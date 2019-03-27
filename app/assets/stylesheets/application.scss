@@ -32,13 +32,6 @@ body {
 	max-width: 800px;
 }
 
-.ranking {
-	background-color: #FFD700;
-	font-size: 24px;
-}
-.ranking span {
-}
-
 .price-font-size {
 	font-size: 30px;
 }
@@ -75,21 +68,67 @@ body {
 	font-size: 14px;
 }
 
-.ranking-num {
-	width:70px;
+.top-ranking-table {
+	td:nth-child(1){
+		width: 15%;
+	}
+	td:nth-child(2){
+		width: 25%;
+	}
+	td:nth-child(3){
+		width: 60%;
+	}
 }
 
 .select-category {
 	font-size: 16px;
 }
 
+.top-search-table {
+	th{
+		background-color: #CCCCCC;
+	}
+	td{
+		background-color: #fff;
+	}
+}
+
+
+
 @media screen and (max-width: 540px) {
-	.search-table {
-		th{
+	.top-search-table {
+		th, td{
 			display: block;
     		width: 100%;
 		}
+		th{
+			background-color: #CCCCCC;
+		}
+		.form-check-inline {
+			display: block;
+			text-align: left;
+		}
 	}
+.top-ranking-table {
+	table,th,td{
+		border: none;
+	}
+
+	td:nth-child(1){
+		display: block;
+		width:100%;
+	}
+	td:nth-child(2){
+		display: block;
+		width: 25%;
+		float: left;
+	}
+	td:nth-child(3){
+		display: block;
+		width: 75%;
+		float: left;
+	}
+}
 }
 
 
