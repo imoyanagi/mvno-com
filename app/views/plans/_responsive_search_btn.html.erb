@@ -1,0 +1,60 @@
+<div class="responsive-search-box">
+	<button type="button" class="btn btn-primary mb-4" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		条件を変更
+	</button>
+	<div class="collapse" id="collapseExample">
+		<div class="card card-body text-center">
+			<%= search_form_for(@q) do |f| %>
+				<div class="mb-4 mt-4">
+					<h6>データ量</h6>
+					<div class="row">
+						<div class="col-5">
+							<%= f.select :data_value_gteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {}, {class:"search-context custom-select", id:"dataSelectedGt"} %>
+						</div>
+						<div class="col-1 pt-2 pr-4">〜</div>
+						<div class="col-5">
+	        				<%= f.select :data_value_lteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {},{class:"search-context custom-select", id:"dataSelectedLt"} %>
+	        			</div>
+	        		</div>
+				</div>
+				<!-- 条件 -->
+				<div class="mb-4">
+					<h6>条件</h6>
+					<div class="form-check">
+					  <%= f.check_box :data_transfer_eq, {class:"form-check-input search-context"}, 1, "" %>
+					  <label class="form-check-label" for="defaultCheck1">
+					    データ量繰越
+					  </label>
+					</div>
+				</div>
+				<!-- 回線の種類 -->
+				<div class="mb-4">
+					<h6>回線の種類</h6>
+					<div class="w-75 mx-auto text-left"> <!-- 中央ぞろえ -->
+						<div class="form-check ml-5">
+		    			  <%= f.radio_button :internet_type_eq, "", {checked: true, class:"form-check-input search-context"} %>
+						  <label class="form-check-label">全て</label>
+						</div>
+		    			<div class="form-check ml-5">
+						  <%= f.radio_button :internet_type_eq, "docomo", {class:"form-check-input search-context"} %>
+						  <label class="form-check-label">docomo</label>
+						</div>
+						<div class="form-check ml-5">
+						  <%= f.radio_button :internet_type_eq, "au", {class:"form-check-input search-context"} %>
+						  <label class="form-check-label">au</label>
+						</div>
+						<div class="form-check ml-5">
+						  <%= f.radio_button :internet_type_eq, "softbank", {class:"form-check-input search-context"} %>
+						  <label class="form-check-label">softbank</label>
+						</div>
+					</div>
+				</div>
+				<!-- 通信事業者 -->
+				<div class="mb-4">
+					<h6>通信事業者</h6>
+					<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select search-context" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,14 +1,21 @@
-<div class="container">
+<div class="container mt-5 mb-5">
 	<div class="row">
-		<div class="col-3 text-center">
-			<div class="bg-light p-3 mt-5 mb-5 rounded border sticky">
+		<div class="col-sm-3 text-center">
+			<div class="bg-light p-3 rounded border search-side-bar">
 				<h4 class="border-bottom border-dark">検索条件</h4>
 				<!-- データ量 -->
 				<%= search_form_for(@q) do |f| %>
 				<div class="mb-4 mt-4">
 					<h6>データ量</h6>
-					<%= f.select :data_value_gteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {}, {class:"search-context", id:"dataSelectedGt"} %> 〜
-        			<%= f.select :data_value_lteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {},{class:"search-context", id:"dataSelectedLt"} %>
+					<div class="row">
+						<div class="col-5">
+							<%= f.select :data_value_gteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {}, {class:"search-context custom-select", id:"dataSelectedGt"} %>
+						</div>
+						<div class="col-1 pt-2 pr-4">〜</div>
+						<div class="col-5">
+	        				<%= f.select :data_value_lteq, [["指定なし", ""], ["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {},{class:"search-context custom-select", id:"dataSelectedLt"} %>
+	        			</div>
+	        		</div>
 				</div>
 				<!-- 条件 -->
 				<div class="mb-4">
@@ -51,8 +58,8 @@
 			</div>
 		</div>
 		<!-- 検索結果 -->
-		<div class="col-9">
-			<div class="bg-light p-3 mt-5 mb-4 rounded border">
+		<div class="col-sm-9">
+			<div class="bg-light p-3 mb-3 rounded border">
 				<h6>検索条件
 					<% unless params[:q].nil? %>
 						<% unless params[:q][:data_value_gteq].blank? %>
@@ -73,12 +80,13 @@
 					<% end %>
 				</h6>
 				<h5><%= @plans.total_count %>件中　<%= @plans.offset_value + 1 %>〜<%= @plans.offset_value + @plans.length %>件表示</h5>
+				<%= render 'responsive_search_btn' %>
 			</div>
 			<%= paginate @plans %>
 			<% @plans.each do |plan| %>
 			<div class="row bg-light mb-3 p-3 rounded border">
 				<div class="col-3">
-					<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto" %>
+					<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto img-fluid" %>
 				</div>
 				<div class="col-9">
 					<h5><%= link_to plan_path(plan.id) do %><%= plan.carrier.name %><br><%= plan.name %></a></h5><% end %>
