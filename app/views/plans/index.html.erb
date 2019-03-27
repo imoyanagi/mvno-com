@@ -84,16 +84,19 @@
 			</div>
 			<%= paginate @plans %>
 			<% @plans.each do |plan| %>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
+			<%= link_to plan_path(plan.id) do %>
+			<div class="row mb-3 p-3 rounded border questionSelected">
+				<div class="col-3 ">
 					<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto img-fluid" %>
 				</div>
-				<div class="col-9">
-					<h5><%= link_to plan_path(plan.id) do %><%= plan.carrier.name %><br><%= plan.name %></a></h5><% end %>
+				<div class="col-9 text-dark">
+					<strong><%= plan.carrier.name %></strong>
+					<h5 class="text-info"><%= plan.name %></h5>
 					<h5>料金　<span class="text-danger price-font-size"><%= plan.bill %>円/月</span></h5>
 					<h6>回線:<span class="text-secondary"><%= plan.internet_type %></span> | データ量:<span class="text-secondary"><%= plan.data_value %>GB</span></h6>
 				</div>
 			</div>
+			<% end %>
 			<% end %>
 			<%= paginate @plans %>
 		</div>
