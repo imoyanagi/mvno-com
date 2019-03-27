@@ -97,9 +97,13 @@ body {
 	display: none;
 }
 
+@media screen and (min-width: 576px) {
+	.plan-box {
+		width: 75%;
+	}
+}
 
-
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 575px) {
 	.top-search-table {
 		th, td{
 			display: block;
@@ -140,8 +144,16 @@ body {
 		display: block;
 	}
 	.price-font-size {
-	font-size: 1.5rem;
-}
+		font-size: 1.5rem;
+	}
+	.search-result-border {
+		display: none;
+	}
+	.after-line-break::after {
+	  content: "\A" ;
+	  white-space: pre;
+	}
+
 }
 
 

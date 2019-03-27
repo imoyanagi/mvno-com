@@ -84,25 +84,19 @@
 			</div>
 			<%= paginate @plans %>
 			<% @plans.each do |plan| %>
-				<%= link_to plan_path(plan.id) do %>
-					<div class="mb-3 p-3 rounded border questionSelected text-dark clearfix">
-						<div class="float-sm-right plan-box">
-							<strong><%= plan.carrier.name %></strong>
-							<h5 class="text-info"><%= plan.name %></h5>
-						</div>
-						<div class="w-25 float-left">
-							<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size:"120x120", class:"img-fluid" %>
-						</div>
-						<div class="w-75 pl-3 float-right">
-							<h5>料金　<span class="text-danger price-font-size"><%= plan.bill %>円/月</span></h5>
-							<h6>
-								回線:<span class="text-secondary after-line-break"><%= plan.internet_type %></span>
-								<span class="search-result-border"> | </span>
-								データ量:<span class="text-secondary"><%= plan.data_value %>GB</span>
-							</h6>
-						</div>
-					</div>
-				<% end %>
+			<%= link_to plan_path(plan.id) do %>
+			<div class="row mb-3 p-3 rounded border questionSelected">
+				<div class="col-3 ">
+					<%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto img-fluid" %>
+				</div>
+				<div class="col-9 text-dark">
+					<strong><%= plan.carrier.name %></strong>
+					<h5 class="text-info"><%= plan.name %></h5>
+					<h5>料金　<span class="text-danger price-font-size"><%= plan.bill %>円/月</span></h5>
+					<h6>回線:<span class="text-secondary"><%= plan.internet_type %></span> | データ量:<span class="text-secondary"><%= plan.data_value %>GB</span></h6>
+				</div>
+			</div>
+			<% end %>
 			<% end %>
 			<%= paginate @plans %>
 		</div>
