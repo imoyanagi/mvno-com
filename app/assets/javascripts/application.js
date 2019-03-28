@@ -16,6 +16,35 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+$(window).on('load resize', function() {
+		var windowWidth = window.innerWidth;
+
+	  	if (windowWidth < 576) {
+	  		// 使用者情報のテーブル
+	    	$('.userPhoneTable').css({"display": "none"});
+	    	$('.userPhoneInfoBtn').on('click', function(){
+	    		if ($(this).html() == '詳細'){
+	    			$(this).parent().next('.userPhoneTable').css({"display": "table-cell"});
+	    			$(this).html('閉じる');
+	    		}else {
+	    			$(this).parent().next('.userPhoneTable').css({"display": "none"});
+	    			$(this).html('詳細');
+	    		}
+	    	});
+	    	// 料金のテーブル
+	    	$('.user-phone-show-table').css({"display": "none"});
+	    	$('.userPhoneBillBtn').on('click', function(){
+	    		if ($(this).next('.user-phone-show-table').css('display') == 'none' ){
+	    			$(this).next('.user-phone-show-table').css({"display": "table-cell"});
+	    		}else{
+	    			$(this).next('.user-phone-show-table').css({"display": "none"});
+	    		}
+	    	});
+		}else{
+			$('.userPhoneTable').css({"display": "table-cell"});
+			$('.user-phone-show-table').css({"display": "table-cell"});
+		}
+});
 
 $(document).on('turbolinks:load', function() {
 
@@ -171,4 +200,5 @@ $(document).on('turbolinks:load', function() {
 			}
 		});
 	});
+
 });

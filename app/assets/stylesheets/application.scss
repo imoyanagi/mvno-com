@@ -202,6 +202,25 @@ body {
 	.review-index-title {
 		width: 100px;
 	}
+	.user-phone-show-plan-box {
+		width: auto !important;
+	}
+	.user-phone-show-table {
+		table {
+			td,th {
+			width:100%;
+			display: block;
+			font-size: 1rem;
+			padding: 0.5rem !important;
+			text-align: center;
+			}
+			tbody td:nth-child(1),tbody th:nth-child(1) {
+				background-color: #CCCCCC;
+				font-size: 0.8rem;
+			}
+		}
+	}
+
 
 }
 

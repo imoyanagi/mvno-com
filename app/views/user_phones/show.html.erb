@@ -1,7 +1,7 @@
 <div class="container-fluid">
-	<div class="bg-light w-75 mx-auto p-3 mt-5 mb-5 rounded border clearfix">
-		<%= image_tag("linemobile.png", size:"150x150", class:"mx-auto float-left") %>
-		<div class="float-left ml-5"><h4><%= @plan.carrier.name %><br><%= @plan.name %></h4>
+	<div class="bg-light w-75 mx-auto p-3 mt-5 mb-5 rounded border clearfix user-phone-show-plan-box">
+		<%= image_tag("linemobile.png", size:"150x150", class:"float-sm-left d-none d-sm-block") %>
+		<div class="float-sm-left ml-5"><h6><strong><%= @plan.carrier.name %></strong></h6><h4><%= @plan.name %></h4>
 			<h5>料金　<span class="text-danger price-font-size"><%= @plan.bill %>円/月</span></h5>
 			<h6>回線:<span class="text-secondary"><%= @plan.internet_type %></span> | データ量:<span class="text-secondary"><%= @plan.data_value %>GB</span></h6>
 		</div>
