@@ -28,7 +28,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-8">
-			<div class="bg-light p-5 mb-5 rounded border plan-show-info-box">
+			<div class="bg-light p-5 mb-5 rounded border plan-show-info-box clearfix">
 
 				<h4 class="p-3 bg-secondary text-light">基本情報</h4>
 				<table class="table table-borderless pl-5 mt-4 plan-show-info-table">
@@ -69,14 +69,14 @@
 					<%= render 'review_form', review: @review %>
 				<% end %>
 				<% @reviews.each do |review| %>
-					<div class="border rounded p-3 mb-3 row">
-						<div class="col-2 d-flex flex-column">
+					<div class="p-3 mb-3 row">
+						<div class="col-3 col-sm-2">
 							<%= image_tag("linemobile.png", size:"60x60") %>
-							<span class="review-user-name">やくみつる</span>
 						</div>
-						<div class="col-10">
+						<div class="col-9 col-sm-10">
 							<div id="total_star<%= review.id %>"></div>
-							<%= review.title %>
+							<strong><%= review.title %></strong>
+							<h6 class="review-user-name"><i class="fas fa-user"></i>やくみつる</h6>
 							<script>
 								$(document).on('turbolinks:load', function() {
 									$('#total_star<%= review.id%>').raty({
@@ -91,11 +91,11 @@
 						</div>
 					</div>
 				<% end %>
-				<%= link_to "レビュー一覧", plan_reviews_path(@plan), class:"float-right" %>
+				<%= link_to "レビュー一覧", plan_reviews_path(@plan), class:"mr-3 mb-3 float-right" %>
 			</div>
 		</div>
 		<div class="col-sm-4 plan-show-sticky-res">
-			<div class="bg-light p-3 mb-4 rounded border plan-show-sticky">
+			<div class="bg-light p-3 mb-4 rounded border plan-show-sticky ">
 				<h4>料金</h4>
 				<span class="text-danger price-font-size">　　<span class="addOptionBill"><%= @plan.bill %></span>円/月</span>
 				<h6 class="mt-3 d-none d-sm-block">※左でオプションを選択すると料金に反映されます。</h6>
