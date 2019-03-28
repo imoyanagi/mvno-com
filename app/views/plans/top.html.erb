@@ -1,14 +1,21 @@
 <div class="container text-center">
-	<h4 class="p-3 mt-4 rounded">格安スマホのプランを検索する</h4>
+	<h4 class="p-3 mt-4 rounded">格安スマホのプランを検索</h4>
 	<div class="bg-light rounded p-4">
-      <div class="w-75 mx-auto">
+      <div class="w-75 mx-auto ">
       	<%= search_form_for(@q) do |f| %>
-	        <table class="table table-bordered">
+	        <table class="table table-bordered top-search-table ">
 	        	<tr>
 	        		<th>データ量</th>
 	        		<td>
-	        			<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], prompt: "選択してください" %> 〜
-	        			<%= f.select :data_value_lteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], prompt: "選択してください" %>
+	        			<div class="row">
+	        				<div class="col-sm-5">
+		        				<%= f.select :data_value_gteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {prompt: "選択してください"}, {class:"custom-select"} %>
+		        			</div>
+		        			<div class="col-sm-1 pt-2 pr-4">〜</div>
+		        			<div class="col-sm-5">
+		        				<%= f.select :data_value_lteq, [["1GB", 1], ["2GB", 2], ["3GB", 3], ["4GB", 4], ["5GB", 5], ["6GB", 6], ["7GB", 7]], {prompt: "選択してください"}, {class:"custom-select"} %>
+		        			</div>
+		        		</div>
 	        		</td>
 	        	</tr>
 	        	<tr>
@@ -54,22 +61,23 @@
       </div>
 	  <%= link_to "とにかくおすすめのプランが知りたい方はこちら", easily_search_path, class:"btn btn-success mt-4" %>
 	</div>
-	<div class="row mt-5">
-		<div class="col-5 mb-5 rounded">
+
+	<div class="row">
+		<div class="col-sm-6 rounded mb-4">
+			<h4 class="mt-4 mb-3">人気ランキング</h4>
 			<div class="rounded bg-light">
-				<div class="p-3 ranking"><span>人気ランキング</span></div>
 				<% @plans.ranking.each_with_index do |plan, index| %>
-					<table class="table">
+					<table class="table top-ranking-table">
 						<tr>
-							<td class="ranking-num align-middle"><%= index + 1 %>位</td>
-							<td><%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %></td>
-							<td class="text-left"><%= link_to plan_path(plan) do %><%= plan.carrier.name %><br><%= plan.name %><% end %></td>
+							<td class="align-middle"><%= index + 1 %>位</td>
+							<td><%= attachment_image_tag plan.carrier,:carrier_image, fallback: "no_image.jpg", class:"mx-auto img-fluid " %></td>
+							<td class="text-left align-middle"><%= link_to plan_path(plan) do %><%= plan.carrier.name %><br><%= plan.name %><% end %></td>
 						</tr>
 					</table>
 				<% end %>
 			</div>
+			<h4 class="mt-4">最新記事</h4>
 			<div class="bg-light mt-4 rounded">
-				<h4 class="p-3 mb-4 mt-3">最新記事</h4>
 				<% @rss.items.each do |item| %>
 					<div class="p-3 clearfix">
 						<a href="<%= item.link %>">
@@ -85,21 +93,22 @@
 				<% end %>
 			</div>
 		</div>
-		<div class="col-1"></div>
-		<div class="col-6 mb-5">
+		<div class="col-sm-6 mt-4 mb-5">
 			<h4>最近のQ&A</h4>
 			<div class="mt-3 border p-5 bg-light rounded">
 				<% @questions.order("id desc").each do |question| %>
 					<%= link_to question_path(question), class:"text-dark" do %>
 						<div class="row mb-4 border rounded p-3 questionSelected">
-							<div class="col-4 d-flex flex-column">
+							<div class="col-sm-4">
 								<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", size: '100x100' %>
 								<h6><%= question.user.name %></h6>
 							</div>
-							<div class="col-8 text-left">
-								<h5 class="text-info"><%= question.title %></h5>
-								<h6>カテゴリ: <%= question.sub_category.name %></h6>
-								good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
+							<div class="col-sm-8 text-left">
+								<div><h5 class="text-info"><%= question.title %></h5></div>
+								<div>
+									<h6>カテゴリ: <%= question.sub_category.name %></h6>
+									good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
+								</div>
 							</div>
 						</div>
 					<% end %>
