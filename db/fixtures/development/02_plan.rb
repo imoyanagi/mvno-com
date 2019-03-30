@@ -337,6 +337,114 @@ index += 1
 
 Plan.seed do |s|
 	s.id = index
+	s.name = "docomoプラン（Dプラン）　デュアルタイプ　10GB"
+	s.bill = 3220
+    s.data_value = 10
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "docomo"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "docomoプラン（Dプラン）　デュアルタイプ　20GB"
+	s.bill = 4680
+    s.data_value = 20
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "docomo"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "docomoプラン（Dプラン）　デュアルタイプ　30GB"
+	s.bill = 6600
+    s.data_value = 30
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "docomo"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "softbankプラン（Sプラン）　デュアルタイプ　500MB"
+	s.bill = 1750
+    s.data_value = 0.5
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "softbank"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "softbankプラン（Sプラン）　デュアルタイプ　3GB"
+	s.bill = 1950
+    s.data_value = 3
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "softbank"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "softbankプラン（Sプラン）　デュアルタイプ　6GB"
+	s.bill = 2630
+    s.data_value = 6
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "softbank"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "softbankプラン（Sプラン）　デュアルタイプ　10GB"
+	s.bill = 3570
+    s.data_value = 10
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "softbank"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "softbankプラン（Sプラン）　デュアルタイプ　20GB"
+	s.bill = 5030
+    s.data_value = 20
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "softbank"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "softbankプラン（Sプラン）　デュアルタイプ　30GB"
+	s.bill = 6950
+    s.data_value = 30
+    s.carrier_id = Carrier.find_by(name: 'mineo').id
+	s.internet_type = "softbank"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
 	s.name = "Sプラン"
 	s.bill = 2980
     s.data_value = 3
@@ -401,6 +509,78 @@ Plan.seed do |s|
 	s.bill = 5980
     s.data_value = 21
     s.carrier_id = Carrier.find_by(name: 'UQmobile').id
+	s.internet_type = "au"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "ミニマムスタートプラン タイプD"
+	s.bill = 1600
+    s.data_value = 3
+    s.carrier_id = Carrier.find_by(name: 'IIJmio').id
+	s.internet_type = "docomo"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "ライトスタートプラン タイプD"
+	s.bill = 2220
+    s.data_value = 6
+    s.carrier_id = Carrier.find_by(name: 'IIJmio').id
+	s.internet_type = "docomo"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "ファミリーシェアプラン タイプD"
+	s.bill = 3260
+    s.data_value = 12
+    s.carrier_id = Carrier.find_by(name: 'IIJmio').id
+	s.internet_type = "docomo"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "ミニマムスタートプラン タイプA"
+	s.bill = 1600
+    s.data_value = 3
+    s.carrier_id = Carrier.find_by(name: 'IIJmio').id
+	s.internet_type = "au"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "ライトスタートプラン タイプD"
+	s.bill = 2220
+    s.data_value = 6
+    s.carrier_id = Carrier.find_by(name: 'IIJmio').id
+	s.internet_type = "au"
+	s.data_transfer = 1
+	s.notes = "特になし"
+end
+index += 1
+
+Plan.seed do |s|
+	s.id = index
+	s.name = "ファミリーシェアプラン タイプD"
+	s.bill = 3260
+    s.data_value = 12
+    s.carrier_id = Carrier.find_by(name: 'IIJmio').id
 	s.internet_type = "au"
 	s.data_transfer = 1
 	s.notes = "特になし"
