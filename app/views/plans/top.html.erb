@@ -52,7 +52,7 @@
 	        	<tr>
 	        		<th>通信事業者</th>
 	        		<td>
-	        			<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select" %>
+	        			<%= f.collection_select :carrier_id_eq, @carriers.where("id > ?", 3), :id, :name, {include_blank: "指定なし"}, class:"custom-select" %>
 	        		</td>
 	        	</tr>
 	        </table>
