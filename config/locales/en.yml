@@ -34,6 +34,22 @@ en:
   activerecord:
     errors:
       models:
+        review:
+          attributes:
+            body:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            title:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            total_eval:
+              blank: "が入力されていません。"
+            internet_eval:
+              blank: "が入力されていません。"
+            support_eval:
+              blank: "が入力されていません。"
+            cost_eval:
+              blank: "が入力されていません。"
         answer:
           attributes:
             body:
@@ -108,6 +124,13 @@ en:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
     attributes:
+      review:
+        title: "タイトル"
+        body: "本文"
+        total_eval: "総合評価"
+        internet_eval: "通信品質評価"
+        support_eval: "サポート評価"
+        cost_eval: "コスト評価"
       answer:
         body: "本文"
       question:
