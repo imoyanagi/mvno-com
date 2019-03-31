@@ -14,7 +14,16 @@ class UserPhonesController < ApplicationController
 				@options.push(Option.where(carrier_id: @plan.carrier_id).find(option_id))
 			end
 		else
-			if params[:bill].blank?
+			if params[:bill].blank? or params[:carrier][:id].blank? or params[:penalty].blank?
+				if params[:bill].blank?
+					flash[:no_bill] = "利用料金を入力してください"
+				end
+				if params[:carrier].blank?
+					flash[:no_carrier] = "キャリアを入力してください"
+				end
+				if params[:penalty].blank?
+					flash[:no_penalty] = "解約金を選択してください"
+				end
 				redirect_to plan_input_path(option_ids: params[:option_ids])
 			else
 				@user_phone = UserPhone.new(bill: params[:bill], user_name:"ゲスト", carrier_id: params[:carrier][:id], phone_bill: params[:phone_bill], phone_bill_term: params[:phone_bill_term])

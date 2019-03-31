@@ -113,9 +113,16 @@
 					</table>
 				</div>
 				<div class="mt-3">
-					<%= form_tag(plan_result_path(@plan), method: :get, id:"submitOptionIds") do %>
-						<%= hidden_field_tag :option_ids,{},id:"setOptionIds" %>
-						<btn class="btn btn-info" id="getOptionIds">乗り換えると得かどうか計算する！</btn>
+					<% if user_signed_in? %>
+						<%= form_tag(plan_result_path(@plan), method: :get, id:"submitOptionIds") do %>
+							<%= hidden_field_tag :option_ids,{},id:"setOptionIds" %>
+							<btn class="btn btn-info" id="getOptionIds">乗り換えると得かどうか計算する！</btn>
+						<% end %>
+					<% else %>
+						<%= form_tag(plan_input_path(@plan), method: :get, id:"submitOptionIds") do %>
+							<%= hidden_field_tag :option_ids,{},id:"setOptionIds" %>
+							<btn class="btn btn-info" id="getOptionIds">乗り換えると得かどうか計算する！</btn>
+						<% end %>
 					<% end %>
 				</div>
 			</div>

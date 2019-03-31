@@ -52,7 +52,7 @@
 	        	<tr>
 	        		<th>通信事業者</th>
 	        		<td>
-	        			<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select" %>
+	        			<%= f.collection_select :carrier_id_eq, @carriers.where("id > ?", 3), :id, :name, {include_blank: "指定なし"}, class:"custom-select" %>
 	        		</td>
 	        	</tr>
 	        </table>
@@ -81,9 +81,11 @@
 				<% @rss.items.each do |item| %>
 					<div class="p-3 clearfix">
 						<a href="<%= item.link %>">
-							<div class="d-flex flex-row">
-								<%= image_tag("#{item.description.match(%r{https?://[\w_.!*\/')(-]+})}", size:"90x90", class:"p-2") %>
-								<div class="text-left p-2">
+							<div class="d-flex">
+								<div class="p-2 w-25">
+									<%= image_tag("#{item.description.match(%r{https?://[\w_.!*\/')(-]+})}", class:"img-fluid") %>
+								</div>
+								<div class="text-left p-2 w-75">
 									<h6 class="text-info"><%= item.title %></h6>
 									<p class="text-dark"><%= item.pubDate.in_time_zone("Tokyo").strftime('%Y年%m月%d日 %H時%M分') %></p>
 								</div>
@@ -100,7 +102,7 @@
 					<%= link_to question_path(question), class:"text-dark" do %>
 						<div class="row mb-4 border rounded p-3 questionSelected">
 							<div class="col-sm-4">
-								<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", size: '100x100' %>
+								<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", class:"img-fluid" %>
 								<h6><%= question.user.name %></h6>
 							</div>
 							<div class="col-sm-8 text-left">

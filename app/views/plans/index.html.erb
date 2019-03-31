@@ -52,7 +52,7 @@
 				<!-- 通信事業者 -->
 				<div class="mb-4">
 					<h6>通信事業者</h6>
-					<%= f.collection_select :carrier_id_eq, @carriers, :id, :name, {include_blank: "指定なし"}, class:"custom-select search-context" %>
+					<%= f.collection_select :carrier_id_eq, @carriers.where("id > ?", 3), :id, :name, {include_blank: "指定なし"}, class:"custom-select search-context" %>
 				</div>
 				<% end %>
 			</div>

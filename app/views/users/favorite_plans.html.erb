@@ -11,17 +11,23 @@
 		</ul>
 		<div class="col-8 mt-4">
 			<h4>お気に入りプラン一覧</h4>
-			<% @favorite_plans.each do |favorite_plan| %>
-			<div class="row bg-light mb-3 p-3 rounded border">
-				<div class="col-3">
-					<%= attachment_image_tag favorite_plan.plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto" %>
+			<% if @favorite_plans.present? %>
+				<% @favorite_plans.each do |favorite_plan| %>
+					<div class="row bg-light mb-3 p-3 rounded border">
+						<div class="col-3">
+							<%= attachment_image_tag favorite_plan.plan.carrier,:carrier_image, fallback: "no_image.jpg", size: '100x100', class:"mx-auto" %>
+						</div>
+						<div class="col-9 text-left">
+							<h5><%= link_to plan_path(favorite_plan.plan_id) do %><%= favorite_plan.plan.carrier.name %><br><%= favorite_plan.plan.name %></a></h5><% end %>
+							<h5>料金　<span class="text-danger price-font-size"><%= favorite_plan.plan.bill %>円/月</span></h5>
+							<h6>回線:<span class="text-secondary"><%= favorite_plan.plan.internet_type %></span> | データ量:<span class="text-secondary"><%= favorite_plan.plan.data_value %>GB</span></h6>
+						</div>
+					</div>
+				<% end %>
+			<% else %>
+				<div class="p-3 bg-light mt-5">
+					<h4>お気に入りプランがありません</h4>
 				</div>
-				<div class="col-9 text-left">
-					<h5><%= link_to plan_path(favorite_plan.plan_id) do %><%= favorite_plan.plan.carrier.name %><br><%= favorite_plan.plan.name %></a></h5><% end %>
-					<h5>料金　<span class="text-danger price-font-size"><%= favorite_plan.plan.bill %>円/月</span></h5>
-					<h6>回線:<span class="text-secondary"><%= favorite_plan.plan.internet_type %></span> | データ量:<span class="text-secondary"><%= favorite_plan.plan.data_value %>GB</span></h6>
-				</div>
-			</div>
 			<% end %>
 		</div>
 		<%= render 'profile' %>
