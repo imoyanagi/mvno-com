@@ -1,5 +1,12 @@
 <div class="container">
 	<h2 class="text-center mt-5"><span class="text-info"><%= @plan.name %></span>のレビュー</h2>
+	<% if flash[:error] %>
+		<% flash[:error].each do |e| %>
+	        <div class="alert alert-danger">
+	        	<li class="list-unstyled text-center"><%= e %></li>
+	        </div>
+	      <% end %>
+	<% end %>
 	<% @reviews.each do |review| %>
 		<div class="mt-5 mb-5 p-3 bg-light rounded">
 			<h4 class="text-info"><%= review.title %></h4>
