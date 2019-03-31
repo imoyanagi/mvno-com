@@ -977,6 +977,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -987,6 +988,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -997,6 +999,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1007,6 +1010,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1017,6 +1021,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1039,6 +1044,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "au"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1049,6 +1055,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "au"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1059,6 +1066,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "au"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1069,6 +1077,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "au"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1079,6 +1088,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "au"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1089,6 +1099,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1099,6 +1110,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1109,6 +1121,7 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
 
 Plan.seed do |s|
@@ -1119,4 +1132,5 @@ Plan.seed do |s|
     s.carrier_id = Carrier.find_by(name: '楽天モバイル').id
 	s.internet_type = "docomo"
 	s.data_transfer = 1
+end
 index += 1
