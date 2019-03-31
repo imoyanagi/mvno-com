@@ -98,3 +98,48 @@ Option.seed do |s|
 end
 index += 1
 
+Option.seed do |s|
+	s.id = index
+	s.name = "イオンでんわ10分かけ放題"
+	s.bill = 918
+	s.carrier_id = Carrier.find_by(name: 'イオンモバイル').id
+	s.notes = "イオンでんわアプリからの国内通話なら、現在ご利用中の電話番号そのままで、1回10分以内の国内通話が無料、何回でもかけ放題となります。※1回の通話時間が10分を超えた場合30秒10円となります。"
+end
+index += 1
+
+Option.seed do |s|
+	s.id = index
+	s.name = "050かけ放題"
+	s.bill = 1620
+	s.carrier_id = Carrier.find_by(name: 'イオンモバイル').id
+	s.notes = "イオンモバイル050かけ放題アプリを使ったときの国内通話がかけ放題になります。新たに050番号が追加で利用でき、データ通信プランでも通話できます。IP電話なので複数の端末でもご利用できます。Wi-Fi経由でも利用でき、Wi-Fi経由で海外からの日本国内への通話もかけ放題です。別途登録手数料1,080円、お申込み時に本人確認書類が必要です。"
+end
+index += 1
+
+Option.seed do |s|
+	s.id = index
+	s.name = "割り込み電話着信サービス"
+	s.bill = 216
+	s.carrier_id = Carrier.find_by(name: 'イオンモバイル').id
+	s.notes = "通話中に別の着信があった場合に、後からかかってきた電話を受けることができます。"
+end
+index += 1
+
+Option.seed do |s|
+	s.id = index
+	s.name = "留守番電話サービス"
+	s.bill = 324
+	s.carrier_id = Carrier.find_by(name: 'イオンモバイル').id
+	s.notes = "端末の電源が入っていない状態や、電波が届かない状態でも、伝言をお預かりします。"
+end
+index += 1
+
+Option.seed do |s|
+	s.id = index
+	s.name = "電話サポート"
+	s.bill = 324
+	s.carrier_id = Carrier.find_by(name: 'イオンモバイル').id
+	s.notes = "会員さま専用フリーダイヤルにてイオンスマホや一部SIMフリー端末の初期設定やアプリの設定を「操作サポート」「遠隔サポート」「会員特別価格での出張サポート」でサポートいたします。(※出張サポートご利用時は別途費用がかかります。)　会員さま専用フリーダイヤル：0120-826-926　午前9時～午後8時　(年中無休)"
+end
+index += 1
+
