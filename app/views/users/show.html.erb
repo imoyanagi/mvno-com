@@ -25,12 +25,16 @@
 			    				<td>契約日：<%= user_phone.contract_date %></td>
 			    			</tr>
 			    			<tr>
-			    				<td>契約プラン：<%= user_phone.plan_name %></td>
-			    				<td>使用端末：<%= user_phone.phone_name %></td>
+			    				<td>契約プラン：<%= user_phone.plan_name %><strong><%= "未入力" if user_phone.plan_name.blank? %></strong></td>
+			    				<td>使用端末：<%= user_phone.phone_name %><strong><%= "未入力" if user_phone.phone_name.blank? %></strong></td>
 			    			</tr>
 			    			<tr>
 			    				<td>料金：<%= user_phone.bill %>円/月</td>
-			    				<td>端末代：<%= user_phone.phone_bill %>円 x <%= user_phone.phone_bill_term %>回</td>
+			    				<% if user_phone.phone_bill == 0 or user_phone.phone_bill_term == 0 %>
+			    					<td>端末代：<strong>未入力</strong></td>
+			    				<% else %>
+			    					<td>端末代：<%= user_phone.phone_bill %>円 x <%= user_phone.phone_bill_term %>回</td>
+			    				<% end %>
 			    			</tr>
 						</table>
 					</div>

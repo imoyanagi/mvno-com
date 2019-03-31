@@ -12,20 +12,24 @@
 		<div class="col-8 mt-4">
 			<h4>質問履歴</h4>
 			<div class="p-5 bg-light">
-				<% @questions.order("id desc").each do |question| %>
-					<%= link_to question_path(question) do %>
-						<div class="row mb-4 border rounded p-3 questionSelected">
-							<div class="col-4 d-flex flex-column">
-								<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %>
-								<h6><%= question.user.name %></h6>
+				<% if @questions.present? %>
+					<% @questions.order("id desc").each do |question| %>
+						<%= link_to question_path(question) do %>
+							<div class="row mb-4 border rounded p-3 questionSelected">
+								<div class="col-4 d-flex flex-column">
+									<%= attachment_image_tag question.user,:profile_image, fallback: "no_image.jpg", size: '80x80', class:"mx-auto" %>
+									<h6><%= question.user.name %></h6>
+								</div>
+								<div class="col-8 text-left">
+									<h5 class="text-info"><%= question.title %></h5>
+									<h6>カテゴリ: <%= question.sub_category.name %></h6>
+									good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
+								</div>
 							</div>
-							<div class="col-8 text-left">
-								<h5 class="text-info"><%= question.title %></h5>
-								<h6>カテゴリ: <%= question.sub_category.name %></h6>
-								good! <%= question.favorite_posts.count %>件 | 回答 <%= question.answers.count %>件
-							</div>
-						</div>
+						<% end %>
 					<% end %>
+				<% else %>
+					<h4>投稿がありません</h4>
 				<% end %>
 			</div>
 		</div>
