@@ -1,4 +1,11 @@
 <div class="container">
+	<% if flash[:error] %>
+		<% flash[:error].each do |e| %>
+	        <div class="alert alert-danger">
+	        	<li class="list-unstyled text-center"><%= e %></li>
+	        </div>
+      	<% end %>
+	<% end %>
 	<div class="bg-light p-3 mt-5 mb-5 rounded border">
 		<div class="row">
 			<div class="col-sm-2">
