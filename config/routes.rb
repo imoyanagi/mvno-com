@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   :registrations => "users/registrations"
 }
   root 'plans#top'
+  get '/about', to:'plans#about'
   get '/users', to:'users#show'
   get '/users/mnp_plans', to:'users#mnp_plans'
   get '/users/question_logs', to:'users#question_logs'

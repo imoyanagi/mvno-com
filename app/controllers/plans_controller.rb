@@ -9,6 +9,8 @@ class PlansController < ApplicationController
     	@rss = RSS::Parser.parse("https://gori.me/feed")
 	end
 
+	def about
+	end
 
 	def index
 		@q = Plan.search(params[:q])

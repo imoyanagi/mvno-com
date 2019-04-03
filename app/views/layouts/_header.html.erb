@@ -9,6 +9,9 @@
 	  		<div class="collapse navbar-collapse" id="navbarText">
 			    <ul class="navbar-nav mr-auto">
 			      <li class="nav-item active">
+			        <%= link_to "このサイトについて", about_path, class:"nav-link ml-5" %>
+			      </li>
+			      <li class="nav-item active">
 			        <%= link_to "マイページ", users_path, class:"nav-link ml-5" %>
 			      </li>
 			      <li class="nav-item active">
@@ -26,6 +29,9 @@
 	  	<% else %>
 	  		<div class="collapse navbar-collapse" id="navbarText">
 			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item active">
+			        <%= link_to "このサイトについて", about_path, class:"nav-link ml-5" %>
+			      </li>
 			      <li class="nav-item active">
 			        <%= link_to "プラン一覧", plans_path, class:"nav-link ml-5" %>
 			      </li>
