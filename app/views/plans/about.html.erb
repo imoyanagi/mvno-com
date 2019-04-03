@@ -7,30 +7,76 @@
 		      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">ポートフォリオについて</a>
 		      <a class="nav-link" id="v-pills-functions-tab" data-toggle="pill" href="#v-pills-functions" role="tab" aria-controls="v-pills-functions" aria-selected="false">機能一覧</a>
 		      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">プロフィール</a>
-		      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">コンタクト</a>
 		    </div>
 		  </div>
 		  <div class="col-9">
 		    <div class="tab-content text-left ml-5" id="v-pills-tabContent">
+
 		      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 				<h4>制作期間</h4>
-				<h5>　　　2019年3月1日〜2019年3月31日</h5>
-				<h4>github
+				<h5>　　　１ヶ月（2019年3月1日〜2019年3月31日）</h5>
+				<h4 class="mt-4">github
 					<h5>　　　<a href="https://github.com/imoyanagi/mvno-com">https://github.com/imoyanagi/mvno-com</a></h5>
 				</h4>
-				<h4>使用言語・フレームワーク</h4>
-				<h5>　　　Ruby, Ruby on Rails, JavaScript, jQuery, bootstrap4</h5>
-				<h4>制作理由</h4>
-				<h5>　　　複数の格安スマホ会社を動的に比較できるサイトが</h5>
+				<h4 class="mt-4">使用言語・フレームワーク</h4>
+				<h5>　　　Ruby, Ruby on Rails, JavaScript, jQuery, bootstrap4, mysql, AWS</h5>
+				<h4 class="mt-4">GEM</h4>
+				<h5>　　　devise, refile, ransack, kaminari, acgiveadmin, seed-fu</h5>
+				<h4 class="mt-4">制作理由</h4>
+				<h5>　　　複数の格安スマホ会社のプランを検索できるサイトがあまりないので、<br>　　　あったら便利だろうと思い作りました。</h5>
 		      </div>
+
 		      <div class="tab-pane fade" id="v-pills-functions" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-		        <p>機能一覧</p>
+		        <h4><strong>プラン検索機能</strong></h4>
+		        <h5>　　　格安スマホのプランを条件を指定して検索できます。ransackを使用しています。</h5>
+		        <h4 class="mt-4"><strong>おすすめプラン表示機能</strong></h4>
+		        <h5>　　　３ステップでおすすめのプランを表示します。Ajaxを使用しています。</h5>
+		        <h4 class="mt-4"><strong>ユーザー登録、ログイン機能</strong></h4>
+		        <h5>　　　メールアドレス、パスワードで登録できます。deviseを使用しています。</h5>
+		        <h4 class="mt-4"><strong>プランお気に入り機能</strong></h4>
+		        <h5>　　　プラン詳細画面でログインした状態でお気に入り登録できます。<br>　　　マイページでお気に入りしたプランを確認できます。</h5>
+		        <h4 class="mt-4"><strong>レビュー機能</strong></h4>
+		        <h5>　　　プラン詳細画面でログインした状態でプランのレビューができます。総合評価、通信品質、<br>　　　サポート、コストの４項目を５段階で評価します。<br>　　　星の表示はratyというライブラリを使用しています。</h5>
+		        <h4 class="mt-4"><strong>乗り換え費用計算機能</strong></h4>
+		        <h5>　　　使用者情報を入力することで、乗り換えた場合の費用を計算して、お得になるか表示します。<br>　　　「乗り換え先に設定」ボタンを押して、マイページで見ることもできます。（ログイン時）</h5>
+		        <h4 class="mt-4"><strong>質問投稿、回答、返信機能</strong></h4>
+		        <h5>　　　格安スマホに関する質問を投稿できます。投稿された質問に回答、<br>　　　また回答された質問に返信ができます。</h5>
+		        <h4 class="mt-4"><strong>投稿いいね機能</strong></h4>
+		        <h5>　　　質問や回答、返信などの投稿に対していいねができます。</h5>
+		        <h4 class="mt-4"><strong>RSS機能</strong></h4>
+		        <h5>　　　トップページに最新記事を表示しています。Rubyの標準メソッドのparserを使用しています。</h5>
 		      </div>
+
 		      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-		        <p>プロフィールの文章です。...</p>
-		      </div>
-		      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-		        <p>メッセージの文章です。...</p>
+		      	<ul class="list-unstyled">
+		      		<li class="mt-4">
+		      			<h4><strong>github</strong></h4>
+		      			<h5 class="ml-5"><a href="https://github.com/imoyanagi">https://github.com/imoyanagi</a></h5>
+		      		</li>
+		      		<li class="mt-4">
+		      			<h4 class="mt-4"><strong>学習期間・内容</strong></h4>
+		      			<h5 class="ml-5">プログラミング歴：<strong><%= (Date.today - Date.new(2019, 1, 1)).to_i %>日目</strong>(2019年1月〜)</h5>
+		      			<h5 class="ml-5">やったこと</h5>
+		      			<ul class="ml-5">
+		      				<li>
+		      					本のレビューアプリ作成 <a href="https://github.com/imoyanagi/Bookers2">https://github.com/imoyanagi/Bookers2</a>
+		      				</li>
+		      				<li>
+		      					Railsチュートリアル第９章まで
+		      				</li>
+		      				<li>
+		      					チーム開発でECサイト構築 <a href="https://github.com/ishii-shunsuke/SWAM">https://github.com/ishii-shunsuke/SWAM</a>
+		      				</li>
+		      				<li>
+		      					ポートフォリオ制作（このサイト）
+		      				</li>
+		      			</ul>
+		      		</li>
+		      		<li class="mt-4">
+		      			<h4 class="mt-4"><strong>使用言語・フレームワークなど</strong></h4>
+		      			<h5 class="ml-5"> Ruby RubyonRails JavaScript jQuery mysql AWS</h5>
+		      		</li>
+		      	</ul>
 		      </div>
 		    </div>
 		  </div>
